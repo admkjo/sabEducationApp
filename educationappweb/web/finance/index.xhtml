@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <title> Sabonay Education</title>
+        <link type="text/css" rel="stylesheet" href="#{application.contextPath}/resources/css/main.css"/>
+
+    </h:head>
+
+    <!--    <ui:include src="view_params/vp_student_mark.xhtml" />-->
+
+    <h:body>
+        <h:panelGroup layout="block" styleClass="container">
+            <h:panelGroup layout="block" styleClass="container">
+                <h:panelGroup rendered="#{userdata.hasUserLogin}" >
+                    <ui:include src="frontpage.xhtml" />
+                </h:panelGroup>
+            </h:panelGroup>
+        </h:panelGroup>
+
+    </h:body>
+</html>
+

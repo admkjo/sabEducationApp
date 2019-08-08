@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+    <h:head>
+        <title> Sabonay Education</title>
+        <link type="text/css" rel="stylesheet" href="#{application.contextPath}/resources/css/main.css"/>
+    </h:head>
+
+    <!--    <ui:include src="view_params/vp_student_mark.xhtml" />--> 
+    <h:body>
+
+        <h:panelGroup layout="block" styleClass="container">
+            <h:panelGroup rendered="#{!userdata.hasUserLogin}" >
+                <ui:include src="pagefragments/login_1.xhtml" />
+                <h:panelGroup layout="block" style="clear: both;"/>
+                <h:panelGroup id="startupfooter" layout="block">
+                    Sabonay Education v1.0<br/>
+                    Copyright © 2015, <a href="http://www.sabonay.com">Sabonay Technologies Ltd</a> , All rights reserved<br/>
+                    Please send us a <a href="http://www.scfs.sabonay.com"> Feedback</a> or call office 032-2072797<br/>
+                </h:panelGroup>
+            </h:panelGroup> 
+            <h:panelGroup rendered="#{userdata.hasUserLogin}" >
+                <ui:include src="frontpage.xhtml" />
+            </h:panelGroup>
+        </h:panelGroup>
+ 
+    </h:body>
+</html>
+

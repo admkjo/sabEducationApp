@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:panelGroup layout="block" styleClass="input_form">
+
+        <h:form>
+
+            <h:panelGrid columns="2">
+   
+                <h:outputLabel value="#{bundle.EditSyssettingsLabel_syssettingsPK_appid}" for="syssettingsPK_appid" />
+                <h:inputText id="syssettingsPK_appid" 
+                             value="#{syssettingsController.appid}" 
+                             title="#{bundle.EditSyssettingsTitle_syssettingsPK_appid}" 
+                             requiredMessage="#{bundle.EditSyssettingsRequiredMessage_syssettingsPK_appid}"
+                             readonly="true"
+                             style="color: red;margin-bottom: 20px;text-decoration: blink;font-size: 12px"/>
+                <h:outputLabel value="#{bundle.EditSyssettingsLabel_syssettingsPK_syskey}" for="syssettingsPK_syskey" />
+                <h:inputText id="syssettingsPK_syskey" value="#{syssettingsController.syssettingkey}" 
+                             title="#{bundle.EditSyssettingsTitle_syssettingsPK_syskey}" 
+                             requiredMessage="#{bundle.EditSyssettingsRequiredMessage_syssettingsPK_syskey}"
+                             readonly="true"
+                             style="color: red;margin-bottom: 20px;text-decoration: blink;font-size: 12px"/>
+                <h:outputLabel value="#{bundle.EditSyssettingsLabel_sysvalue}" for="sysvalue" />
+                <h:inputTextarea rows="4" cols="30" id="sysvalue" value="#{syssettingsController.syssettingval}" 
+                                 title="#{bundle.EditSyssettingsTitle_sysvalue}" required="true" 
+                                 requiredMessage="#{bundle.EditSyssettingsRequiredMessage_sysvalue}"/>
+                <h:outputLabel value="#{bundle.EditSyssettingsLabel_sysdesc}" for="sysdesc" />
+                <h:inputText id="sysdesc" value="#{syssettingsController.syssettingdesc}" 
+                             title="#{bundle.EditSyssettingsTitle_sysdesc}" />
+
+            </h:panelGrid>
+
+            <h:panelGroup binding="#{syssettingsController.syssettingFormControl.component}" 
+                          rendered="#{uar.system_settings_edit}"/>
+        </h:form>
+
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" style="clear: both;" styleClass="input_form" 
+                  rendered="#{uar.system_settings_edit}">
+        <h:form>
+            <h:panelGroup binding="#{syssettingsController.syssettingDataPanel.searchPanel.component}"/>
+        </h:form>
+        <h:form id="frm_syssetting_datatable" style="height: 220px; overflow: auto;">
+            <h:dataTable binding="#{syssettingsController.syssettingDataPanel.dataTable}"/>
+        </h:form>
+    </h:panelGroup>
+
+</html>
+

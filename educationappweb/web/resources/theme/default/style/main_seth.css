@@ -1,0 +1,121 @@
+.adv_wrapper {
+    margin: auto;
+    width: 900px;
+
+}
+.adv_content{
+    background-image:url(../nav/greyrepeat.jpg);
+    background-repeat:repeat-x;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.adv_footer{
+    background-image:url(../nav/greyrepeat.jpg);
+    background-repeat:repeat-x;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-top: 5px; border-top: none;
+    text-align: center;
+    line-height: 25px;
+}
+.adv_header {
+    height: 80px;
+    font-size: 36px;
+    color: brown;
+    clear:both;
+    font-family:Georgia,"Times New Roman",Times,serif;
+    line-height:45px;
+    padding-left: 10px;
+    background-image: url(../../../../resources/images/top_banner.png);
+}
+.adv_left_content {
+    float: left;
+    width: 580px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+.img{
+    height: 150px;
+    border: solid 1px #ccc;
+}
+.adv_links {
+    line-height: 30px;
+
+}
+.adv_links li {
+    float: left;
+}
+.adv_links a {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
+.adv_right_content {
+    float: left;
+    width: 298px;
+    background-image:url(../nav/greyrepeat_vert.jpg);
+    background-repeat:repeat-y;
+    margin-top:1px;
+    background-color:#fff;
+    min-height:300px;
+}
+.adv_news {
+    float: left;
+    width: 300px;
+}
+.adv_section_title {
+    font-size: 13px;
+    line-height: 24px;
+    color: #FFFFFF;
+    background-color: #2E3654;
+    padding-left: 15px;
+}
+.adv_profile .adv_section_title {
+    background-color: #3E4964;
+}
+
+
+.adv_profile {
+    float: right;
+    width: 300px;
+}
+
+
+.school_profile , .school_news{
+    float: left;
+    width: 100%;
+
+
+    margin-top: 5px;
+}
+.h4{
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 25px;
+    color: #fff;
+    padding-left: 10px;
+}
+.school_profile{
+    border-right: solid 1px #ccc;
+    margin-right: 1%;
+    border: solid 1px #2E3654;
+}
+.school_news {
+   border: solid 1px #2E3654;
+}
+.school_profile .h4{
+    background-color: #2E3654;
+}
+.school_news .h4{
+    background-color:  #3E4964;
+}
+.head{
+    border-bottom: solid 1px #ccc;
+    line-height: 25px;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 4px;
+}

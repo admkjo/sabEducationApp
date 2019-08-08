@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="daily_fees_list" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="783ab1be-035d-4183-9390-b91eb4084430">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="schoolName" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="schoolAddress" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="reportTitle" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="schoolBadge" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="phoneNumber" class="java.lang.String" isForPrompting="false"/>
+	<field name="studentNumber" class="java.lang.String"/>
+	<field name="typeOfEntry" class="java.lang.String"/>
+	<field name="amountInvolved" class="java.lang.Double"/>
+	<field name="studentBillType" class="java.lang.String"/>
+	<field name="mediumOfPayment" class="java.lang.String"/>
+	<field name="recordedBy" class="java.lang.String"/>
+	<field name="recieptNumber" class="java.lang.String"/>
+	<field name="student" class="java.lang.String"/>
+	<field name="mediumNumber" class="java.lang.String"/>
+	<field name="schoolClass" class="java.lang.String"/>
+	<field name="studentBillItem" class="java.lang.String"/>
+	<variable name="total_amount_by_staff" class="java.lang.Double" resetType="Group" resetGroup="Fees Recorded By" calculation="Sum">
+		<variableExpression><![CDATA[$F{amountInvolved}]]></variableExpression>
+	</variable>
+	<variable name="count" class="java.lang.Integer" resetType="Group" resetGroup="Fees Recorded By" calculation="Count">
+		<variableExpression><![CDATA[$F{studentNumber}]]></variableExpression>
+	</variable>
+	<variable name="totalAmount" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{amountInvolved}]]></variableExpression>
+	</variable>
+	<group name="Fees Recorded By">
+		<groupExpression><![CDATA[$F{recordedBy}]]></groupExpression>
+		<groupHeader>
+			<band height="18" splitType="Prevent">
+				<textField>
+					<reportElement x="3" y="0" width="307" height="17" uuid="8ca0f087-b54f-4110-a8ea-052067ba3631"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{recordedBy}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="15">
+				<staticText>
+					<reportElement x="166" y="0" width="210" height="14" uuid="7d6bfbed-5baf-40f4-b2f1-e69dbdaff6ab"/>
+					<textElement>
+						<font size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Total Amount  From ]]></text>
+				</staticText>
+				<textField pattern="GHC #,###.##" isBlankWhenNull="true">
+					<reportElement x="388" y="0" width="137" height="14" uuid="4e914276-5cbe-4599-8f40-fa07837d840d"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{total_amount_by_staff}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="266" y="0" width="118" height="14" uuid="d4d51a8a-6f63-4737-bddc-b230af827cf5"/>
+					<textFieldExpression><![CDATA[$F{recordedBy}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="71" splitType="Stretch">
+			<rectangle>
+				<reportElement key="rectangle-2" x="2" y="2" width="555" height="67" isRemoveLineWhenBlank="true" backcolor="#66CCFF" uuid="b793402d-1a14-4685-8aeb-9ce347fe1dd3"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="108" y="4" width="449" height="21" forecolor="#660000" uuid="168663d8-5008-42d7-9de9-5f1de7c61d2d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{schoolName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement key="textField" x="108" y="26" width="446" height="18" forecolor="#003366" uuid="f7e45bcd-8296-43d9-adde-e4a4d6440f4c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{schoolAddress}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="53" width="446" height="13" uuid="392e575a-3023-4dc0-a25c-023bd1d376a5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{phoneNumber}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement x="2" y="4" width="90" height="63" uuid="f4c417c0-b372-4256-98fd-e2e5a3942d04"/>
+				<imageExpression><![CDATA[$P{schoolBadge}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="24" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement key="textField" mode="Opaque" x="1" y="2" width="553" height="21" forecolor="#000000" backcolor="#CCCCCC" uuid="91219022-6bc0-467e-914b-2d1373106f5b"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Double" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{reportTitle}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="13" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="26" y="0" width="64" height="12" uuid="485cc28f-f026-424b-9dd0-9ba57159e239"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{studentNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="90" y="0" width="100" height="12" uuid="aad58497-5eb3-460d-bd0c-727854ed665c"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{student}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="GHS #,###.##" isBlankWhenNull="true">
+				<reportElement x="190" y="0" width="65" height="12" uuid="b6e7e56b-68c8-482f-98c9-fcac9d351453"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amountInvolved}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="255" y="0" width="65" height="12" uuid="0c25e84d-fa01-496d-a9da-12f53458afca"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{studentBillItem}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="320" y="0" width="80" height="12" uuid="cbe03cdc-3b9e-4bd0-9870-02b908926750"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mediumOfPayment}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="506" y="0" width="48" height="12" uuid="338f646f-2d55-4f49-afae-0ba70cd64f98"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{recieptNumber}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="1" y="12" width="553" height="1" uuid="760bc30e-0a13-46c3-9efd-5b147ca2d443"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="1" y="0" width="18" height="12" uuid="9da6e2b0-2b34-4d6b-9cbd-5ec1be7a85d2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{count}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="403" y="0" width="55" height="12" uuid="cd638db3-5d3e-4440-8a70-08016e278eeb"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mediumNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="462" y="0" width="52" height="13" uuid="cbd23d73-024e-4134-9793-daaa624e1d08"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{typeOfEntry}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="16" splitType="Stretch">
+			<textField>
+				<reportElement x="429" y="2" width="80" height="13" uuid="38b62ff3-4d74-43a3-a18e-88fa004b5769"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="509" y="2" width="40" height="13" uuid="d6c5eabe-dacc-4950-9304-c7b3e8e7cdd2"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement x="133" y="0" width="205" height="16" uuid="6b4ada14-f284-4dbd-8768-e02c6ed0cd94"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL AMOUNT COLLECTED  :]]></text>
+			</staticText>
+			<textField pattern="GHC #,###.##" isBlankWhenNull="true">
+				<reportElement x="335" y="0" width="138" height="16" uuid="1d295f8b-7de7-4b84-99fa-8c578fdc5888"/>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

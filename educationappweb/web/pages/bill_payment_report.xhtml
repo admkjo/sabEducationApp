@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:panelGroup layout="block" styleClass="input_form">
+
+        <rich:panel header="Class Debtors Summary" style="width: 48%; height: 150px; float: left;">
+
+            <h:form>
+                <ui:include src="../pagefragments/single_class_selection.xhtml"/>
+
+                <h:outputLabel value="Entry Type"/>
+                <h:selectOneMenu style="width: 120px" value="#{studentFinancialReportController.typeOfEntry}"> 
+                    <f:selectItems value ="#{commonOptions.debitCreditBalanceOptions}" />
+                </h:selectOneMenu>
+                <h:commandButton value="Prepare Summary" 
+                                 action="#{studentFinancialReportController.viewBillPayment()}"/>
+
+                <h:commandLink target="_blank" styleClass="report_link"
+                               value="Report" action="#{studentFinancialReportController.reportClassBillPaymentSummary()}" />
+            </h:form>
+
+        </rich:panel>
+
+        <rich:panel header="School Summary" style="width: 48%; height: 150px; float: left;">
+
+            <h:form>
+
+                <h:outputLabel value="Entry Type"/>
+                <h:selectOneMenu style="width: 120px" value="#{studentFinancialReportController.schoolTypeOfEntry}"> 
+                    <f:selectItems value ="#{commonOptions.debitCreditBalanceOptions}" />
+                </h:selectOneMenu>   
+                <h:commandButton value="Prepare All Summary" styleClass="load_data"
+                                 action="#{studentFinancialReportController.viewClassStudentBillSummary()}" />
+                <h:commandLink target="_blank" styleClass="report_link"
+                               value="Report" action="#{studentFinancialReportController.reportClassStudentBillSummary()}" />
+
+            </h:form>
+
+        </rich:panel>
+
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" styleClass="clear" />
+
+    <h:panelGroup layout="block" style="height: 330px; overflow: auto;"
+                  rendered="#{studentFinancialReportController.showStudentBillSummary}">
+        <h:dataTable binding="#{studentFinancialReportController.studentBillPaymentHtmlDataPanel.dataTable}" />
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" style="height: 330px; overflow: auto;"
+                  rendered="#{studentFinancialReportController.showClassBillsSummary}">
+        <h:dataTable binding="#{studentFinancialReportController.classStudentBillSummaryDataPanel.dataTable}" />
+    </h:panelGroup>
+</html>

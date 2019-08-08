@@ -1,0 +1,78 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+    <h:panelGroup layout="block" id="sadfsafsasas_wrrt1223412">
+        <h:form id="srn">
+            <h:panelGrid columns="3">
+
+                <h:panelGroup layout="block" style="float: left;background: none;" styleClass="input_form" >
+                    <p:panel header="Class Selection">
+                        <ui:include src="/pagefragments/single_class_selection.xhtml" />
+                        <h:commandButton value="View Class Membership" action="#{classMembershipController.viewSelectedClassMembers}"/>
+                    </p:panel>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" style="float: left;background: none;" styleClass="input_form" rendered="#{uar.classMbrship_PrintClassMembersipRpt}">
+                    <p:panel header="Related Reports">
+                        <h:panelGrid columns="1">
+                            <h:outputText value="Class Membership Report Title" />
+                            <h:inputText style="width:300px;" value="#{classMembershipController.classMembershipReportTitle}" />
+                            <h:selectOneMenu value="#{classMembershipController.selectedClassMembershipReport}">
+                                <f:selectItems value="#{commonOptions.classMembershipReportOptions}" />
+                            </h:selectOneMenu>
+                            <h:selectOneMenu value="#{classMembershipController.selectedSubject}">
+                                <f:selectItems value="#{commonOptions.schoolSubjectOptions}" />
+                            </h:selectOneMenu>
+
+                            <h:commandLink value="Generate Report" target="_blank" styleClass="comand_link"
+                                           action="#{classMembershipController.reportClassMembershipReports}"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" style="float: left;background: none;" styleClass="input_form" >
+                    <p:panel header="Student/Class Editing">
+
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <h:outputText value="Student Id" />
+                            <h:inputText value="#{classMembershipController.studentId}"/>
+
+                            <h:outputText value="Sub. Combination" />
+                            <h:selectOneMenu  value="#{classMembershipController.selectedSubjectCombination}" >
+                                <f:selectItems value="#{commonOptions.subjectCombinationsOptions}" />
+                            </h:selectOneMenu>
+                        </h:panelGrid>
+                        <h:panelGroup>
+                            <h:panelGrid>
+
+                                <h:outputLabel value="Edit Type"/>
+                                <h:selectOneMenu style="margin-right: 10px;" value="#{classMembershipController.classMembershipActions}" >
+                                    <f:selectItems value="#{commonOptions.classMembershipActionsOptions}" />
+                                </h:selectOneMenu>
+                                <h:commandButton value="Execute"
+                                                 action="#{classMembershipController.addRemoveStudentFromClass}" />
+                            </h:panelGrid>
+                        </h:panelGroup>
+                    </p:panel>
+                </h:panelGroup>
+            </h:panelGrid>
+            <h:form>
+                <h:panelGroup layout="block" style="height: 300px; overflow: auto" styleClass="input_form">
+                    <h:dataTable binding="#{classMembershipController.studentDataPanel.dataTable}" id="members"/>
+                </h:panelGroup>
+
+            </h:form>
+            <h:panelGroup layout="block" styleClass="clear"  />
+
+        </h:form>
+
+    </h:panelGroup>
+
+</html>
+
+

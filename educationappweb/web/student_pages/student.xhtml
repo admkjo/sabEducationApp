@@ -1,0 +1,240 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:p="http://primefaces.org/ui">
+
+    <style type="text/css">
+        .input_table td
+        {
+            padding: 3px;
+            margin: 3px;
+        }
+
+    </style>
+
+    <h:panelGroup layout="block"  style="height: 100%; width: 100%; overflow: auto;">
+
+        <h:form>
+            <h:panelGrid columns="2" style="float: left;" styleClass="input_table">
+                <rich:panel>
+                    <f:facet name="header"><h:outputText value="Personal Information" /></f:facet>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value ="Student Id"/>
+                        <h:panelGroup>
+                            <h:inputText id="studentBasicId" value="#{studentController.student.studentBasicId}"
+                                         required="true" requiredMessage="*" disabled="#{studentController.studentFormControl.textOnSaveEditButton_Edit}" />
+                            <h:message for="studentBasicId"/>
+                        </h:panelGroup>
+                        <h:outputText/>
+                        <h:outputText/>
+                        <h:outputLabel value ="Surname"/>
+                        <h:panelGroup>
+                            <h:inputText id="surname" value="#{studentController.student.surname}" required="true" requiredMessage="*"  
+                                         disabled="#{studentController.studentFormControl.textOnSaveEditButton_Edit}"/>
+                            <h:message for="surname"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value ="Othernames"/>
+                        <h:panelGroup>
+                            <h:inputText id="othernames" value="#{studentController.student.othernames}" required="true" requiredMessage="*"  
+                                         disabled="#{studentController.studentFormControl.textOnSaveEditButton_Edit}"/>
+                            <h:message for="othernames"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value ="Date Ofbirth"/>
+                        <h:panelGroup>
+                            <rich:calendar  id="dateOfbirth"
+                                            value="#{studentController.student.dateOfbirth}" required="true" requiredMessage="*" 
+                                            disabled="#{studentController.studentFormControl.textOnSaveEditButton_Edit}"/>
+                            <h:message for="dateOfbirth"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value ="Gender"/>
+                        <h:panelGroup>
+                            <h:selectOneMenu id="gender" value="#{studentController.student.gender}" required="true" requiredMessage="*" 
+                                             disabled="#{studentController.studentFormControl.textOnSaveEditButton_Edit}">
+                                <f:selectItems value ="#{commonOptions.genderOptions}" />
+                            </h:selectOneMenu>
+                            <h:message for="gender"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value ="Hometown"/>
+                        <h:panelGroup>
+                            <h:inputText id="hometown" value="#{studentController.student.hometown}" required="true" requiredMessage="*"  />
+                            <h:message for="hometown"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value ="Region"/>
+                        <h:panelGroup>
+                            <h:selectOneMenu id="region" value="#{studentController.student.region}" required="true" requiredMessage="*" >
+                                <f:selectItems value ="#{commonOptions.regionOptions}" />
+                            </h:selectOneMenu>
+                            <h:message for="region"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value ="Disabilities"/>
+                        <h:panelGroup>
+                            <h:inputText id="disabilities" value="#{studentController.student.disabilities}" required="true" requiredMessage="*"  />
+                            <h:message for="disabilities"/>
+                        </h:panelGroup>
+                    </h:panelGrid>
+                </rich:panel>
+
+            </h:panelGrid>
+
+            <h:panelGrid columns="2" style="float: left;" styleClass="input_table" >
+                <rich:panel>
+                    <f:facet name="header"><h:outputText value="Admission Information" /></f:facet>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value ="Date Of Admission"/>
+                        <h:panelGroup>
+                            <rich:calendar  id="dateOfAdmission"
+                                            value="#{studentController.student.dateOfAdmission}" required="true" requiredMessage="*" 
+                                            disabled="#{studentController.studentFormControl.textOnSaveEditButton_Edit}"/>
+                            <h:message for="dateOfAdmission"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value ="Programme Offered"/>
+                        <h:panelGroup>
+                            <h:selectOneMenu id="programmeOffered" value="#{studentController.student.programmeOffered}" required="true" requiredMessage="*" 
+                                             disabled="#{studentController.studentFormControl.textOnSaveEditButton_Edit}">
+                                <f:selectItems value ="#{commonOptions.schoolProgrammeOptions}" />
+                            </h:selectOneMenu>
+                            <h:message for="programmeOffered"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value ="Class Admitted To"/>
+                        <h:panelGroup>
+                            <h:selectOneMenu id="classAdmittedTo" value="#{studentController.student.classAdmittedTo}" required="true" requiredMessage="*" 
+                                             disabled="#{studentController.studentFormControl.textOnSaveEditButton_Edit}">
+                                <f:selectItems value ="#{commonOptions.schoolClassesOptions}" />
+                            </h:selectOneMenu>
+                            <h:message for="classAdmittedTo"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value ="House Of Residence"/>
+                        <h:panelGroup>
+                            <h:selectOneMenu id="houseOfResidence" value="#{studentController.student.houseOfResidence}" required="true" requiredMessage="*" 
+                                             disabled="#{studentController.studentFormControl.textOnSaveEditButton_Edit}">
+                                <f:selectItems value ="#{commonOptions.schoolHousesOptions}" />
+                            </h:selectOneMenu>
+                            <h:message for="houseOfResidence"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value ="Boading Status"/>
+                        <h:panelGroup>
+                            <h:selectOneMenu id="boardingStatus" value="#{studentController.student.boardingStatus}" required="true" requiredMessage="*" 
+                                             disabled="#{studentController.studentFormControl.textOnSaveEditButton_Edit}">
+                                <f:selectItems value ="#{commonOptions.boardingStatusOptions}" />
+                            </h:selectOneMenu>
+                            <h:message for="boardingStatus" errorClass="noTextErrorStyle"/>
+                        </h:panelGroup>
+
+
+                        <h:outputLabel value ="Current Status"/>
+                        <h:panelGroup>
+                            <h:selectOneMenu id="currentStatus" value="#{studentController.student.currentStatus}" required="true" requiredMessage="*" 
+                                             disabled="#{studentController.studentFormControl.textOnSaveEditButton_Edit}">
+                                <f:selectItems value ="#{commonOptions.studentStatusOptions}" />
+                            </h:selectOneMenu>
+                            <h:message for="currentStatus"/>
+                        </h:panelGroup>
+                    </h:panelGrid>
+                </rich:panel>
+            </h:panelGrid>
+            <h:panelGrid columns="2" styleClass="input_table" style="float: left;" >
+                <rich:panel>
+                    <f:facet name="header"><h:outputText value="Guardian Info" /></f:facet>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value ="Guardian Name"/>
+                        <h:panelGroup>
+                            <h:inputText id="guardianName" value="#{studentController.student.guardianName}" required="true" requiredMessage="*"  />
+                            <h:message for="guardianName"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value ="Guardian Occupation"/>
+                        <h:panelGroup>
+                            <h:inputText id="guardianOccupation" value="#{studentController.student.guardianOccupation}" required="true" requiredMessage="*"  />
+                            <h:message for="guardianOccupation"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value ="Relation To Student"/>
+                        <h:panelGroup>
+                            <h:selectOneMenu id="relationToGuardian" value="#{studentController.student.relationToGuardian}" required="true" requiredMessage="*" >
+                                <f:selectItems value ="#{commonOptions.relationshipOptions}" />
+                            </h:selectOneMenu>
+                            <h:message for="relationToGuardian"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value ="Contact Number"/>
+                        <h:panelGroup>
+                            <h:inputText id="guardianContactNumber" value="#{studentController.student.guardianContactNumber}" required="true" requiredMessage="*"  />
+                            <h:message for="guardianContactNumber"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value ="Postal Address"/>
+                        <h:panelGroup>
+                            <h:inputTextarea id="guardianPostalAddress" value="#{studentController.student.guardianPostalAddress}" required="true" requiredMessage="*"  />
+                            <h:message for="guardianPostalAddress"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value ="Physical Address"/>
+                        <h:panelGroup>
+                            <h:inputTextarea id="guardianPhysicalAddress" value="#{studentController.student.guardianPhysicalAddress}" required="true" requiredMessage="*"  />
+                            <h:message for="guardianPhysicalAddress"/>
+                        </h:panelGroup>
+                    </h:panelGrid>
+                </rich:panel>
+            </h:panelGrid>
+
+
+            <h:panelGroup layout="block" style="float: left; text-align: center;" >
+                <rich:panel>
+                    <f:facet name="header"><h:outputText value="Student Picture" /></f:facet>
+                    <h:panelGrid columns="1">
+                        <h:graphicImage height="110px;" width="100px;"
+                                        style="display: block; border: solid #f9dd34 1px;"
+                                        url="#{studentController.studentPictureURI}"
+                                        alt="#{studentController.studentId}"/>
+
+                        <h:commandLink value="Load Image" style="margin: auto;" styleClass="clear"
+                                       onclick="javascript:var win = window.open('/sabonayeducation/edu/pagefragments/student_picture.xhtml'
+                                                       , 'Manage #{studentController.student} Picture', 'width=' + (screen.width - 300) + ',height=' + (screen.height - 75) + ',top=0,left=0,toolbar=no,status=no,menubar=no,scrollbars=yes,resizable=yes,directories=no,location=no');
+                                               win.focus();
+                                               return false;" />
+                    </h:panelGrid>
+                </rich:panel>
+            </h:panelGroup>
+
+
+
+            <div class="clear" />
+
+            <h:commandButton value="Update Your Info"
+                             action="#{studentController.updateStudentPersonalInformation}"
+                             rendered="#{studentController.showStudentInfoUpdateButton}"/>
+
+        </h:form>
+
+    </h:panelGroup>
+
+
+    <p:panel rendered="false">
+
+
+        <h:form enctype="multipart/form-data" prependId="false">
+            <p:growl id="messages" showSummary="true" showDetail="true" />
+            <p:fileUpload fileUploadListener="#{studentController.handleFileUpload}"
+                          update="messages"  sizeLimit="1073741824"
+                          multiple="true" label="choose" allowTypes="*.jpg;*.png;*.gif;" />
+        </h:form>
+
+        <h:form>
+            <p:imageCropper value="#{studentController.studentCroppedImage}"
+                            image="/resources/images/Blue1.jpg" />
+        </h:form>
+    </p:panel>
+
+</html>
+

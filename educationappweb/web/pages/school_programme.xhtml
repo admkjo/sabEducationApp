@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
+
+    <h:panelGroup layout="block">
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmSchoolProgramInput">
+                <h:panelGrid columns="4">
+                    <h:outputText value ="Program Code"/>
+                    <h:panelGroup>
+                        <h:inputText id="programCode" value="#{schoolProgramController.schoolProgram.programCode}" required="true" requiredMessage="*"  />
+                        <h:message for="programCode" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="Program Name"/>
+                    <h:panelGroup>
+                        <h:inputText id="programName" value="#{schoolProgramController.schoolProgram.programName}" required="true" requiredMessage="*"  />
+                        <h:message for="programName" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                </h:panelGrid>
+
+                <h:panelGroup binding="#{schoolProgramController.schoolProgramFormControl.component}"/>
+
+            </h:form>
+
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmSchoolProgram_search_panel">
+                <h:panelGroup binding="#{schoolProgramController.schoolProgramDataPanel.searchPanel.component}"/>
+            </h:form>
+            <h:form id="frmSchoolProgram_datatable">
+                <h:dataTable binding="#{schoolProgramController.schoolProgramDataPanel.dataTable}"/>
+            </h:form>
+        </h:panelGroup>
+
+    </h:panelGroup>
+
+</html>
+

@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:form prependId="false">
+        <div id="composeMessage" class="float_left box">
+            <h:panelGroup layout="block" styleClass="errorMsg">
+                <h:messages styleClass="errorMsg"/>
+            </h:panelGroup>
+            <h4>Title / Subject </h4>
+            <h:inputText id="messageTitle"
+                         value="#{messageController.smsMessage.smsSubject}"
+                         styleClass="styled_input"/>
+            <br/><br />
+            <h:selectOneRadio value="#{messageController.sendImmediate}"
+                              id="sendWhenOptions">
+                <f:selectItem itemLabel="send now" itemValue="true" />
+                <f:selectItem itemLabel="send later" itemValue="false" />
+            </h:selectOneRadio>
+            <rich:calendar
+                id="sendImmediateCal"
+                value="#{messageController.smsMessage.smsSendDate}"
+                datePattern="dd/MM/yyyy"/>
+            <h:selectOneMenu id="messageSendTimeHr" value="#{messageController.sendDateHrs}">
+                <f:selectItems value="#{messageController.timeHrs}" />
+            </h:selectOneMenu>
+            <h:selectOneMenu id="messageSendTimeMins" value="#{messageController.sendDateMins}">
+                <f:selectItems value="#{messageController.timeMins}" />
+            </h:selectOneMenu>
+            <h:selectOneMenu id="messageSendTimeAMPM" value="#{messageController.ampm}">
+                <f:selectItem itemLabel="AM" itemValue="0" />
+                <f:selectItem itemLabel="PM" itemValue="1" />
+            </h:selectOneMenu>
+            <div class="alright dateErrorMsg">
+                <span>you can enter a date manually in the format dd/mm/yyyy</span>
+                <br />
+            </div>
+            <h4>Message</h4>
+            <h:inputTextarea id="messageBody"
+                             value="#{messageController.smsText}"
+                             styleClass="styled_textarea"/>
+            <br />
+            <br />
+            <br /><br />
+
+            <div class="alcenter">
+                <h:commandButton
+                    id="messageClearButton"
+                    value="clear"
+                    immediate="true"
+                    action="#{messageController.clearForm()}"
+                    />
+                <h:commandButton rendered="false"
+                                 id="messageSaveDraftButton"
+                                 value="save as draft"
+                                 actionListener="#{messageController.saveAsDraft}"
+                                 />
+            </div>
+        </div>
+
+        <div id="sendingOpts" class="float_right box" style="background: #C2DFEF;margin-top: 5px;">
+            <h:outputText value="Contact Group  " style="margin-right: 10px;"/>
+            <h:selectOneMenu id="contacts" value="#{messageController.contactGrp}" required="true" valueChangeListener="#{messageController.contactGroupSelect}">
+                <f:selectItems value="#{commonOptions.contactGroupOptions}"/>
+                <f:ajax execute="@all" render="@all"  />
+                <p:ajax update ="contactView " listener="#{messageController.handleContactGrpChnge()}" />
+            </h:selectOneMenu>
+            <br/>                <br />
+
+
+            <h:outputText rendered="#{messageController.forShowSelected}" id="contactView"  value="#{messageController.showSelected}"/>
+
+            <h:panelGroup id="groupvalue" rendered="#{messageController.contctGrpval}"  >
+                <h:outputText value="Enter Student Id  " style="margin-right: 10px;"/>
+                <h:inputText  id="contactgroupvalue" value="#{messageController.contactGrpValue}" />
+            </h:panelGroup>
+
+            <h:panelGroup id="dd" rendered="#{messageController.selectYrGrp}" >
+                <h:outputText  value="Select Year Group" />  
+                <h:selectOneMenu value="#{messageController.selectedEducationalLevel}" valueChangeListener="#{messageController.loadYearGroup}">
+                    <f:selectItems value="#{commonOptions.educationalLevelOptions}" />
+                    <f:ajax execute="@form"  />
+                </h:selectOneMenu>
+            </h:panelGroup>
+
+            <h:panelGroup rendered="#{messageController.forProgram}">
+                <h:outputText value="Select School Program"  />
+                <h:selectOneMenu value="#{classSelectionController.selectedSchoolProgram}" valueChangeListener="#{messageController.loadProgram}">
+                    <f:selectItems value="#{commonOptions.schoolProgrammeOptions}" />
+                    <f:ajax execute="@form" />
+                </h:selectOneMenu>
+            </h:panelGroup>
+
+            <h:panelGrid rendered="#{messageController.forSchoolClass}">  
+                <ui:include src="/pagefragments/single_class_selection.xhtml"/> 
+            </h:panelGrid>
+
+            <div id="uploadIndividuals" style="background: none;">
+                <h:commandButton value="Send Student Reminders"
+                                 action="#{messageController.prepReminderSending}"/>
+            </div>
+            <div id="uploadIndividuals" style="background: none;">
+                <h:commandLink id="draftMessages" rendered="false"
+                               value="Show saved drafts"
+                               action="#{messageController.showDrafts}"
+                               immediate="true"
+                               />
+
+
+            </div>
+        </div>
+    </h:form>
+
+</html>
+
+

@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich">
+
+    <h:panelGroup layout="block">
+
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmSubjectCombinationInput" style="float: left;">
+
+                <h:panelGrid columns="2">
+
+                    <h:outputText value ="Combination Programme"/>
+                    <h:panelGroup>
+                        <h:selectOneMenu id="subjectCombinationProgramme" value="#{subjectCombinationController.subjectCombination.subjectCombinationProgramme}" required="true" requiredMessage="*" >
+                            <f:selectItems value ="#{commonOptions.schoolProgrammeOptions}" />
+                        </h:selectOneMenu>
+                        <h:message for="subjectCombinationProgramme" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+                    <h:outputText value ="Subject Combination Name"/>
+                    <h:panelGroup>
+                        <h:inputText id="subjectCombinationName" value="#{subjectCombinationController.subjectCombination.subjectCombinationName}" required="true" requiredMessage="*" size="50" />
+                        <h:message for="subjectCombinationName" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="Combination Short Name"/>
+                    <h:panelGroup>
+                        <h:inputText id="combinationShortName" value="#{subjectCombinationController.subjectCombination.combinationShortName}" required="true" requiredMessage="*" size="30"  />
+                        <h:message for="combinationShortName" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="Combination Status"/>
+                    <h:panelGroup>
+                        <h:selectOneMenu id="subjectCombinationStatus" value="#{subjectCombinationController.subjectCombination.subjectCombinationStatus}" required="true" requiredMessage="*" >
+                            <f:selectItems value ="#{commonOptions.activeInactiveStatusOptions}" />
+                        </h:selectOneMenu>
+                        <h:message for="subjectCombinationStatus" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+
+
+                </h:panelGrid>
+
+                <h:panelGroup binding="#{subjectCombinationController.subjectCombinationFormControl.component}"/>
+
+            </h:form>
+
+            <h:form style="float: left; width: 500px; ">
+                <rich:panel >
+                    <f:facet name="header">
+                        <h:outputText value="Combination Subject for " />
+                        <h:selectOneMenu value="#{subjectCombinationController.subjectCombination}"
+                                         onchange="submit();" valueChangeListener="#{subjectCombinationController.loadSubjectCombinationSubjects}">
+                            <f:selectItems value="#{commonOptions.subjectCombinationsOptions}" />
+                        </h:selectOneMenu>
+                    </f:facet>
+                    <h:panelGroup layout="block" style="height: 200px; overflow: auto;">
+                        <h:dataTable binding="#{subjectCombinationController.subjectDataPanel.dataTable}"/>
+                    </h:panelGroup>
+
+                    <h:commandButton value="Update Combination Subject"
+                                     action="#{subjectCombinationController.updateCombinationSubject()}"/>
+                    <h:commandButton value="Cancel Combination Subject" style="margin-left:20px;margin-right: 20px;"
+                                     action="#{subjectCombinationController.cancelUpdateSubjectCombination()}"/>
+                </rich:panel>
+            </h:form>
+
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" styleClass="clear" />
+
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmSubjectCombination_search_panel">
+                <h:panelGroup binding="#{subjectCombinationController.subjectCombinationDataPanel.searchPanel.component}"/>
+            </h:form>
+            <h:form id="frmSubjectCombination_datatable" style="height: 250px; overflow: auto;">
+                <h:dataTable binding="#{subjectCombinationController.subjectCombinationDataPanel.dataTable}"/>
+            </h:form>
+        </h:panelGroup>
+
+
+    </h:panelGroup>
+
+
+</html>
+
+

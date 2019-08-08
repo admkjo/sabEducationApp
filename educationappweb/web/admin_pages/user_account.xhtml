@@ -1,0 +1,117 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>User Account</title>
+        <link type="text/css" rel="stylesheet" href="resources/css/main.css"/>
+        <style type="text/css">
+            .input_form td
+            {
+                padding: 2.5px;
+                margin: 2.5px;
+            }
+
+        </style>
+
+    </h:head>
+    <h:body style="margin: 0px;">
+
+        <h:form rendered="false">
+            <h:commandButton value="" action="#{userAccountController.printCodes}"
+                             rendered="#{uar.user_account_edit}" />
+        </h:form>
+
+        <h:form >
+
+            <div id="user_account_container" class="input_form">
+<!--                <div id="user_rights">
+
+                    <h:panelGrid columns="2">
+
+                        <ui:repeat value="#{userAccountController.userPagesList}" var="userPage">
+                            <p:fieldset legend="#{userPage.pageName}" style="font-size: 2px;" >
+
+                                <h:selectManyCheckbox value="#{userPage.userActivities}">
+                                    <f:selectItems value="#{userPage.pageActivities}"
+                                                   var="ac" itemLabel="#{ac}"
+                                                   itemValue="#{userPage.pageCode}##{ac}"/>
+                                </h:selectManyCheckbox>
+                            </p:fieldset>
+                        </ui:repeat>
+                    </h:panelGrid>
+                </div>-->
+                <div id=" " >
+                    <div id="top_component">
+                        <div id="account_input" class="input_form" style="height: auto; width:400px; ">
+
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="User CheckId" />
+                                <h:inputText value="#{userAccountController.userIdCheck}" readonly="true"/>
+
+                                <h:outputLabel value="username" />
+                                <h:inputText value="#{userAccountController.username}"/>
+
+                                <h:outputLabel value="user password" />
+                                <h:inputSecret value="#{userAccountController.userPassword}"/>
+
+                                <h:outputLabel value="user password retype" />
+                                <h:inputSecret value="#{userAccountController.userPasswordRetype}"/>
+
+                                <h:outputLabel value="User Category" />
+                                <h:selectOneMenu value="#{userAccountController.userCategory}">
+                                    <f:selectItems value="#{commonOptions.userCategoryOptions}" />
+                                </h:selectOneMenu>
+
+                                <h:outputLabel value="Change Right Only" />
+                                <h:selectBooleanCheckbox value="#{userAccountController.changeActivitiesOnly}" />
+                            </h:panelGrid>
+
+                            <h:panelGrid columns="3" rendered="#{uar.user_account_edit}">
+                                <h:commandButton value="Save" action="#{userAccountController.saveEditButtonAction}"/>
+                                <h:commandButton value="Clear" action="#{userAccountController.clearButtonAction}" />
+                                <h:commandButton value="Delete" action="#{userAccountController.deleteButtonAction}"/>
+                            </h:panelGrid>
+
+                        </div>
+
+                        <div id="staff_cross_check" class="input_form" style="width: 616px;">
+                            <rich:panel header="Staff Records">
+                                <h:panelGroup layout="block" >
+                                    <ui:include src="../datatables/school_staff_datatable_4_user_account.xhtml" >
+                                        <ui:param name="searchText" value="#{userAccountController.searchStaffText}" />
+                                        <ui:param name="searchField" value="#{userAccountController.searchStaffField}" />
+                                        <ui:param name="searchButton" value="#{userAccountController.schoolStaffSearchButton}" />
+                                    </ui:include>
+                                </h:panelGroup>
+                            </rich:panel>
+                        </div>
+                    </div>
+
+                    <div class="clear" />
+
+                    <div id="existing_users" class="input_form">
+                        <rich:panel header="Account Records">
+                            <h:panelGroup layout="block">
+                                <ui:include src="/datatables/user_account_datatable.xhtml" >
+                                    <ui:param name="searchText" value="#{userAccountController.searchUserAccountText}" />
+                                    <ui:param name="searchField" value="#{userAccountController.searchUserAccountField}" />
+                                    <ui:param name="searchButton" value="#{userAccountController.userAccountSearchButton}" />
+
+                                    <ui:param name="tableList" value="#{userAccountController.userAccountList}" />
+                                    <ui:param name="dataTable" value="#{userAccountController.userAccountDataTable}" />
+                                    <ui:param name="rowSelectionAction" value="#{userAccountController.userAccountSelectDataItemCommandLink}" />
+                                </ui:include>
+                            </h:panelGroup>
+                        </rich:panel>
+                    </div>
+                </div>
+            </div>
+
+        </h:form>
+
+    </h:body>
+</html>
+

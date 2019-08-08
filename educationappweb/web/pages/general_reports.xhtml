@@ -1,0 +1,151 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:rich="http://richfaces.org/rich"
+     xmlns:a4j="http://richfaces.org/a4j"
+     xmlns:f="http://java.sun.com/jsf/core">
+
+    <style type="text/css">
+        .general_report td
+        {
+            padding: 5px;
+            margin: 5px;
+        }
+
+    </style>
+    <h:panelGrid columns="2" styleClass="general_report" >
+
+        <rich:panel >
+            <f:facet name="header">
+                <h:outputText value="Reports Without Criteria" />
+            </f:facet>
+            <h:form>
+                <h:commandLink value="Student Class Distribution" target="_blank" styleClass="report_link"
+                               action="#{generalReportController.runStudentClassDistributionReport}"/>
+            </h:form>
+
+            <br/>
+            <h:form>
+                <h:commandLink value="Student Subject Distribution" target="_blank" styleClass="report_link"
+                               action="#{generalReportController.runStudentSubjectDistribution}" />
+            </h:form>
+
+            <br/>
+
+            <h:form>
+                <h:commandLink value="Exam Marks Filling Crosscheck List" target="_blank"
+                               action="#{generalReportController.reportExamMarkEnteringStatistics}"
+                               styleClass="report_link" />
+
+            </h:form>
+
+            <br/>
+
+
+
+        </rich:panel>
+
+
+        <rich:panel >
+            <f:facet name="header">
+                <h:outputText value="Student Age Distribution" />
+            </f:facet>
+
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="Age Distribution Range [11,12-13-14,15]" />
+                    <h:inputText value="#{generalReportController.ageDistributionRange}"/>
+
+                    <h:outputText value="Ignore Other Age Ranges" />
+                    <h:selectBooleanCheckbox value="#{generalReportController.ignorOtherAgeRange}" />
+                </h:panelGrid>
+
+                <h:commandLink value="Student Age Distribution" target="_blank" styleClass="report_link"
+                               action="#{generalReportController.runStudentAgeDistribution}"/>
+            </h:form>
+
+
+        </rich:panel>
+
+
+        <rich:panel header="Final Year Continuous Assessment" >
+
+            <h:form>
+
+                <h:panelGrid columns="2">
+
+                    <h:outputLabel value="Year Group" />
+
+                    <h:panelGroup>
+                        <h:selectOneMenu id="ca" value="#{generalReportController.educationalLevel}" required="true" requiredMessage="*">
+                            <f:selectItems value="#{commonOptions.educationalLevelOptions}" />
+                        </h:selectOneMenu>
+                        <h:message for="ca" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputLabel value="Assessment Options" />
+                    <h:selectOneMenu value="#{generalReportController.continuousAssessmentType}">
+                        <f:selectItems value="#{commonOptions.examContinuousOptions}" />
+                    </h:selectOneMenu>
+
+                </h:panelGrid>
+
+                <h:commandLink value="Assessment" styleClass="report_link" target="_blank"
+                               action="#{generalReportController.reportStudentExamMarkSummary}"/>
+            </h:form>
+        </rich:panel>
+
+
+        <rich:panel header="Student Transcript">
+            <h:form>
+                <h:panelGrid columns="2" >
+                    <h:outputLabel value="Enter Student ID" />
+                    <h:inputText id="studentId" value="#{generalReportController.studentId}" />
+
+                    <rich:message for="studentId" />
+
+                    <h:commandLink value="Retrive Transcript" target="_blank"  styleClass="report_link"
+                                   action="#{generalReportController.reportStudentTranscript}" />
+                </h:panelGrid>
+
+            </h:form>
+        </rich:panel>
+
+        <rich:panel header="Best Students Per Year Group">
+            <h:form>
+                <h:panelGrid columns="2" >
+
+                    <h:outputLabel value="Academic Year" />
+                    <h:selectOneMenu value="#{generalReportController.academicYear}">
+                        <f:selectItems value="#{commonOptions.academicYearOptions}" />
+                    </h:selectOneMenu>
+
+
+                    <h:outputLabel value="Academic Term" />
+                    <h:selectOneMenu value="#{generalReportController.academicTerm}"  >
+                        <f:selectItem itemLabel="--Select Term--" />
+                        <f:selectItem itemValue="FT" itemLabel="First Term"  />
+                        <f:selectItem  itemValue="ST" itemLabel="Second Term"  />
+                        <f:selectItem itemValue="TT"  itemLabel="Third Term"  />
+
+                    </h:selectOneMenu>
+
+                    <h:commandLink value="Best Students List " target="_blank"
+                                   action="#{generalReportController.reportBestStudentsPerYearGroup}"
+                                   styleClass="report_link" />
+
+
+                </h:panelGrid>
+
+            </h:form>
+        </rich:panel>
+
+
+
+
+
+    </h:panelGrid>
+
+
+</div>
+
+

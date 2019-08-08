@@ -1,0 +1,155 @@
+/* #C2DFEF */
+/* main background #95CEE6 */ 
+#container{
+    margin: 0 auto;
+    width: 900px;
+}
+
+#top {
+    background-color: #036fab;
+    color: white;
+    padding: 5px;
+    margin: 0px 0px 2px 0px;
+}
+
+#bottom {
+    background-color: #c2dfef;
+    padding: 5px;
+    margin: 10px 0px 0px 0px;
+    clear: both;
+}
+
+.left {
+    float: left;
+    background-color: #C2DFEF;
+    padding: 5px;
+    max-width: 90%;
+}
+
+.center_content {
+    background-color: #95CEE6;
+    padding: 5px;
+}
+
+.left_content {
+    background-color: #dddddd;
+    padding: 5px;
+    margin-left: 170px;
+}
+
+.right_content {
+    background-color: #dddddd;
+    padding: 5px;
+    margin: 0px 170px 0px 170px;
+}
+
+#top a:link, #top a:visited {
+  color: white;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+#top a:link:hover, #top a:visited:hover  {
+  color: black;
+  font-weight : bold;
+  text-decoration : underline;
+}
+
+
+/* styles by atokubi  */
+
+/*#banner{
+    width: 891px;
+    height: 131px;
+    background-image: url("../resources/images/smessagingbanner.png");
+    background-position: center;
+}*/
+
+#nav{
+    width: 100%;
+}
+
+.footer{
+    display: block;
+}
+
+.float_left{
+    float: left;
+}
+
+.float_right{
+    float: right;
+}
+
+#indexbody{
+    height: 304px;
+}
+
+#sabonayInfos{
+    width: 550px;
+    height: 300px;
+    outline: 1px dotted #036FAB;
+    margin: 2px 0 2px 2px;
+}
+
+#loginregPanel{
+    width: 300px;
+    height: 300px;
+    outline: 1px dotted red;
+    margin: 2px 2px 5px 2px;
+}
+
+#leftContent{
+    width: 55%;
+    margin: 5px 5px;
+}
+
+#rightContent{
+    width: 40%;
+    margin: 5px 5px;
+}
+
+#topupArea{
+    margin: 5px;
+}
+
+#clientslist{
+    width: 30%;
+    margin: 5px;
+    float: left;
+}
+
+#paymentsArea{
+    margin: 5px;
+}
+
+#tfTopupAmount, #tfChqNumber{
+    width: 100px;
+}
+
+#adminlogin{
+    margin: 7em auto;
+    width: 360px;
+    border: 2px solid #036FAB;
+    -moz-border-radius: 10px;
+    padding: 20px;
+}
+
+#error404{
+    margin: 7em auto;
+    border: 2px solid #036FAB;
+    -moz-border-radius: 10px;
+    font-size: 200%;
+    width: 660px;
+    padding: 20px;
+}
+
+#invPerview{
+    margin: auto;
+    padding: 0;
+    width: 800px;
+}
+
+#nav div.right ul li{
+    color: #036FAB;
+}

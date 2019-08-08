@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:panelGroup layout="block" styleClass="input_form">
+        <h:form prependId="true" id="select">
+            <h:commandButton value="Load Class Teachers" id="load"
+                             action="#{classTeacherController.loadClassTeachers}" >
+            </h:commandButton>
+
+            <h:commandLink value="Report Class Teacher List" target="_blank"
+                           action="#{classTeacherController.reportClassTeacherList}"
+                           styleClass="report_link" />
+        </h:form>
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" styleClass="input_form">
+        <h:form >
+            <h:commandButton value="Update Class Teachers List"
+                             action="#{classTeacherController.saveClassTeachers}"
+                             style="font-size: 20px;"/>
+            <h:panelGroup layout="block"   style="height: auto;">
+                
+                <div style="overflow: scroll;height: 400px;">
+                <h:dataTable rendered="true" binding="#{classTeacherController.classTeacherDataPanel.dataTable}" />
+                </div>
+            </h:panelGroup>
+        </h:form>
+    </h:panelGroup>
+</html>
+
+

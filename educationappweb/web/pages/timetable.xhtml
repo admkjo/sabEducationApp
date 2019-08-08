@@ -1,0 +1,140 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Timetable</title>
+    </h:head>
+    <h:body>
+
+        <h:panelGroup  rendered="${timetableController.step1}">
+            <h:form>
+                <h1 align="center">Timetable Step 1 </h1> 
+
+                <h:panelGrid columns="4">
+                    <p:panel>
+                        <h:outputLabel for="minmax" value="Duration for one period : " />  
+                        <p:spinner id="minmax"    style="width: 210px" required="true" requiredMessage="Duration for one period is required"
+                                   value="#{timetableController.setting.settingsKey}" min="1" max="100"/>
+                        &nbsp;mins
+                    </p:panel>
+                </h:panelGrid>
+                <br/>
+
+                <!--<h:commandButton value="Go To Step 2" style="background: dodgerblue; color: white;" action= "#{timetableController.updateNextPage()}" />-->
+                <br/>
+                <br/>
+                <br/>
+            </h:form>
+        </h:panelGroup>
+
+
+
+
+        <h:panelGroup rendered="${timetableController.step2}">
+
+            <h:form>
+                <p:panel>
+                    <h1 align="center">Timetable Step 2</h1> 
+                    <h:panelGrid columns="1">
+                        <fieldset>
+                            <h:outputText value="Number of days in week :"/><br/>
+                            <p:selectManyCheckbox  required="true" requiredMessage="Number of days in week Required" style="width: 500px" value="#{timetableController.listOfDays}">
+                                <f:selectItem  itemValue="#Monday" itemLabel="Monday"/> 
+                                <f:selectItem  itemValue="#Tuesday" itemLabel="Tuesday"/> 
+                                <f:selectItem  itemValue="#Wednesday" itemLabel="Wednesday"/> 
+                                <f:selectItem  itemValue="#thursday" itemLabel="Thursday"/> 
+                                <f:selectItem  itemValue="#Friday" itemLabel="Friday"/> 
+                                <f:selectItem  itemValue="#Saturday" itemLabel="Saturday"/> 
+                                <f:selectItem  itemValue="#Sunday" itemLabel="Sunday"/> 
+                            </p:selectManyCheckbox>
+                        </fieldset>
+                    </h:panelGrid> <br/>
+                    <h:commandButton value="Go Back To Step 1" style="background: #900; color: white;" action="#{timetableController.backToOne()}"/> &nbsp;
+
+                    <h:commandButton value="Go To Step 3" style="background: dodgerblue; color: white;" action="#{timetableController.updateNumberOfDays()}"/>
+                </p:panel>
+            </h:form>
+
+        </h:panelGroup>
+
+
+        <h:form>
+            <h:panelGroup rendered="${timetableController.step3}">               
+                <h1 align="center">Timetable Step 3</h1> 
+
+                <h:panelGrid columns="5">
+
+                    <h:panelGrid columns="2" style="margin-left: 5px">
+                        <h:outputLabel value="Year Group"/>
+                        <h:selectOneMenu  required="true" requiredMessage="Please Select Year" style="width: 120px" value="#{assignBreakController.selectedYear}">
+                            <f:selectItem itemLabel="--select year group--"/>
+                            <f:selectItems value="#{assignBreakController.selectYearGroup}"/>
+                            <p:ajax event="change" listener="#{assignBreakController.selectYear()}" update="allBrk" />
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2" style="margin-left: 5px">
+                        <h:outputLabel value="Break Times"/>
+                        <h:selectOneMenu required="true" requiredMessage="Please Choose Break" style="width: 120px" value="#{assignBreakController.selectedBreak}">
+                            <f:selectItem itemLabel="--choose break--"/> 
+                            <f:selectItems value="#{assignBreakController.selectBreak}"/>
+                            <p:ajax event="change" listener="#{assignBreakController.addBreak()}" update="allBrk" />
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <h:inputTextarea style="margin-left: 15px;color: black" disabled="true" cols="40" rows="3" value="#{assignBreakController.breaks}" id="allBrk"/>
+                    <h:commandButton action="#{assignBreakController.updateAssignBreak()}" style="margin-left: 15px" value="Assign Break to Year Group" /> 
+                    <h:commandButton action="#{assignBreakController.clear()}" style="margin-left: 15px" value="Clear" />
+
+                </h:panelGrid>
+
+
+                <f:view>
+
+                    <h1><h:outputText value="List"/></h1>
+                    <p:dataTable  paginator="true" rows="10" value="#{assignBreakController.breakDataModel}" var="item">
+                         
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="YearGroup"/>
+                            </f:facet>
+                            <h:outputText value="#{item.yearGroup}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="BreakTimes"/>
+                            </f:facet>
+                            <h:outputText value="#{item.breakTimes}"/>
+                        </p:column>
+
+                    </p:dataTable>
+
+                </f:view>
+                <br/>     
+                <h:commandButton  style="background:dodgerblue; color: white;" value="Go Back To Step 2" action="#{timetableController.backToTwo()}"/>
+                <h:commandButton  style="background: #900; color: white;" value="Generate Time Table" action="#{timetableController.generateTimeTable()}"/>
+
+            </h:panelGroup>
+        </h:form>
+
+
+
+
+
+
+        <h:form id="form4" >
+            <h:panelGroup rendered="${timetableController.step4}">               
+                <h1 align="center">Timetable </h1> 
+
+                <h:panelGrid binding="#{timetableController.gridComponent1}"/>
+                
+          
+                    <h:commandButton value="Go To Step 3" style="background: dodgerblue; color: white;" action="#{timetableController.updateNumberOfDays()}"/>
+
+            </h:panelGroup>
+        </h:form>
+
+
+    </h:body>
+</html>

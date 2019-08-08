@@ -1,0 +1,78 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <style type="text/css">
+        .adv_right_content td
+        {
+            padding: 3px;
+            margin: 3px;
+        }
+
+        #footer_login {
+            background-color: #660000;
+            color: white;
+            font-weight: bolder;
+            text-align: center;
+        }
+    </style>
+
+
+    <h:panelGroup layout="block" styleClass="adv_header"> </h:panelGroup>
+    <h:panelGroup layout="block" styleClass="adv_content">
+        <h:panelGroup layout="block" styleClass="adv_left_content">
+
+            <h:graphicImage url="resources/theme/default/nav/school.jpg" alt="School" />
+
+            <h:panelGroup layout="block" styleClass="school_profile">
+                <h:panelGroup layout="block" styleClass="h4">
+                    <h:outputText  value="Guest,You´re welcome!" />
+                </h:panelGroup>
+
+                <h3 style="padding: 1px;"><span style="color:darkgoldenrod">SABONAY EDUCATION</span> is an all-in- one educational software built to suit your school’s peculiar needs. Sabonay Education is designed
+                    to give educational institutions a touch of class with modern technology-bringing with it the benefits of computers-making work easier and faster.
+                    It is user friendly, coming along with an easy to understand manual to guide you. </h3>
+
+            </h:panelGroup>
+
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" styleClass="adv_right_content">
+
+            <h:panelGroup layout="block" styleClass="adv_login">
+
+                <fieldset class="field_set" style="width:300px">
+                    <legend>SYSTEM LOGIN</legend>
+                    <h:form id="loginForm">
+                        <h:panelGroup layout="block">
+                            <h:panelGrid columns="3">
+                                <h:outputLabel value="Username: "/>
+                                <h:inputText id="usernameInput" value="#{indexPageController.username}" 
+                                             required="false" />
+                                <h:message class="error" for="usernameInput" id="usernameInputError" style="width: 250px;"/>
+                                <h:outputLabel value="Password: "/>
+                                <h:inputSecret id="passwordInput" value="#{indexPageController.password}" 
+                                               required="false" class="span3"/>
+                                <h:message class="error" for="passwordInput" id="passwordInputError" style="width: 250px;"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="2" style="margin-top: 10px; margin-left: 70px;">
+                                <h:commandButton value="Login" 
+                                                 action="#{indexPageController.login}" style="width: 130px;"/>
+                                <h:commandLink value="Forgot Password?" 
+                                                 action="#{indexPageController.forgot_password}" style="width: 130px;"/>
+                            </h:panelGrid>
+                            <h:outputLabel value="#{indexPageController.disp_status_msg}" rendered="#{indexPageController.disp_status}" />
+                        </h:panelGroup>
+                    </h:form>
+
+                </fieldset>
+
+            </h:panelGroup>
+
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="clear"/>
+        <h:panelGroup id="footer_login" layout="block">
+            Developed by <a href="http://www.sabonay.com">Sabonay Technologies</a> located at Buokrom. Office 032-2072797,2011
+        </h:panelGroup>
+    </h:panelGroup>
+</html>
+

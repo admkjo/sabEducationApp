@@ -1,0 +1,129 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Preview invoice of #{clientSessionController.previewInvoice.client.clientName}</title>
+        <h:outputStylesheet library="css" name="layout.css" />
+        <h:outputStylesheet library="css" name="styles.css" />
+    </h:head>
+    <h:body>
+        <div id="invPerview">
+            <div id="invOptions">
+                <h:form prependId="false">
+                    <ul id="invOptionsLinks">
+                        <li><h:commandLink value="print out" /></li> |
+                        <li><h:commandLink value="email as pdf" /></li> |
+                        <li><h:commandLink value="download as pdf" action="#{clientSessionController.prepInvoice}" /></li>
+                    </ul>
+                    <h:commandButton styleClass="float_right" value="close preview" action="client_invoices" />
+                </h:form>
+            </div>
+            <h2 id="invHead">Invoice</h2>
+            <h:panelGrid columns="2" id="invPreviewTable" styleClass="fulltable">
+                <h:panelGroup layout="block">
+                    <table class="fulltable">
+                        <tr>
+                            <td class="invLable"><h:outputText value="Biller" /></td>
+                        <td><h:outputText value="Sabonay Technologies" /></td>
+                        </tr>
+                        <tr>
+                            <td class="invLable"><h:outputText styleClass="invLable" value="Address" /></td>
+                        <td><h:outputText value="247 Pankrono Estates" /></td>
+                        </tr>
+                        <tr>
+                            <td class="invLable"><h:outputText styleClass="invLable" value="Phone" /></td>
+                        <td><h:outputText value="O242703571" /></td>
+                        </tr>
+                        <tr>
+                            <td class="invLable"><h:outputText styleClass="invLable" value="Email" /></td>
+                        <td><h:outputText value="contact@sabonay.com" /></td>
+                        </tr>
+                    </table>
+                </h:panelGroup>
+                <h:panelGroup layout="block">
+                    <table id="invoiceSummary" class="fulltable">
+                        <tr>
+                            <td class="invLable"><h:outputText value="Invoice No.:" /></td>
+                        <td><h:outputText value="#{0}" /></td>
+                        </tr>
+                        <tr>
+                            <td class="invLable"><h:outputText value="Invoice Date:" /></td>
+                            <td><h:outputText value="#{clientInvoicesController.currentDate}" /></td>
+                        </tr>
+                        <tr>
+                            <td class="invLable"><h:outputText value="Total" /></td>
+                        <td><h:outputText value="#{clientSessionController.invoiceItem.price}"/></td>
+                        </tr>
+                    </table>
+                </h:panelGroup>
+                <h:panelGroup layout="block">
+                    <table class="fulltable">
+                        <tr>
+                            <td class="invLable"><h:outputText value="Customer" /></td>
+                        <td><h:outputText value="#{clientSessionController.loggedInClient.clientName}" /></td>
+                        </tr>
+                        <tr>
+                            <td class="invLable"><h:outputText value="Address" /></td>
+                            <td><h:outputText value="#{clientSessionController.loggedInClient.clientAddress}" /></td>
+                        </tr>
+                        <tr>
+                            <td class="invLable"><h:outputText value="Phone" /></td>
+                        <td><h:outputText value="#{clientSessionController.loggedInClient.clientContactNumber}" /></td>
+                        </tr>
+                        <tr>
+                            <td class="invLable"><h:outputText value="Email" /></td>
+                        <td><h:outputText value="#{clientSessionController.loggedInClient.clientEmail}" /></td>
+                        </tr>
+                    </table>
+                </h:panelGroup>
+            </h:panelGrid>
+            <table class="alcenter fulltable">
+                <thead>
+                    <tr class="invLable">
+                        <th>Item</th>
+                        <th>Unit Cost</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><h:outputText value="#{clientSessionController.invoiceItem.itemSummary}"/></td>
+                        <td><h:outputText value="#{clientSessionController.invoiceItem.unitCost}"/></td>
+                        <td><h:outputText value="#{clientSessionController.invoiceItem.qty}"/></td>
+                        <td><h:outputText value="#{clientSessionController.invoiceItem.price}"/></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="2">
+                            <span> </span>
+                        </th>
+                        <th>
+                            Sub total:
+                        </th>
+                        <th>
+                <h:outputText value="#{clientSessionController.invoiceItem.price}"/>
+                </th>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <span> </span>
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <span> </span>
+                    </th>
+                    <th>
+                        Invoice Amount:
+                    </th>
+                    <th>
+                <h:outputText value="#{clientSessionController.invoiceItem.price}"/>
+                </th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </h:body>
+</html>
+

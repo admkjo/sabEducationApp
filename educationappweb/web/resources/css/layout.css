@@ -1,0 +1,109 @@
+
+root { 
+    display: block;
+}
+
+*{
+    margin:0px;
+}
+
+#tool_bar
+{
+    clear: both;
+/*    height: 30px;*/
+}
+
+#app_title
+{
+    margin-left: 300px;
+    padding-top: 5px;
+}
+
+#user_links
+{
+    width: 140px;
+    float: left;
+    background-color: silver;
+    font-family: fantasy;
+}
+
+#user_page
+{
+    width: 960px;
+    float: left;
+/*    background: #ffffea;*/
+    background: #ffffff;
+    height: 510px;
+    padding: 5px;
+    overflow: auto;
+}
+
+#startupfooter
+{
+    background-color: #660000;
+    color: white;
+    font-weight: bolder;
+}
+
+#footer
+{
+    background-color: #660000;
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.ledger_view
+{
+    height: 400px;
+    overflow: auto;
+}
+
+.login_panel {
+    padding: 5px;
+}
+
+
+#termNote_div tbody
+{
+    height: 320px;
+    overflow: auto;
+}
+
+#mef tbody
+{
+    height: 330px;
+    overflow: auto;
+}
+
+#frm_report_display tbody
+{
+    height: 330px;
+    overflow: auto;
+}
+
+#frm_student_datatable tbody
+{
+    height: 150px;
+    overflow: auto;
+}
+
+
+#frmSchoolStaff_datatable tbody
+{
+    height: 250px;
+    overflow: auto;
+}
+
+
+#frmSubject_datatable tbody
+{
+    height: 250px;
+    overflow: auto;
+}
+
+#frmSchoolStaff_in_teaching_class_datatable tbody
+{
+    height: 250px;
+    overflow: auto;
+}

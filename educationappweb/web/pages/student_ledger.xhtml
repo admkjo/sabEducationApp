@@ -1,0 +1,166 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:panelGroup layout="block" styleClass="input_form">
+
+        <h:panelGroup layout="block" style="float: left" >
+
+            <h:form>
+                <h:panelGrid columns="3">
+                    <h:outputText value="Student Id" />
+                    <h:inputText value="#{studentLedgerController.studentId}" />
+
+                    <h:commandButton value="Load Student Ledger" action="#{studentLedgerController.loadStudentLedgerHistory}"/>
+                </h:panelGrid>
+            </h:form>
+
+            <h:form id="frmStudentLedgerInput" style="float: left;">
+
+                <h:panelGrid columns="4">
+                    <h:outputLabel value ="Date Of Payment"/>
+                    <h:panelGroup>
+                        <rich:calendar id="dateOfPayment" value="#{studentLedgerController.dateOfPayment}" required="true" requiredMessage="*" />
+                        <h:message for="dateOfPayment" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+
+                    <h:outputLabel value ="Type Of Entry" rendered="false"/>
+                    <h:panelGroup rendered="false">
+                        <h:selectOneMenu id="typeOfEntry" value="#{studentLedgerController.studentLedger.typeOfEntry}" required="true" requiredMessage="*" >
+                            <f:selectItems value ="#{commonOptions.debitCreditEntryOptions}" />
+                        </h:selectOneMenu>
+                        <h:message for="typeOfEntry" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputLabel value ="Amount Involved"/>
+                    <h:panelGroup>
+                        <h:inputText id="amountInvolved" value="#{studentLedgerController.amountPaid}" required="true" requiredMessage="*"  />
+                        <h:message for="amountInvolved" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputLabel value ="Payment For"/>
+                    <h:panelGroup>
+                        <h:selectOneMenu id="studentBillType"  readonly="true" disabled="true">
+                            <f:selectItems value ="#{commonOptions.schoolBillTypesOptions}" />
+                        </h:selectOneMenu>
+                        <h:message for="studentBillType" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputLabel value ="Bill Settled By"/>
+                    <h:panelGroup>
+                        <h:inputText id="biilSettledBy" value="#{studentLedgerController.studentLedger.billSettledBy}" required="true" requiredMessage="*"  />
+                        <h:message for="biilSettledBy" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputLabel value ="Medium Of Payment"/>
+                    <h:panelGroup>
+                        <h:selectOneMenu id="mediumOfPayment" value="#{studentLedgerController.mediumOfPayment}" required="false" requiredMessage="*" >
+                            <f:selectItems value ="#{commonOptions.mediumOfPaymentOptions}" />
+                            <f:selectItem itemLabel="Scholarship" itemValue="Scholarship"/>
+                            <f:selectItem itemLabel="Pay In Slip" itemValue="Pay In Slip"/>
+                        </h:selectOneMenu>
+                        <h:message for="mediumOfPayment" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputLabel value ="Medium Of Payment Number"/>
+                    <h:panelGroup>
+                        <h:inputText id="mediumOfPaymentNumber" value="#{studentLedgerController.mediumNumber}"  />
+
+                    </h:panelGroup>
+
+                    <h:outputLabel rendered="false" value ="Receipt Number"/>
+                    <h:panelGroup>
+                        <h:inputText rendered="false" id="receiptNumber" value="#{studentLedgerController.studentLedger.receiptNumber}" required="true" requiredMessage="*"  />
+                        <h:message for="receiptNumber" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                </h:panelGrid>
+
+                <h:panelGroup binding="#{studentLedgerController.studentLedgerFormControl.component}"/>
+
+            </h:form>
+
+            <h:form>
+                <h:commandLink value="Generate Receipt" target="_blank"
+                               action="#{studentLedgerController.generateReceipt}"
+                               styleClass="report_link" />
+            </h:form>
+
+            <h:form>
+                <h:commandLink value="View Student Ledger Detail" target="_blank"
+                               action="#{studentLedgerController.reportStudentLedgerDetail}"
+                               styleClass="report_link" />
+            </h:form>
+
+
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" style="float: left; width: 250px; overflow: auto;">
+            <h:panelGrid columns="2" styleClass="data_table_panel">
+
+                <h:outputText value="Student Name" />
+                <h:panelGroup style="float: left; text-align: center;" >
+                    <img height="100px;" width="90px;"
+                         style="display: block; border: solid #f9dd34 1px;"
+                         src="#{studentLedgerController.billPaymentInfo.selectedStudent.studentPictureURL}"
+                         alt="#{studentLedgerController.billPaymentInfo.selectedStudent.studentName}"/>
+                    <h:outputText value="#{studentLedgerController.billPaymentInfo.selectedStudent}"
+                                  id="student_name"/>
+
+
+
+                </h:panelGroup>
+
+                <h:outputText value="Programe of Study" />
+                <h:outputText value="#{studentLedgerController.billPaymentInfo.selectedStudent.programmeOffered}"
+                              id="programme_name"/>
+
+                <h:outputText value="Student Class" />
+                <h:outputText value="#{studentLedgerController.currentClass}"
+                              id="class_name"/>
+
+                <h:outputText value="Student Category" />
+                <h:outputText value="#{studentLedgerController.student.boardingStatusString}"/>
+                <ui:remove>
+                    <h:outputText value="Scholarship" />
+                    <h:outputText value="#{studentLedgerController.billPaymentInfo.selectedStudent.scholarship.scholarship}"/>
+                </ui:remove>
+
+                <h:outputText value="Prev Term Arrears" />
+                <h:outputText value="#{studentLedgerController.billPaymentInfo.previousTermsBalance}" />
+
+
+                <h:outputText value="Term Bills Payable" />
+                <h:outputText value="#{studentLedgerController.billPaymentInfo.termBillsPayable}" />
+
+
+                <h:outputText value="Total Bills Payable" />
+                <h:outputText value="#{studentLedgerController.billPaymentInfo.totalBillsPayable}" />
+
+                <h:outputText value="Amount Paid So far" />
+                <h:outputText value="#{studentLedgerController.billPaymentInfo.amountPaidSoFar}" />
+
+
+                <h:outputText value="Outstanding Bal" />
+                <h:outputText value="#{studentLedgerController.billPaymentInfo.outstandingBalance}" style="font-weight: bolder;color: red"/>
+
+
+            </h:panelGrid>
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" styleClass="clear" />
+
+        <h:panelGroup layout="block">
+            <h:form id="frmStudentLedger_search_panel" rendered="false">
+                <h:panelGroup binding="#{studentLedgerController.studentLedgerDataPanel.searchPanel.component}"/>
+            </h:form>
+            <h:form id="frmStudentLedger_datatable" style="height: 200px; overflow: auto;">
+                <h:dataTable binding="#{studentLedgerController.studentLedgerDataPanel.dataTable}"/>
+            </h:form>
+        </h:panelGroup>
+    </h:panelGroup>
+</html>
+

@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="sabonay-JPAPU" transaction-type="JTA">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <jta-data-source>jdbc/sabonay</jta-data-source>
+    <class>com.sabonay.common.jaas.entities.Features</class>
+    <class>com.sabonay.common.jaas.entities.Rgroups</class>
+    <class>com.sabonay.common.jaas.entities.Usergroup</class>
+    <class>com.sabonay.common.jaas.entities.Users</class>
+    <class>com.sabonay.common.jaas.entities.BindProperties</class>
+    <class>com.sabonay.common.jaas.entities.Syssettings</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <property name="sabonay.context.sourceid" value="9999999"/>
+      <property name="sabonay.context.dbname" value="sabonay"/>
+    </properties>
+  </persistence-unit>
+
+
+<!--   <persistence-unit name="tamasco-JPAPU" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/tamasco</jta-data-source>
+        <class>com.sabonay.education.ejb.entities.AcademicTerm</class>
+        <class>com.sabonay.education.ejb.entities.AcademicTermActivity</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYear</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYearActiveClass</class>
+        <class>com.sabonay.education.ejb.entities.ClassMembership</class>
+        <class>com.sabonay.education.ejb.entities.ClassTeacher</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecord</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecordItem</class>
+        <class>com.sabonay.education.ejb.entities.EducationalInstitution</class>
+        <class>com.sabonay.education.ejb.entities.EducationalLevel</class>
+        <class>com.sabonay.education.ejb.entities.ExamGrade</class>
+        <class>com.sabonay.education.ejb.entities.GradingEvgcpfbn</class>
+        <class>com.sabonay.education.ejb.entities.MidTermExamMark</class>
+        <class>com.sabonay.education.ejb.entities.ReportComment</class>
+        <class>com.sabonay.education.ejb.entities.Scholarship</class>
+        <class>com.sabonay.education.ejb.entities.SchoolClass</class>
+        <class>com.sabonay.education.ejb.entities.SchoolHouse</class>
+        <class>com.sabonay.education.ejb.entities.SchoolProgram</class>
+        <class>com.sabonay.education.ejb.entities.SchoolStaff</class>
+        <class>com.sabonay.education.ejb.entities.SchoolSubject</class>
+        <class>com.sabonay.education.ejb.entities.Setting</class>
+        <class>com.sabonay.education.ejb.entities.SmsBlast</class>
+        <class>com.sabonay.education.ejb.entities.SmsMark</class>
+        <class>com.sabonay.education.ejb.entities.SmsMessage</class>
+        <class>com.sabonay.education.ejb.entities.Student</class>
+        <class>com.sabonay.education.ejb.entities.StudentAcademicTermBoardingStatus</class>
+        <class>com.sabonay.education.ejb.entities.StudentBill</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillItem</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillType</class>
+        <class>com.sabonay.education.ejb.entities.StudentLedger</class>
+        <class>com.sabonay.education.ejb.entities.StudentMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentMockExamMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentReportComment</class>
+        <class>com.sabonay.education.ejb.entities.StudentScholarship</class>
+        <class>com.sabonay.education.ejb.entities.StudentSmsAccount</class>
+        <class>com.sabonay.education.ejb.entities.StudentTermReportNote</class>
+        <class>com.sabonay.education.ejb.entities.SubjectCombination</class>
+        <class>com.sabonay.education.ejb.entities.SystemLogging</class>
+        <class>com.sabonay.education.ejb.entities.TeachingSubAndClasses</class>
+        <class>com.sabonay.education.ejb.entities.UserAccount</class>
+        <class>com.sabonay.education.ejb.entities.CreditBalance</class>
+        <class>com.sabonay.education.ejb.entities.GenId</class>
+        <class>com.sabonay.education.ejb.entities.MockSmsMarks</class>
+        <class>com.sabonay.education.ejb.entities.MidtermMarksSms</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="sabonay.context.sourceid" value="0080101"/>
+            <property name="sabonay.context.dbname" value="tamasco"/>
+        </properties>
+    </persistence-unit>-->
+  
+<!--     <persistence-unit name="mpasatia-JPAPU" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/mpasatia</jta-data-source>
+        <class>com.sabonay.education.ejb.entities.AcademicTerm</class>
+        <class>com.sabonay.education.ejb.entities.AcademicTermActivity</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYear</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYearActiveClass</class>
+        <class>com.sabonay.education.ejb.entities.ClassMembership</class>
+        <class>com.sabonay.education.ejb.entities.ClassTeacher</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecord</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecordItem</class>
+        <class>com.sabonay.education.ejb.entities.EducationalInstitution</class>
+        <class>com.sabonay.education.ejb.entities.EducationalLevel</class>
+        <class>com.sabonay.education.ejb.entities.ExamGrade</class>
+        <class>com.sabonay.education.ejb.entities.GradingEvgcpfbn</class>
+        <class>com.sabonay.education.ejb.entities.MidTermExamMark</class>
+        <class>com.sabonay.education.ejb.entities.ReportComment</class>
+        <class>com.sabonay.education.ejb.entities.Scholarship</class>
+        <class>com.sabonay.education.ejb.entities.SchoolClass</class>
+        <class>com.sabonay.education.ejb.entities.SchoolHouse</class>
+        <class>com.sabonay.education.ejb.entities.SchoolProgram</class>
+        <class>com.sabonay.education.ejb.entities.SchoolStaff</class>
+        <class>com.sabonay.education.ejb.entities.SchoolSubject</class>
+        <class>com.sabonay.education.ejb.entities.Setting</class>
+        <class>com.sabonay.education.ejb.entities.SmsBlast</class>
+        <class>com.sabonay.education.ejb.entities.SmsMark</class>
+        <class>com.sabonay.education.ejb.entities.SmsMessage</class>
+        <class>com.sabonay.education.ejb.entities.Student</class>
+        <class>com.sabonay.education.ejb.entities.StudentAcademicTermBoardingStatus</class>
+        <class>com.sabonay.education.ejb.entities.StudentBill</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillItem</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillType</class>
+        <class>com.sabonay.education.ejb.entities.StudentLedger</class>
+        <class>com.sabonay.education.ejb.entities.StudentMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentMockExamMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentReportComment</class>
+        <class>com.sabonay.education.ejb.entities.StudentScholarship</class>
+        <class>com.sabonay.education.ejb.entities.StudentSmsAccount</class>
+        <class>com.sabonay.education.ejb.entities.StudentTermReportNote</class>
+        <class>com.sabonay.education.ejb.entities.SubjectCombination</class>
+        <class>com.sabonay.education.ejb.entities.SystemLogging</class>
+        <class>com.sabonay.education.ejb.entities.TeachingSubAndClasses</class>
+        <class>com.sabonay.education.ejb.entities.UserAccount</class>
+        <class>com.sabonay.education.ejb.entities.CreditBalance</class>
+        <class>com.sabonay.education.ejb.entities.GenId</class>
+        <class>com.sabonay.education.ejb.entities.MockSmsMarks</class>
+        <class>com.sabonay.education.ejb.entities.MidtermMarksSms</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="sabonay.context.sourceid" value="0050205"/>
+            <property name="sabonay.context.dbname" value="mpasatia"/>
+        </properties>
+    </persistence-unit>-->
+    
+<!--    
+     <persistence-unit name="esaase-JPAPU" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/esaase</jta-data-source>
+        <class>com.sabonay.education.ejb.entities.AcademicTerm</class>
+        <class>com.sabonay.education.ejb.entities.AcademicTermActivity</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYear</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYearActiveClass</class>
+        <class>com.sabonay.education.ejb.entities.ClassMembership</class>
+        <class>com.sabonay.education.ejb.entities.ClassTeacher</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecord</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecordItem</class>
+        <class>com.sabonay.education.ejb.entities.EducationalInstitution</class>
+        <class>com.sabonay.education.ejb.entities.EducationalLevel</class>
+        <class>com.sabonay.education.ejb.entities.ExamGrade</class>
+        <class>com.sabonay.education.ejb.entities.GradingEvgcpfbn</class>
+        <class>com.sabonay.education.ejb.entities.MidTermExamMark</class>
+        <class>com.sabonay.education.ejb.entities.ReportComment</class>
+        <class>com.sabonay.education.ejb.entities.Scholarship</class>
+        <class>com.sabonay.education.ejb.entities.SchoolClass</class>
+        <class>com.sabonay.education.ejb.entities.SchoolHouse</class>
+        <class>com.sabonay.education.ejb.entities.SchoolProgram</class>
+        <class>com.sabonay.education.ejb.entities.SchoolStaff</class>
+        <class>com.sabonay.education.ejb.entities.SchoolSubject</class>
+        <class>com.sabonay.education.ejb.entities.Setting</class>
+        <class>com.sabonay.education.ejb.entities.SmsBlast</class>
+        <class>com.sabonay.education.ejb.entities.SmsMark</class>
+        <class>com.sabonay.education.ejb.entities.SmsMessage</class>
+        <class>com.sabonay.education.ejb.entities.Student</class>
+        <class>com.sabonay.education.ejb.entities.StudentAcademicTermBoardingStatus</class>
+        <class>com.sabonay.education.ejb.entities.StudentBill</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillItem</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillType</class>
+        <class>com.sabonay.education.ejb.entities.StudentLedger</class>
+        <class>com.sabonay.education.ejb.entities.StudentMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentMockExamMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentReportComment</class>
+        <class>com.sabonay.education.ejb.entities.StudentScholarship</class>
+        <class>com.sabonay.education.ejb.entities.StudentSmsAccount</class>
+        <class>com.sabonay.education.ejb.entities.StudentTermReportNote</class>
+        <class>com.sabonay.education.ejb.entities.SubjectCombination</class>
+        <class>com.sabonay.education.ejb.entities.SystemLogging</class>
+        <class>com.sabonay.education.ejb.entities.TeachingSubAndClasses</class>
+        <class>com.sabonay.education.ejb.entities.UserAccount</class>
+        <class>com.sabonay.education.ejb.entities.CreditBalance</class>
+        <class>com.sabonay.education.ejb.entities.GenId</class>
+        <class>com.sabonay.education.ejb.entities.MockSmsMarks</class>
+        <class>com.sabonay.education.ejb.entities.MidtermMarksSms</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="sabonay.context.sourceid" value="0050402"/>
+            <property name="sabonay.context.dbname" value="esaase"/>
+        </properties>
+    </persistence-unit>-->
+    
+
+<!--     <persistence-unit name="asanteman-JPAPU" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/asanteman</jta-data-source>
+        <class>com.sabonay.education.ejb.entities.AcademicTerm</class>
+        <class>com.sabonay.education.ejb.entities.AcademicTermActivity</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYear</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYearActiveClass</class>
+        <class>com.sabonay.education.ejb.entities.ClassMembership</class>
+        <class>com.sabonay.education.ejb.entities.ClassTeacher</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecord</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecordItem</class>
+        <class>com.sabonay.education.ejb.entities.EducationalInstitution</class>
+        <class>com.sabonay.education.ejb.entities.EducationalLevel</class>
+        <class>com.sabonay.education.ejb.entities.ExamGrade</class>
+        <class>com.sabonay.education.ejb.entities.GradingEvgcpfbn</class>
+        <class>com.sabonay.education.ejb.entities.MidTermExamMark</class>
+        <class>com.sabonay.education.ejb.entities.ReportComment</class>
+        <class>com.sabonay.education.ejb.entities.Scholarship</class>
+        <class>com.sabonay.education.ejb.entities.SchoolClass</class>
+        <class>com.sabonay.education.ejb.entities.SchoolHouse</class>
+        <class>com.sabonay.education.ejb.entities.SchoolProgram</class>
+        <class>com.sabonay.education.ejb.entities.SchoolStaff</class>
+        <class>com.sabonay.education.ejb.entities.SchoolSubject</class>
+        <class>com.sabonay.education.ejb.entities.Setting</class>
+        <class>com.sabonay.education.ejb.entities.SmsBlast</class>
+        <class>com.sabonay.education.ejb.entities.SmsMark</class>
+        <class>com.sabonay.education.ejb.entities.SmsMessage</class>
+        <class>com.sabonay.education.ejb.entities.Student</class>
+        <class>com.sabonay.education.ejb.entities.StudentAcademicTermBoardingStatus</class>
+        <class>com.sabonay.education.ejb.entities.StudentBill</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillItem</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillType</class>
+        <class>com.sabonay.education.ejb.entities.StudentLedger</class>
+        <class>com.sabonay.education.ejb.entities.StudentMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentMockExamMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentReportComment</class>
+        <class>com.sabonay.education.ejb.entities.StudentScholarship</class>
+        <class>com.sabonay.education.ejb.entities.StudentSmsAccount</class>
+        <class>com.sabonay.education.ejb.entities.StudentTermReportNote</class>
+        <class>com.sabonay.education.ejb.entities.SubjectCombination</class>
+        <class>com.sabonay.education.ejb.entities.SystemLogging</class>
+        <class>com.sabonay.education.ejb.entities.TeachingSubAndClasses</class>
+        <class>com.sabonay.education.ejb.entities.UserAccount</class>
+        <class>com.sabonay.education.ejb.entities.CreditBalance</class>
+        <class>com.sabonay.education.ejb.entities.GenId</class>
+        <class>com.sabonay.education.ejb.entities.MockSmsMarks</class>
+        <class>com.sabonay.education.ejb.entities.MidtermMarksSms</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="sabonay.context.sourceid" value="0050101"/>
+            <property name="sabonay.context.dbname" value="asanteman"/>
+        </properties>
+    </persistence-unit>-->
+   
+<!--      <persistence-unit name="oic-JPAPU" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/oic</jta-data-source>
+        <class>com.sabonay.education.ejb.entities.AcademicTerm</class>
+        <class>com.sabonay.education.ejb.entities.AcademicTermActivity</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYear</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYearActiveClass</class>
+        <class>com.sabonay.education.ejb.entities.ClassMembership</class>
+        <class>com.sabonay.education.ejb.entities.ClassTeacher</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecord</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecordItem</class>
+        <class>com.sabonay.education.ejb.entities.EducationalInstitution</class>
+        <class>com.sabonay.education.ejb.entities.EducationalLevel</class>
+        <class>com.sabonay.education.ejb.entities.ExamGrade</class>
+        <class>com.sabonay.education.ejb.entities.GradingEvgcpfbn</class>
+        <class>com.sabonay.education.ejb.entities.MidTermExamMark</class>
+        <class>com.sabonay.education.ejb.entities.ReportComment</class>
+        <class>com.sabonay.education.ejb.entities.Scholarship</class>
+        <class>com.sabonay.education.ejb.entities.SchoolClass</class>
+        <class>com.sabonay.education.ejb.entities.SchoolHouse</class>
+        <class>com.sabonay.education.ejb.entities.SchoolProgram</class>
+        <class>com.sabonay.education.ejb.entities.SchoolStaff</class>
+        <class>com.sabonay.education.ejb.entities.SchoolSubject</class>
+        <class>com.sabonay.education.ejb.entities.Setting</class>
+        <class>com.sabonay.education.ejb.entities.SmsBlast</class>
+        <class>com.sabonay.education.ejb.entities.SmsMark</class>
+        <class>com.sabonay.education.ejb.entities.SmsMessage</class>
+        <class>com.sabonay.education.ejb.entities.Student</class>
+        <class>com.sabonay.education.ejb.entities.StudentAcademicTermBoardingStatus</class>
+        <class>com.sabonay.education.ejb.entities.StudentBill</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillItem</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillType</class>
+        <class>com.sabonay.education.ejb.entities.StudentLedger</class>
+        <class>com.sabonay.education.ejb.entities.StudentMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentMockExamMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentReportComment</class>
+        <class>com.sabonay.education.ejb.entities.StudentScholarship</class>
+        <class>com.sabonay.education.ejb.entities.StudentSmsAccount</class>
+        <class>com.sabonay.education.ejb.entities.StudentTermReportNote</class>
+        <class>com.sabonay.education.ejb.entities.SubjectCombination</class>
+        <class>com.sabonay.education.ejb.entities.SystemLogging</class>
+        <class>com.sabonay.education.ejb.entities.TeachingSubAndClasses</class>
+        <class>com.sabonay.education.ejb.entities.UserAccount</class>
+        <class>com.sabonay.education.ejb.entities.CreditBalance</class>
+        <class>com.sabonay.education.ejb.entities.GenId</class>
+        <class>com.sabonay.education.ejb.entities.MockSmsMarks</class>
+        <class>com.sabonay.education.ejb.entities.MidtermMarksSms</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="sabonay.context.sourceid" value="0051206"/>
+            <property name="sabonay.context.dbname" value="oic"/>
+        </properties>
+    </persistence-unit>
+ -->
+<!--     
+      <persistence-unit name="kofiasesda-JPAPU" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/kofiasesda</jta-data-source>
+        <class>com.sabonay.education.ejb.entities.AcademicTerm</class>
+        <class>com.sabonay.education.ejb.entities.AcademicTermActivity</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYear</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYearActiveClass</class>
+        <class>com.sabonay.education.ejb.entities.ClassMembership</class>
+        <class>com.sabonay.education.ejb.entities.ClassTeacher</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecord</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecordItem</class>
+        <class>com.sabonay.education.ejb.entities.EducationalInstitution</class>
+        <class>com.sabonay.education.ejb.entities.EducationalLevel</class>
+        <class>com.sabonay.education.ejb.entities.ExamGrade</class>
+        <class>com.sabonay.education.ejb.entities.GradingEvgcpfbn</class>
+        <class>com.sabonay.education.ejb.entities.MidTermExamMark</class>
+        <class>com.sabonay.education.ejb.entities.ReportComment</class>
+        <class>com.sabonay.education.ejb.entities.Scholarship</class>
+        <class>com.sabonay.education.ejb.entities.SchoolClass</class>
+        <class>com.sabonay.education.ejb.entities.SchoolHouse</class>
+        <class>com.sabonay.education.ejb.entities.SchoolProgram</class>
+        <class>com.sabonay.education.ejb.entities.SchoolStaff</class>
+        <class>com.sabonay.education.ejb.entities.SchoolSubject</class>
+        <class>com.sabonay.education.ejb.entities.Setting</class>
+        <class>com.sabonay.education.ejb.entities.SmsBlast</class>
+        <class>com.sabonay.education.ejb.entities.SmsMark</class>
+        <class>com.sabonay.education.ejb.entities.SmsMessage</class>
+        <class>com.sabonay.education.ejb.entities.Student</class>
+        <class>com.sabonay.education.ejb.entities.StudentAcademicTermBoardingStatus</class>
+        <class>com.sabonay.education.ejb.entities.StudentBill</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillItem</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillType</class>
+        <class>com.sabonay.education.ejb.entities.StudentLedger</class>
+        <class>com.sabonay.education.ejb.entities.StudentMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentMockExamMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentReportComment</class>
+        <class>com.sabonay.education.ejb.entities.StudentScholarship</class>
+        <class>com.sabonay.education.ejb.entities.StudentSmsAccount</class>
+        <class>com.sabonay.education.ejb.entities.StudentTermReportNote</class>
+        <class>com.sabonay.education.ejb.entities.SubjectCombination</class>
+        <class>com.sabonay.education.ejb.entities.SystemLogging</class>
+        <class>com.sabonay.education.ejb.entities.TeachingSubAndClasses</class>
+        <class>com.sabonay.education.ejb.entities.UserAccount</class>
+        <class>com.sabonay.education.ejb.entities.CreditBalance</class>
+        <class>com.sabonay.education.ejb.entities.GenId</class>
+        <class>com.sabonay.education.ejb.entities.MockSmsMarks</class>
+        <class>com.sabonay.education.ejb.entities.MidtermMarksSms</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="sabonay.context.sourceid" value="0050607"/>
+            <property name="sabonay.context.dbname" value="kofiasesda"/>
+        </properties>
+    </persistence-unit>-->
+ 
+<!--   
+     <persistence-unit name="glorioushope-JPAPU" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/glorioushope</jta-data-source>
+        <class>com.sabonay.education.ejb.entities.AcademicTerm</class>
+        <class>com.sabonay.education.ejb.entities.AcademicTermActivity</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYear</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYearActiveClass</class>
+        <class>com.sabonay.education.ejb.entities.ClassMembership</class>
+        <class>com.sabonay.education.ejb.entities.ClassTeacher</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecord</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecordItem</class>
+        <class>com.sabonay.education.ejb.entities.EducationalInstitution</class>
+        <class>com.sabonay.education.ejb.entities.EducationalLevel</class>
+        <class>com.sabonay.education.ejb.entities.ExamGrade</class>
+        <class>com.sabonay.education.ejb.entities.GradingEvgcpfbn</class>
+        <class>com.sabonay.education.ejb.entities.MidTermExamMark</class>
+        <class>com.sabonay.education.ejb.entities.ReportComment</class>
+        <class>com.sabonay.education.ejb.entities.Scholarship</class>
+        <class>com.sabonay.education.ejb.entities.SchoolClass</class>
+        <class>com.sabonay.education.ejb.entities.SchoolHouse</class>
+        <class>com.sabonay.education.ejb.entities.SchoolProgram</class>
+        <class>com.sabonay.education.ejb.entities.SchoolStaff</class>
+        <class>com.sabonay.education.ejb.entities.SchoolSubject</class>
+        <class>com.sabonay.education.ejb.entities.Setting</class>
+        <class>com.sabonay.education.ejb.entities.SmsBlast</class>
+        <class>com.sabonay.education.ejb.entities.SmsMark</class>
+        <class>com.sabonay.education.ejb.entities.SmsMessage</class>
+        <class>com.sabonay.education.ejb.entities.Student</class>
+        <class>com.sabonay.education.ejb.entities.StudentAcademicTermBoardingStatus</class>
+        <class>com.sabonay.education.ejb.entities.StudentBill</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillItem</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillType</class>
+        <class>com.sabonay.education.ejb.entities.StudentLedger</class>
+        <class>com.sabonay.education.ejb.entities.StudentMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentMockExamMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentReportComment</class>
+        <class>com.sabonay.education.ejb.entities.StudentScholarship</class>
+        <class>com.sabonay.education.ejb.entities.StudentSmsAccount</class>
+        <class>com.sabonay.education.ejb.entities.StudentTermReportNote</class>
+        <class>com.sabonay.education.ejb.entities.SubjectCombination</class>
+        <class>com.sabonay.education.ejb.entities.SystemLogging</class>
+        <class>com.sabonay.education.ejb.entities.TeachingSubAndClasses</class>
+        <class>com.sabonay.education.ejb.entities.UserAccount</class>
+        <class>com.sabonay.education.ejb.entities.CreditBalance</class>
+        <class>com.sabonay.education.ejb.entities.GenId</class>
+        <class>com.sabonay.education.ejb.entities.MockSmsMarks</class>
+        <class>com.sabonay.education.ejb.entities.MidtermMarksSms</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="sabonay.context.sourceid" value="0107446"/>
+            <property name="sabonay.context.dbname" value="glorioushope"/>
+        </properties>
+    </persistence-unit>-->
+
+<!--
+     <persistence-unit name="kofiagyei-JPAPU" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/kofiagyei</jta-data-source>
+        <class>com.sabonay.education.ejb.entities.AcademicTerm</class>
+        <class>com.sabonay.education.ejb.entities.AcademicTermActivity</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYear</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYearActiveClass</class>
+        <class>com.sabonay.education.ejb.entities.ClassMembership</class>
+        <class>com.sabonay.education.ejb.entities.ClassTeacher</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecord</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecordItem</class>
+        <class>com.sabonay.education.ejb.entities.EducationalInstitution</class>
+        <class>com.sabonay.education.ejb.entities.EducationalLevel</class>
+        <class>com.sabonay.education.ejb.entities.ExamGrade</class>
+        <class>com.sabonay.education.ejb.entities.GradingEvgcpfbn</class>
+        <class>com.sabonay.education.ejb.entities.MidTermExamMark</class>
+        <class>com.sabonay.education.ejb.entities.ReportComment</class>
+        <class>com.sabonay.education.ejb.entities.Scholarship</class>
+        <class>com.sabonay.education.ejb.entities.SchoolClass</class>
+        <class>com.sabonay.education.ejb.entities.SchoolHouse</class>
+        <class>com.sabonay.education.ejb.entities.SchoolProgram</class>
+        <class>com.sabonay.education.ejb.entities.SchoolStaff</class>
+        <class>com.sabonay.education.ejb.entities.SchoolSubject</class>
+        <class>com.sabonay.education.ejb.entities.Setting</class>
+        <class>com.sabonay.education.ejb.entities.SmsBlast</class>
+        <class>com.sabonay.education.ejb.entities.SmsMark</class>
+        <class>com.sabonay.education.ejb.entities.SmsMessage</class>
+        <class>com.sabonay.education.ejb.entities.Student</class>
+        <class>com.sabonay.education.ejb.entities.StudentAcademicTermBoardingStatus</class>
+        <class>com.sabonay.education.ejb.entities.StudentBill</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillItem</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillType</class>
+        <class>com.sabonay.education.ejb.entities.StudentLedger</class>
+        <class>com.sabonay.education.ejb.entities.StudentMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentMockExamMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentReportComment</class>
+        <class>com.sabonay.education.ejb.entities.StudentScholarship</class>
+        <class>com.sabonay.education.ejb.entities.StudentSmsAccount</class>
+        <class>com.sabonay.education.ejb.entities.StudentTermReportNote</class>
+        <class>com.sabonay.education.ejb.entities.SubjectCombination</class>
+        <class>com.sabonay.education.ejb.entities.SystemLogging</class>
+        <class>com.sabonay.education.ejb.entities.TeachingSubAndClasses</class>
+        <class>com.sabonay.education.ejb.entities.UserAccount</class>
+        <class>com.sabonay.education.ejb.entities.CreditBalance</class>
+        <class>com.sabonay.education.ejb.entities.GenId</class>
+        <class>com.sabonay.education.ejb.entities.MockSmsMarks</class>
+        <class>com.sabonay.education.ejb.entities.MidtermMarksSms</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="sabonay.context.sourceid" value="0050705"/>
+            <property name="sabonay.context.dbname" value="kofiagyei"/>
+        </properties>
+    </persistence-unit> -->
+    
+<!--    
+     <persistence-unit name="abshs-JPAPU" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/abshs</jta-data-source>
+        <class>com.sabonay.education.ejb.entities.AcademicTerm</class>
+        <class>com.sabonay.education.ejb.entities.AcademicTermActivity</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYear</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYearActiveClass</class>
+        <class>com.sabonay.education.ejb.entities.ClassMembership</class>
+        <class>com.sabonay.education.ejb.entities.ClassTeacher</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecord</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecordItem</class>
+        <class>com.sabonay.education.ejb.entities.EducationalInstitution</class>
+        <class>com.sabonay.education.ejb.entities.EducationalLevel</class>
+        <class>com.sabonay.education.ejb.entities.ExamGrade</class>
+        <class>com.sabonay.education.ejb.entities.GradingEvgcpfbn</class>
+        <class>com.sabonay.education.ejb.entities.MidTermExamMark</class>
+        <class>com.sabonay.education.ejb.entities.ReportComment</class>
+        <class>com.sabonay.education.ejb.entities.Scholarship</class>
+        <class>com.sabonay.education.ejb.entities.SchoolClass</class>
+        <class>com.sabonay.education.ejb.entities.SchoolHouse</class>
+        <class>com.sabonay.education.ejb.entities.SchoolProgram</class>
+        <class>com.sabonay.education.ejb.entities.SchoolStaff</class>
+        <class>com.sabonay.education.ejb.entities.SchoolSubject</class>
+        <class>com.sabonay.education.ejb.entities.Setting</class>
+        <class>com.sabonay.education.ejb.entities.SmsBlast</class>
+        <class>com.sabonay.education.ejb.entities.SmsMark</class>
+        <class>com.sabonay.education.ejb.entities.SmsMessage</class>
+        <class>com.sabonay.education.ejb.entities.Student</class>
+        <class>com.sabonay.education.ejb.entities.StudentAcademicTermBoardingStatus</class>
+        <class>com.sabonay.education.ejb.entities.StudentBill</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillItem</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillType</class>
+        <class>com.sabonay.education.ejb.entities.StudentLedger</class>
+        <class>com.sabonay.education.ejb.entities.StudentMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentMockExamMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentReportComment</class>
+        <class>com.sabonay.education.ejb.entities.StudentScholarship</class>
+        <class>com.sabonay.education.ejb.entities.StudentSmsAccount</class>
+        <class>com.sabonay.education.ejb.entities.StudentTermReportNote</class>
+        <class>com.sabonay.education.ejb.entities.SubjectCombination</class>
+        <class>com.sabonay.education.ejb.entities.SystemLogging</class>
+        <class>com.sabonay.education.ejb.entities.TeachingSubAndClasses</class>
+        <class>com.sabonay.education.ejb.entities.UserAccount</class>
+        <class>com.sabonay.education.ejb.entities.CreditBalance</class>
+        <class>com.sabonay.education.ejb.entities.GenId</class>
+        <class>com.sabonay.education.ejb.entities.MockSmsMarks</class>
+        <class>com.sabonay.education.ejb.entities.MidtermMarksSms</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="sabonay.context.sourceid" value="0051206"/>
+            <property name="sabonay.context.dbname" value="abshs"/>
+        </properties>
+    </persistence-unit> -->
+    
+    
+    
+     <persistence-unit name="marcellin-JPAPU" transaction-type="JTA">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>jdbc/marcellin</jta-data-source>
+        <class>com.sabonay.education.ejb.entities.AcademicTerm</class>
+        <class>com.sabonay.education.ejb.entities.AcademicTermActivity</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYear</class>
+        <class>com.sabonay.education.ejb.entities.AcademicYearActiveClass</class>
+        <class>com.sabonay.education.ejb.entities.ClassMembership</class>
+        <class>com.sabonay.education.ejb.entities.ClassTeacher</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecord</class>
+        <class>com.sabonay.education.ejb.entities.DisciplineRecordItem</class>
+        <class>com.sabonay.education.ejb.entities.EducationalInstitution</class>
+        <class>com.sabonay.education.ejb.entities.EducationalLevel</class>
+        <class>com.sabonay.education.ejb.entities.ExamGrade</class>
+        <class>com.sabonay.education.ejb.entities.GradingEvgcpfbn</class>
+        <class>com.sabonay.education.ejb.entities.MidTermExamMark</class>
+        <class>com.sabonay.education.ejb.entities.ReportComment</class>
+        <class>com.sabonay.education.ejb.entities.Scholarship</class>
+        <class>com.sabonay.education.ejb.entities.SchoolClass</class>
+        <class>com.sabonay.education.ejb.entities.SchoolHouse</class>
+        <class>com.sabonay.education.ejb.entities.SchoolProgram</class>
+        <class>com.sabonay.education.ejb.entities.SchoolStaff</class>
+        <class>com.sabonay.education.ejb.entities.SchoolSubject</class>
+        <class>com.sabonay.education.ejb.entities.Setting</class>
+        <class>com.sabonay.education.ejb.entities.SmsBlast</class>
+        <class>com.sabonay.education.ejb.entities.SmsMark</class>
+        <class>com.sabonay.education.ejb.entities.SmsMessage</class>
+        <class>com.sabonay.education.ejb.entities.Student</class>
+        <class>com.sabonay.education.ejb.entities.StudentAcademicTermBoardingStatus</class>
+        <class>com.sabonay.education.ejb.entities.StudentBill</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillItem</class>
+        <class>com.sabonay.education.ejb.entities.StudentBillType</class>
+        <class>com.sabonay.education.ejb.entities.StudentLedger</class>
+        <class>com.sabonay.education.ejb.entities.StudentMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentMockExamMark</class>
+        <class>com.sabonay.education.ejb.entities.StudentReportComment</class>
+        <class>com.sabonay.education.ejb.entities.StudentScholarship</class>
+        <class>com.sabonay.education.ejb.entities.StudentSmsAccount</class>
+        <class>com.sabonay.education.ejb.entities.StudentTermReportNote</class>
+        <class>com.sabonay.education.ejb.entities.SubjectCombination</class>
+        <class>com.sabonay.education.ejb.entities.SystemLogging</class>
+        <class>com.sabonay.education.ejb.entities.TeachingSubAndClasses</class>
+        <class>com.sabonay.education.ejb.entities.UserAccount</class>
+        <class>com.sabonay.education.ejb.entities.CreditBalance</class>
+        <class>com.sabonay.education.ejb.entities.GenId</class>
+        <class>com.sabonay.education.ejb.entities.MockSmsMarks</class>
+        <class>com.sabonay.education.ejb.entities.MidtermMarksSms</class>
+
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="sabonay.context.sourceid" value="0501401"/>
+            <property name="sabonay.context.dbname" value="marcellin"/>
+        </properties>
+    </persistence-unit> 
+    
+</persistence>
+    
+    
+
+
+

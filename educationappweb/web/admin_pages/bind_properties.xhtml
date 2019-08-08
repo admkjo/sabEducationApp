@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:panelGroup layout="block" styleClass="input_form">
+
+        <h:form>
+
+            <h:panelGrid columns="6">
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_bindId}" for="bindId" />
+                <h:inputText id="bindId" value="#{bindPropertiesController.bindId}" title="#{bundle.CreateBindPropertiesTitle_bindId}" required="true" requiredMessage="#{bundle.CreateBindPropertiesRequiredMessage_bindId}"/>
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_threadName}" for="threadName" />
+                <h:inputText id="threadName" value="#{bindPropertiesController.threadName}" title="#{bundle.CreateBindPropertiesTitle_threadName}" required="true" requiredMessage="#{bundle.CreateBindPropertiesRequiredMessage_threadName}"/>
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_srcIpAddress}" for="srcIpAddress" />
+                <h:inputText id="srcIpAddress" value="#{bindPropertiesController.srcIpAddress}" title="#{bundle.CreateBindPropertiesTitle_srcIpAddress}" required="true" requiredMessage="#{bundle.CreateBindPropertiesRequiredMessage_srcIpAddress}"/>
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_smppHost}" for="smppHost" />
+                <h:inputText id="smppHost" value="#{bindPropertiesController.smppHost}" title="#{bundle.CreateBindPropertiesTitle_smppHost}" required="true" requiredMessage="#{bundle.CreateBindPropertiesRequiredMessage_smppHost}"/>
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_smppPort}" for="smppPort" />
+                <h:inputText id="smppPort" value="#{bindPropertiesController.smppPort}" title="#{bundle.CreateBindPropertiesTitle_smppPort}" required="true" requiredMessage="#{bundle.CreateBindPropertiesRequiredMessage_smppPort}"/>
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_smppUser}" for="smppUser" />
+                <h:inputText id="smppUser" value="#{bindPropertiesController.smppUser}" title="#{bundle.CreateBindPropertiesTitle_smppUser}" required="true" requiredMessage="#{bundle.CreateBindPropertiesRequiredMessage_smppUser}"/>
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_smppPwd}" for="smppPwd" />
+                <h:inputText id="smppPwd" value="#{bindPropertiesController.smppPwd}" title="#{bundle.CreateBindPropertiesTitle_smppPwd}" required="true" requiredMessage="#{bundle.CreateBindPropertiesRequiredMessage_smppPwd}"/>
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_addrRange}" for="addrRange" />
+                <h:inputText id="addrRange" value="#{bindPropertiesController.addrRange}" title="#{bundle.CreateBindPropertiesTitle_addrRange}" />
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_operatorId}" for="operatorId" />
+                <h:inputText id="operatorId" value="#{bindPropertiesController.operatorId}" title="#{bundle.CreateBindPropertiesTitle_operatorId}" required="true" requiredMessage="#{bundle.CreateBindPropertiesRequiredMessage_operatorId}"/>
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_submitMultiLimit}" for="submitMultiLimit" />
+                <h:inputText id="submitMultiLimit" value="#{bindPropertiesController.submitMultiLimit}" title="#{bundle.CreateBindPropertiesTitle_submitMultiLimit}" required="true" requiredMessage="#{bundle.CreateBindPropertiesRequiredMessage_submitMultiLimit}"/>
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_isSimulate}" for="isSimulate" />
+                <h:inputText id="isSimulate" value="#{bindPropertiesController.isSimulate}" title="#{bundle.CreateBindPropertiesTitle_isSimulate}" required="true" requiredMessage="#{bundle.CreateBindPropertiesRequiredMessage_isSimulate}"/>
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_tonSrc}" for="tonSrc" />
+                <h:inputText id="tonSrc" value="#{bindPropertiesController.tonSrc}" title="#{bundle.CreateBindPropertiesTitle_tonSrc}" required="true" requiredMessage="#{bundle.CreateBindPropertiesRequiredMessage_tonSrc}"/>
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_npiSrc}" for="npiSrc" />
+                <h:inputText id="npiSrc" value="#{bindPropertiesController.npiSrc}" title="#{bundle.CreateBindPropertiesTitle_npiSrc}" required="true" requiredMessage="#{bundle.CreateBindPropertiesRequiredMessage_npiSrc}"/>
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_tonDest}" for="tonDest" />
+                <h:inputText id="tonDest" value="#{bindPropertiesController.tonDest}" title="#{bundle.CreateBindPropertiesTitle_tonDest}" required="true" requiredMessage="#{bundle.CreateBindPropertiesRequiredMessage_tonDest}"/>
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_npiDest}" for="npiDest" />
+                <h:inputText id="npiDest" value="#{bindPropertiesController.npiDest}" title="#{bundle.CreateBindPropertiesTitle_npiDest}" required="true" requiredMessage="#{bundle.CreateBindPropertiesRequiredMessage_npiDest}"/>
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_protocol}" for="protocol" />
+                <h:inputText id="protocol" value="#{bindPropertiesController.protocol}" title="#{bundle.CreateBindPropertiesTitle_protocol}" required="true" requiredMessage="#{bundle.CreateBindPropertiesRequiredMessage_protocol}"/>
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_param1}" for="httpparam1Id" />
+                <h:inputText id="httpparam1Id" value="#{bindPropertiesController.httpparam1}" title="#{bundle.CreateBindPropertiesTitle_param1}" />
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_param2}" for="httpparam2Id" />
+                <h:inputText id="httpparam2Id" value="#{bindPropertiesController.httpparam2}" title="#{bundle.CreateBindPropertiesTitle_param2}" />
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_deleted}" for="deleted" />
+                <h:inputText id="deleted" value="#{bindPropertiesController.deleted}" title="#{bundle.CreateBindPropertiesTitle_deleted}" />
+                <h:outputLabel value="#{bundle.CreateBindPropertiesLabel_updated}" for="updated" />
+                <h:inputText id="updated" value="#{bindPropertiesController.updated}" title="#{bundle.CreateBindPropertiesTitle_updated}" />
+                
+            </h:panelGrid>
+
+            <h:panelGroup binding="#{bindPropertiesController.bindPropertiesFormControl.component}" rendered="#{uar.bind_properties_edit}"/>
+
+        </h:form>
+
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" style="clear: both;" styleClass="input_form" rendered="#{uar.bind_properties_edit}">
+        <h:form id="frm_bindprop_srch">
+            <h:panelGroup binding="#{bindPropertiesController.bindPropertiesDataPanel.searchPanel.component}"/>
+        </h:form>
+        <h:form id="frm_bindprop_dt" style="height: 220px; overflow: auto;">
+            <h:dataTable binding="#{bindPropertiesController.bindPropertiesDataPanel.dataTable}"/>
+        </h:form>
+    </h:panelGroup>
+
+
+</html>
+

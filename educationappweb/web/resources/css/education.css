@@ -1,0 +1,461 @@
+
+root { 
+    display: block;
+}
+
+*{
+    margin: 0px;
+    font-family: Calibri;
+    
+}
+
+/*a:link, a:visited {
+  color: #045491;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+a:link:hover, a:visited:hover  {
+  color: #045491;
+  font-weight : bold;
+  text-decoration : underline;
+}*/
+
+
+
+
+body
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    
+    line-height: 22px;
+    color: #333333;
+    background-color: #f0f0f0;
+    background-image: url(../../resources/images/back2.gif);
+/*    background-image: url(../../resources/images/bg-blk.jpg);*/
+/*    background-image: url(../../resources/images/Image5.jpg);*/
+    background-repeat: repeat;
+}
+
+#container
+{
+    width: 110px;
+    margin: auto;
+    background-color: wheat;
+}
+
+#banner
+{
+    background-image: url(../../resources/images/banner_back.png);
+    background-repeat: no-repeat;
+    /*width: 1109px;*/
+    height: 100px;
+    margin: 2px;
+    color: #99ffff;
+    background-color: black;
+    font-weight: bolder;
+
+    border: 0px;
+}
+
+#school_name_label
+{
+    vertical-align: middle;
+    font-size: 30px;
+    margin: auto;
+    letter-spacing: 3px;
+    word-spacing: 10px;
+    float: none;
+    width: 550px;
+}
+
+#user_info
+{
+    color: #b2d5d6;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    border-spacing: 0px;
+}
+
+#user_info *
+{
+    font-size: 11px;
+    margin: 0px;
+}
+
+#user_info label
+{
+    font-weight: bold;
+}
+
+
+#div_login
+{
+    height: 200px;
+    overflow: auto;
+    margin: auto;
+    padding: 10px;
+    -moz-border-radius:0px 0px 10px 10px;
+    -moz-box-shadow:0 10px 10px ;
+    background-image: url(../../resources/images/space_filler.png);
+    background-repeat: repeat;
+}
+
+#tool_bar
+{
+    background-image: url(../../resources/images/toolbar_bg_image.png);
+}
+
+#user_links
+{
+    background-image: url(../../resources/images/user_actions_bg.png);
+    background-repeat: repeat;
+    height: 500px;
+}
+
+#data_capture
+{    
+    width: 680px;
+}
+
+#data_capture td{
+    color: #660000;
+}
+#lesse_asset_list
+{
+    width: 240px;    
+}
+
+
+
+
+#data_capture, #lesse_asset_list
+{
+    float: left;
+    height: 210px;
+    overflow: auto;
+    margin: auto;
+    padding: 10px;
+    -moz-border-radius:0px 0px 10px 10px;
+    -moz-box-shadow:0 10px 10px ;
+    background-image: url(../../resources/images/space_filler.png);
+    background-repeat: repeat;
+}
+
+#lesse_asset_list label
+{
+    color: #660000;
+    display: block;
+    border-bottom-color: #660000;
+    border-style: groove;
+    border-width: 0px 0px 4px 0px;
+}
+
+#data_capture *
+{
+    font-size: 11px;
+}
+
+/*#data_capture input[type="text"],input[type="submit"],textarea,input[type="button"],input[type="password"],select{
+    border:solid 1px #CCC;
+    min-width:85%;
+}
+#data_capture input[type="submit"],#searchfrm input[type="button"],#searchfrm input[type="password"],#searchfrm select
+{
+    min-width:45%;
+}*/
+
+.current_page_name
+{
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 19px;
+    position: relative;
+    float: right;
+
+}
+
+.action_button
+{
+    background-color: #66e;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 15px;
+    color: #fff;
+    border:thin 0px transparent;
+    -moz-border-radius:10px 10px 10px 10px;
+}
+
+#data_capture input[type="submit"]:hover
+{
+     color: wheat;
+     cursor: url;
+}
+
+#error_msg
+{
+    color: maroon;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: bolder;
+    display: inline;
+    list-style-type: circle;
+}
+
+#error_tag li{
+
+    border-left-width: 2px;
+    border-left-color: white;
+    list-style-type: circle;
+}
+
+.title
+{
+    color: blue;
+    background-color: white;
+    border-bottom-color: #660000;
+    border-bottom-width: 2px;
+    border-bottom-style: double;
+    font-family: verdana;
+    font-weight: bolder;
+}
+
+.title label
+{
+    margin-left: 20px;
+    font-size: 25px;
+    font-family: cambria;
+    display: inline;
+}
+
+.page_block_header
+{
+    color: blue;
+    background-color: white;
+    border-bottom-color: #660000;
+    border-bottom-width: 2px;
+    border-bottom-style: double;
+    font-family: verdana;
+    font-weight: bolder;
+    margin-top: 10px;
+    display: block;
+}
+
+.page_block_header label
+{
+    margin-left: 10px;
+    font-size: 16px;
+    font-family: cambria;
+    display: inline;
+}
+
+
+#search *
+{
+    font-family: Calibri;
+}
+
+#search_lesse
+{    
+    height: 80px;
+    overflow: auto;
+}
+
+.data_table_panel
+{
+    width: 98%;
+}
+
+table
+{
+    border-spacing: 0px;
+}
+
+/*.data_table_panel th {
+    font-size: small;
+    color: #4e6a71;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #b2d5d6;
+    border-bottom-color: #b2d5d6;
+    border-left-color: #90b4bd;
+    border-right-color: #90b4bd;
+    text-align: left;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: #b2d5d6;
+}*/
+
+.data_table_panel th {
+    font-size: small;
+    color: #eff5fa;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #b2d5d6;
+    border-bottom-color: #b2d5d6;
+    border-left-color: #90b4bd;
+    border-right-color: #90b4bd;
+    text-align: left;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: #36C;
+}
+
+
+.data_table_panel td{
+    font-size: small;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-color: #b2d5d6;
+    border-bottom-color: #b2d5d6;
+    border-left-color: #b2d5d6;
+    border-right-color: #b2d5d6;
+    vertical-align: baseline;
+    padding-bottom: 0px;
+    border-spacing: 0px;
+    text-align: left;
+    vertical-align: top;
+}
+
+tr.odd_row {
+    background-color: #fefeff;
+    color: #4e6a71;
+}
+
+
+tr.even_row {
+    background-color: #eff5fa;
+    color: #4e6a71;
+}
+
+.usage_message
+{
+    background-color: silver;
+    color: #660000;
+    font-size: small;
+}
+
+.items tr:hover
+{
+    background-color: silver;
+    color: maroon;
+    cursor: url;
+}
+
+.items *
+{
+    text-align: left;
+}
+
+table *
+{
+    vertical-align: top;
+}
+
+
+.input_form
+{
+    overflow: auto;  
+    margin: auto;
+    padding: 6px;
+    -moz-border-radius:0px 0px 10px 10px;
+    -moz-box-shadow:0 10px 10px ;
+    background-image: url(../../resources/images/space_filler.png);
+    background-repeat: repeat;
+    margin-bottom: 1.5em;
+}
+
+.input_form td
+        {
+            padding: 3px;
+            margin: 3px;
+        }
+
+
+.red_msg
+{
+    color: red;
+    font-weight: bolder;
+}
+
+/*.login_panel
+{
+	width: 400px;
+	margin-top: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	min-height: 200px;
+	border: 1px solid #CCC;
+	padding: 5px;
+	background-color: #FFF;
+}*/
+
+.login_header_container
+{
+    font-size: 120%;
+    color: #900;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #900;
+    display: block;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.tab_header{
+    background-color: cadetblue;
+    height: 27px;
+    border-bottom: #660000;
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+}
+
+.tab_header a
+{
+    background-color: #b2d5d6;
+    height: 20px;
+    font-size: 16px;
+    border: 5px;
+    border-color: transparent;
+    padding: 4px;
+    margin-right: 5px;
+}
+
+.input_table
+{
+    
+    margin: 0px;
+    padding: 0px;
+    height: 100px;
+    width: auto;
+}
+
+.input_table thead
+{
+    background-color: wheat;
+}

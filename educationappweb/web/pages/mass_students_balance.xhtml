@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form styleClass="formStyle" prependId="false">
+                        <br/>
+
+            <h:panelGrid columns="9">
+                <h:outputLabel value="Year Group"/>
+                <h:selectOneMenu  id="yearGrou" required="true" requiredMessage=" *required" label="yearGroup" value="#{classSelectionController.selectedEducationalLevel}">
+                    <f:selectItems  value="#{commonOptions.educationalLevelOptions}"/>
+                </h:selectOneMenu>
+                    <h:message for="yearGrou"  style="color: red;"/>
+                <h:outputLabel value="Balance For"/>
+                <h:selectOneMenu required="true" requiredMessage=" *required" id="studentBillType" label="billType" value="#{massStudentsCreditBalanceController.studentBill.billItem}">
+                    <f:selectItems  value="#{commonOptions.studentBillItemOptions}" />
+                </h:selectOneMenu>
+                    <h:message for="studentBillType"  style="color: red;" />
+                <h:outputLabel value="Entry Type"/>
+                <h:selectOneMenu required="true" requiredMessage=" *required"  id="entryType" style="width: 120px" value="#{massStudentsCreditBalanceController.schoolTypeOfEntry}"> 
+                    <f:selectItems value ="#{commonOptions.debitCreditBalanceOptions}" />
+                </h:selectOneMenu>   
+                    <h:message for="entryType"  style="color: red;" />
+            </h:panelGrid>
+            <br/>
+            <p:panelGrid columns="4">
+                <h:outputLabel value="Day Student Amt"/>
+                <h:inputText id="dayAmount" value="#{massStudentsCreditBalanceController.dayAmount}"/>
+                <h:outputLabel value="Border Student Amt"/>
+                <h:inputText id="borderAmount" value="#{massStudentsCreditBalanceController.borderAmount}"/>            
+
+                <h:commandButton value="EXECUTE" action="#{massStudentsCreditBalanceController.massCreditStudents()}"/>
+            </p:panelGrid>
+        </h:form>
+  
+    </h:body>
+</html>
+

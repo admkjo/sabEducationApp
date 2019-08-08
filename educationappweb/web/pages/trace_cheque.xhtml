@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:panelGroup layout="block" styleClass="input_form">
+        <h:form>
+            <h:panelGrid columns="6">
+                <h:outputLabel value="Check By"/>
+                <h:selectOneMenu value="#{traceChequeController.searchType}">
+                    <f:selectItem itemLabel="CHEQUE NUMBER" itemValue="s.mediumOfPaymentNumber"/>
+                    <f:selectItem itemLabel="ACCOUNT NUMBER" itemValue="s.student.studentBasicId"/>
+                </h:selectOneMenu>
+                <h:inputText value="#{traceChequeController.selectedCheckNumber}"/>
+                <h:commandButton value="Load Check Transaction" action="#{traceChequeController.loadPayment()}"/>
+            </h:panelGrid>
+        </h:form>
+            <h:form>
+                <p:dataTable value="#{traceChequeController.allLegderPayment}" var="led">
+                        <p:column>
+                            <f:facet name="header">
+                                Date of Tran.
+                            </f:facet>
+                            <h:outputLabel value="#{led.dateOfEntry}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                Student Name
+                            </f:facet>
+                            <h:outputLabel value="#{led.student.studentName}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                               Student Number
+                            </f:facet>
+                            <h:outputLabel value="#{led.student.studentBasicId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                               Check/Alc. No.
+                            </f:facet>
+                            <h:outputLabel value="#{led.mediumOfPaymentNumber}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                               Amount
+                            </f:facet>
+                            <h:outputLabel value="#{led.amountInvolved}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                               Paid For
+                            </f:facet>
+                            <h:outputLabel value="#{led.studentBillType.billTypeName}"/>
+                        </p:column>
+                    </p:dataTable>
+            </h:form>
+            </h:panelGroup>
+    </h:body>
+</html>
+

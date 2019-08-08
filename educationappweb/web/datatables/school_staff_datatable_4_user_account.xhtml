@@ -1,0 +1,68 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+               xmlns:h="http://java.sun.com/jsf/html"
+               xmlns:f="http://java.sun.com/jsf/core"
+               xmlns:rich="http://richfaces.org/rich"
+               xmlns:a4j="http://richfaces.org/a4j"
+               xmlns:p="http://primefaces.org/ui"
+               xmlns:ui="http://java.sun.com/jsf/facelets">
+
+      <h:panelGroup>
+         <h:panelGrid columns="4" >
+            <h:outputLabel value ="Search" />
+            <h:inputText value ="#{searchText}" />
+            <h:selectOneMenu value ="#{searchField}">
+               <f:selectItem itemLabel="Staff Id" itemValue="staffId" />
+               <f:selectItem itemLabel="Surname" itemValue="surname" />
+               <f:selectItem itemLabel="Othernames" itemValue="othernames" />
+               <f:selectItem itemLabel="Gender" itemValue="gender" />
+               <f:selectItem itemLabel="Diabilities Allergies" itemValue="diabilitiesAllergies" />
+               <f:selectItem itemLabel="Region" itemValue="region" />
+               <f:selectItem itemLabel="Hometown" itemValue="hometown" />
+               <f:selectItem itemLabel="Contact Number" itemValue="contactNumber" />
+               <f:selectItem itemLabel="Staff Category" itemValue="staffCategory" />
+
+               <f:selectItem itemLabel="Marital Status" itemValue="maritalStatus" />
+               <f:selectItem itemLabel="In Service" itemValue="inService" />
+            </h:selectOneMenu >
+            <h:commandButton value="Search Staff" action="#{userAccountController.schoolStaffDataTableSearchButtonAction}"/>
+      </h:panelGrid>
+   </h:panelGroup>
+    <h:dataTable value="#{userAccountController.schoolStaffList}" var="listItem" binding="#{userAccountController.schoolStaffDataTable}"
+         styleClass="data_table_panel" rowClasses="odd_row,even_row" >
+        <h:column rendered="false">
+                <f:facet name="header" >
+                     <h:outputLabel value="Staff Id" />
+                </f:facet>
+                <h:outputText value="#{listItem.staffId}" />
+           </h:column>
+
+           <h:column>
+                <f:facet name="header">
+                     <h:outputLabel value="Surname" />
+                </f:facet>
+                <h:outputText value="#{listItem.surname}" />
+           </h:column>
+
+           <h:column>
+                <f:facet name="header">
+                     <h:outputLabel value="Othernames" />
+                </f:facet>
+                <h:outputText value="#{listItem.othernames}" />
+           </h:column>
+        
+           <h:column>
+                <f:facet name="header">
+                     <h:outputLabel value="Contact Number" />
+                </f:facet>
+                <h:outputText value="#{listItem.contactNumber}" />
+           </h:column>
+        
+           <h:column>
+                <f:facet name="header">
+                     <h:outputLabel value="Select" />
+                </f:facet>
+               <h:commandLink value="select" action="#{userAccountController.schoolStaffDataTableRowSelectionAction}" />
+           </h:column>
+
+    </h:dataTable>
+</h:panelGroup>

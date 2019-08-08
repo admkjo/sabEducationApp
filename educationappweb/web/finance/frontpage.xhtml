@@ -1,0 +1,69 @@
+
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:p="http://primefaces.org/ui">
+
+    <h:panelGroup id="banner" layout="block" rendered="true">
+        <h:panelGroup id="app_title" layout="block">
+            <h:outputLabel id="school_name_label"
+                           value="#{userdata.schoolName}"
+                           style="float: left;"/>
+
+            <h:panelGrid id="user_info" columns="2" >
+                <h:outputLabel value="User :" />
+                <h:outputText value="#{userdata.fullName}" />
+
+                <h:outputLabel value="User Role :" />
+                <h:outputText value="#{userdata.userRole}" />
+
+                <h:outputLabel value="Term :" />
+                <h:outputText value="#{userdata.currentTermID}"
+                              rendered="#{!userdata.canChangeTerm}" />
+
+                <h:form rendered="#{userdata.canChangeTerm}">
+                    <h:selectOneMenu value="#{userdata.currentAcademicTerm}">
+                        <f:selectItems value="#{commonOptions.schoolAcademicTermOptions}" />
+                    </h:selectOneMenu>
+                    <h:commandLink value="Change" action="#{userdata.changeUserTerm}"
+                                   style="color: red; font-weight: bold;"/>
+                    <h:commandLink value="Init" action="#{smsClient.init}" rendered="false"/>
+                </h:form>
+
+                <h:outputLabel value="School Number :" />
+                <h:outputText value="#{userdata.schoolNumber}" />
+
+            </h:panelGrid>
+        </h:panelGroup>
+
+    </h:panelGroup>
+
+    <h:panelGroup id="tool_bar" layout="block" rendered="true"
+                  style="background: #2694e8; background-color: #2694e8; display: block;">
+        <ui:include src="/pagefragments/toolbar.xhtml"/>
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" rendered="#{userdata.hasChangedTerm}" styleClass="large_waring_msg">
+        <h:outputText value="YOU ARE NOT IN THE ACTUAL CURRENT TERM OF #{userdata.actualCurrentTermID}"
+                      styleClass="large_waring_msg" />
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" styleClass="clear">
+        <p:messages id="mainMsg" globalOnly="true"/>
+    </h:panelGroup>
+
+    <h:panelGroup id="user_links" styleClass="user_links">
+        <ui:include src="/pagefragments/user_action.xhtml"/>
+    </h:panelGroup>
+
+    <h:panelGroup id="user_page" styleClass="user_page" layout="block">
+        <ui:include src="#{userdata.userRequestedPageURL}" />
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" style="clear: both;"/>
+    <h:panelGroup id="footer" layout="block" style="text-align: center;">
+        Developed by <a href="http://www.sabonay.com">Sabonay Technologies</a> located at Buokrom. Office 032-2072797,2011
+    </h:panelGroup>
+
+</div>

@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+
+    <style type="text/css">
+        .school_class td
+        {
+            padding: 3px;
+            margin: 3px;
+        }
+
+    </style>
+
+    <h:panelGroup layout="block" styleClass="school_class">
+<!--        <h:panelGrid columns="#{numberOfColumns}">-->
+    
+        <h:panelGrid columns="2" >
+            <h:outputText  value="Year Group" />
+            <h:panelGroup >
+                <h:selectOneMenu value="#{classSelectionController.selectedEducationalLevel}" id="level" valueChangeListener="#{classSelectionController.loadClasses}">
+                   
+                    <f:selectItems value="#{commonOptions.educationalLevelOptions}" />
+                     <f:ajax execute="@form" render="school_class" />
+                </h:selectOneMenu>
+               
+                <h:message for="level" />
+            </h:panelGroup>
+
+            <h:outputText  value="School Programme" />
+            <h:panelGroup>
+                <h:selectOneMenu value="#{classSelectionController.selectedSchoolProgram}" valueChangeListener="#{classSelectionController.loadClasses}"
+                                 id="programme" >
+                    <f:selectItems value="#{commonOptions.schoolProgrammeOptions}" />
+                    <f:ajax execute="@form" render="school_class"/>
+                </h:selectOneMenu>
+                 
+                <h:message for="programme" />
+            </h:panelGroup>
+
+            <h:outputText  value="School Class" />
+            <h:panelGroup>
+                <h:selectOneMenu value="#{classSelectionController.selectedCurrentClass}" id="school_class" >
+                    <f:selectItems value="#{classSelectionController.schoolClassesOptions}" />
+                </h:selectOneMenu>
+                <h:message for="school_class" />
+            </h:panelGroup>
+        </h:panelGrid>
+
+    </h:panelGroup>
+
+
+</html>
+
+

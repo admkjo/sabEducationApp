@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <style type="text/css">
+        .input_table td
+        {
+            padding: 3px;
+            margin: 3px;
+        }
+
+    </style>
+
+    <h:panelGroup layout="block" style="clear: both;" styleClass="input_form" >
+
+        <h:form>
+            <h:commandButton value="Delete All Logs" action="#{systemLoggingController.deleteAllLogs}" rendered="true" />
+        </h:form>
+    
+        <h:form id="frmSystemLogging_search_panel">
+            
+            <h:panelGroup binding="#{systemLoggingController.sysLogDataPanel.searchPanel.component}"/>
+        </h:form>
+        <h:form id="frmSystemLogging_datatable">
+            <h:dataTable binding="#{systemLoggingController.sysLogDataPanel.dataTable}"/>
+        </h:form>
+    </h:panelGroup>
+
+
+</html>
+
+

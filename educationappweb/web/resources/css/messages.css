@@ -1,0 +1,58 @@
+
+.errorInfo
+{
+    color: maroon;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: bolder;
+    display: inline;
+    list-style-type: circle;
+}
+
+.errorInfo li{
+    border-left-width: 2px;
+    border-left-color: white;
+    list-style-type: circle;
+}
+
+.noTextErrorStyle{
+    color: #FF0000;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+
+.infoMsg
+{
+    color: #36C;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: bolder;
+    display: inline;
+    list-style-type: circle;
+}
+
+.infoMsg li{
+    border-left-width: 2px;
+    border-left-color: white;
+    list-style-type: circle;
+}
+
+.messages {
+    display: block;
+    font-family: cursive;
+    border: 1px solid ;
+    text-align: center;
+    background-color: #ffef8f;
+}
+
+.large_waring_msg
+{
+    text-decoration: blink;
+    background: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bolder;
+    text-align: center;
+    display: block;
+}

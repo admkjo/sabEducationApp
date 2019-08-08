@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich">
+
+    <h:form>
+        <div class="alcenter">
+            <h:dataTable var="sendingList" styleClass="fulltable alcenter" value="#{messageController.listOfContacts}"
+                         rows="15" id="contactTable">
+                <h:column>
+                    <f:facet name="header">Student Id</f:facet>
+                    <h:outputText value="#{sendingList.studentId}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Contact</f:facet>
+                    <h:outputText value="#{sendingList.guardianContactNumber}"/>
+                </h:column>
+            </h:dataTable>
+            <rich:dataScroller for="contactTable" maxPages="5"/>
+        </div>
+        <br/><br/>
+        <div class="alcenter" id="checkSending">
+            <h:panelGrid columns="2" id="checkSendingTable">
+                <h:outputText value="Number of people selected: " />
+                <h:outputText value=" #{messageController.numberOfContacts}" />
+                <h:outputText value="SMS info: " />
+                <h:outputText value=" Message contains  characters #{messageController.numberOfCharacters}, which is #{messageController.numberOfPages} sms page block(s)"/>
+                <h:outputText value="Unit cost of one page block to one person: " />
+                <h:outputText value="GHC #{messageController.unitPrice}">
+                    <f:convertNumber currencySymbol="GHC" type="currency" maxFractionDigits="2" />
+                </h:outputText>
+                <h:outputText value="Total cost to send message: " />
+                <h:outputText value="GHC #{messageController.totalCostOfSending}">
+                    <f:convertNumber currencySymbol="GHC" pattern="0.00" type="currency" maxFractionDigits="2" />
+                </h:outputText>
+                <h:outputText value="Current credit balance before sending: " />
+                <h:outputText value="GHC #{messageController.amountOfCredit}">
+                    <f:convertNumber currencySymbol="GHC" type="currency" maxFractionDigits="2" />
+                </h:outputText>
+                <h:outputText value="Remaining credit balance after sending: " />
+                <h:outputText value="GHC #{messageController.amountOfCreditRemaining}">
+                    <f:convertNumber currencySymbol="GHC" type="currency" maxFractionDigits="2" />
+                </h:outputText>
+                <h:outputText value="Can send: " />
+                <h:outputText value=" #{messageController.canSend ? 'yes' : 'no'}" />
+            </h:panelGrid>
+            <h:commandButton
+                value="Cancel"
+                action="#{messageController.cancelReportSending}"/>
+            &nbsp;&nbsp;&nbsp;
+            <h:commandButton 
+                value="Send"
+                disabled="#{messageController.canSend}"
+                actionListener="#{messageController.prepSending}"
+                />
+        </div>
+    </h:form>
+    
+</html>

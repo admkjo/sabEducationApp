@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:panelGroup layout="block" styleClass="input_form">
+        <h:form id="frmSchoolHouseInput">
+            <h:panelGrid columns="6">
+                <h:outputLabel value ="House Name"/>
+                <h:panelGroup>
+                    <h:inputText id="houseName" value="#{schoolHouseController.schoolHouse.houseName}" required="true" requiredMessage="*Required"  />
+                    <h:message for="houseName"/>
+                </h:panelGroup>
+
+                <h:outputLabel value ="Inmates Gender"/>
+                <h:panelGroup>
+                    <h:selectOneMenu id="inmatesGender" value="#{schoolHouseController.schoolHouse.inmatesGender}" required="true" requiredMessage="*Required" >
+                        <f:selectItems value ="#{commonOptions.houseInmatesOptions}" />
+                    </h:selectOneMenu>
+                    <h:message for="inmatesGender"/>
+                </h:panelGroup>
+                <h:outputLabel value ="House Master/Mistress"/>
+                <h:panelGroup>
+                    <h:selectOneMenu id="houseMaster"  required="true" requiredMessage="*Required" value="#{schoolHouseController.selectedStaff}">
+                        <f:selectItems value ="#{commonOptions.schoolStaffOptions}" />
+                    </h:selectOneMenu>
+                    <h:message for="houseMaster"/>
+                </h:panelGroup>
+                <h:outputLabel value ="Other House Masters/Mistresses" rendered="#{schoolHouseController.canAssignHeadReportCommment}"/>
+                <h:panelGroup rendered="#{schoolHouseController.canAssignHeadReportCommment}">
+                    <h:selectManyListbox size="10" id="otherhouseMaster"   value="#{schoolHouseController.assistHouserWarders}">
+                        <f:selectItems value ="#{schoolHouseController.schoolStaffSelectItems}" />
+                    </h:selectManyListbox>
+                </h:panelGroup>
+
+            </h:panelGrid>
+
+            <h:panelGroup binding="#{schoolHouseController.schoolHouseFormControl.component}" rendered="#{uar.schHouse_Write}"/>
+
+        </h:form>
+
+        <h:form>
+            <h:panelGroup layout="block" rendered="#{uar.schHouse_PrintHouseMembershiplist}">
+                <h:commandLink target="_blank" styleClass="report_link"
+                               value="Print Student Membership List"
+                               action="#{schoolHouseController.reportSchoolHouseMembershipList}" />
+            </h:panelGroup>
+
+        </h:form>
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" styleClass="input_form">
+        <h:form id="frmSchoolHouse_search_panel" >
+            <h:panelGroup binding="#{schoolHouseController.schoolHouseDataPanel.searchPanel.component}"/>
+        </h:form>
+        <h:form id="frmSchoolHouse_datatable">
+            <h:dataTable binding="#{schoolHouseController.schoolHouseDataPanel.dataTable}" />
+        </h:form>
+    </h:panelGroup>
+
+</html>
+
+

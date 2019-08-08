@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:body>
+
+        <rich:panel header="Student Contacts" style="width: 99%; height: 150px; ">
+            <h:form id="sdasfasfs" >
+                <ui:include src="../pagefragments/single_class_selection.xhtml" >
+                    <ui:param name="#{numberOfColumns}" value="6"/>
+                </ui:include>
+
+                <h:commandButton value="Generate Student Contact" styleClass="load_data"
+                                 action="#{studentContactController.loadStudentContact()}"/>
+
+                <h:commandLink target="_blank" styleClass="report_link"
+                               value="Print Contact"  action="#{studentContactController.reportSchoolHouseMembershipList()}"/>
+            </h:form>
+        </rich:panel>
+        <br/>
+        <h:form>
+            <p:dataTable value="#{studentContactController.allStudentCOntact}" var="stud" paginator="true" paginatorAlwaysVisible="false" rows="10">
+                <p:column>
+                    <f:facet name="header">
+                        Student Name
+                    </f:facet>
+                    <h:outputLabel value="#{stud.student.studentName}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        Programme
+                    </f:facet>
+                    <h:outputLabel value="#{stud.student.programmeOffered.programName}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        Contact
+                    </f:facet>
+                    <h:outputLabel value="#{stud.student.guardianContactNumber}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        Gender
+                    </f:facet>
+                    <h:outputLabel value="#{stud.student.gender}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        Guardian
+                    </f:facet>
+                    <h:outputLabel value="#{stud.student.guardianName}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        Guardian Address
+                    </f:facet>
+                    <h:outputLabel value="#{stud.student.guardianPostalAddress}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        Relation
+                    </f:facet>
+                    <h:outputLabel value="#{stud.student.relationToGuardian}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

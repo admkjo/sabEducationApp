@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fees_receipt" pageWidth="800" pageHeight="842" columnWidth="760" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="schoolName" class="java.lang.String"/>
+	<parameter name="schoolAddress" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="schoolBadge" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="reportTitle" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="phoneNumber" class="java.lang.String"/>
+	<parameter name="studentName" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="dateOfPayment" class="java.util.Date" isForPrompting="false"/>
+	<parameter name="studentBasicId" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="recieptNumber" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="boardingStatus" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="academicTerm" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="currentClass" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="paidBy" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="accountantSignature" class="java.lang.String"/>
+	<field name="paymentType" class="java.lang.String"/>
+	<field name="receivedBy" class="java.lang.String"/>
+	<field name="academicYear" class="java.lang.String"/>
+	<field name="creditAmount" class="java.lang.Double"/>
+	<field name="outstandingBalance" class="java.lang.Double"/>
+	<field name="academicTermName" class="java.lang.String"/>
+	<field name="programmeOfStudy" class="java.lang.String"/>
+	<field name="paymentType1" class="java.lang.String"/>
+	<field name="creditAmount1" class="java.lang.Double"/>
+	<field name="outstandingBalance1" class="java.lang.Double"/>
+	<variable name="todayDate" class="java.util.Date">
+		<variableExpression><![CDATA[new java.util.Date()]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="184">
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="95" y="41" width="431" height="17" forecolor="#003366"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{phoneNumber}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="95" y="27" width="421" height="17" forecolor="#003366"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{schoolAddress}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-3" x="4" y="58" width="760" height="3"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="93" y="0" width="594" height="26" forecolor="#660000"/>
+				<textElement>
+					<font size="18" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{schoolName}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement key="image-1" x="4" y="0" width="89" height="58">
+					<printWhenExpression><![CDATA[$P{schoolBadge} != null]]></printWhenExpression>
+				</reportElement>
+				<imageExpression class="java.lang.String"><![CDATA[$P{schoolBadge}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement key="staticText-3" x="31" y="89" width="95" height="14"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="11" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Student Name:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="138" y="89" width="214" height="14"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="11" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{studentName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="108" width="95" height="14"/>
+				<textElement>
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<text><![CDATA[Student ID :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="388" y="108" width="83" height="14"/>
+				<textElement>
+					<font fontName="Calibri" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Receipt Number:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" mode="Opaque" x="-1" y="64" width="770" height="21" forecolor="#FFFFFF" backcolor="#660000"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Double" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{reportTitle}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-6" x="31" y="144" width="105" height="14"/>
+				<textElement>
+					<font fontName="Calibri" size="11" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Curent Class:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="487" y="126" width="140" height="14"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{academicTerm}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="388" y="89" width="93" height="14"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Date of Payment:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="126" width="105" height="14"/>
+				<textElement>
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<text><![CDATA[Boarding Status:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="487" y="108" width="140" height="14"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{recieptNumber}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="487" y="89" width="130" height="14"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$P{dateOfPayment}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="138" y="108" width="181" height="14"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{studentBasicId}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="138" y="126" width="181" height="14"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{boardingStatus}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="388" y="126" width="83" height="14"/>
+				<textElement>
+					<font fontName="Calibri" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Academic Term:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="165" width="95" height="14"/>
+				<textElement>
+					<font fontName="Calibri" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Received From:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="138" y="144" width="181" height="14"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Calibri" size="11" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{currentClass}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="137" y="166" width="207" height="13"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{paidBy}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="193" splitType="Prevent">
+			<staticText>
+				<reportElement key="staticText-7" mode="Opaque" x="241" y="8" width="143" height="17" forecolor="#000000" backcolor="#CCCCCC"/>
+				<box leftPadding="2">
+					<bottomPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Amount Involved (GH ¢)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-8" mode="Opaque" x="122" y="8" width="120" height="17" forecolor="#000000" backcolor="#CCCCCC"/>
+				<box leftPadding="2">
+					<bottomPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Payment For]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="122" y="25" width="119" height="14"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{paymentType}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-10" mode="Opaque" x="384" y="8" width="173" height="17" forecolor="#000000" backcolor="#CCCCCC"/>
+				<box leftPadding="2">
+					<bottomPen lineWidth="1.25"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Balance Oustanding (GH ¢)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="384" y="25" width="173" height="14"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{outstandingBalance}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
+				<reportElement x="242" y="25" width="142" height="14">
+					<printWhenExpression><![CDATA[$F{creditAmount} != 0.0]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font fontName="Calibri" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{creditAmount}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement key="rectangle-3" x="0" y="174" width="760" height="14" backcolor="#666666"/>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-2" x="0" y="174" width="389" height="14" forecolor="#FFFFFF"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Software By:Sabonay Technologies Ltd. Tel:0322072797,0208274131]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy" isBlankWhenNull="false">
+				<reportElement key="textField" x="419" y="174" width="209" height="14" forecolor="#FFFFFF"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$V{todayDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="526" y="143" width="136" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Accountant Signature]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="498" y="141" width="220" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<image scaleImage="FillFrame">
+				<reportElement positionType="Float" x="483" y="89" width="255" height="50"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{accountantSignature}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

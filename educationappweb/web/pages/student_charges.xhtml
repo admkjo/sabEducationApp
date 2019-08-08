@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <rich:panel header="Student Charges" >
+            <h:form>
+                <h:panelGrid columns="5" width="40%">
+                    <h:outputLabel value="Select Class"/>
+                    <h:selectOneMenu value="#{studentChargesController.selectedSchoolClass}">
+                        <f:selectItems value="#{commonOptions.academicYearActiveSchoolClassesOptions}" />
+                    </h:selectOneMenu>
+                    <h:commandButton value="Load Summary" action="#{studentChargesController.loadStudentCharges()}"/>
+                    <h:commandLink value="Print Report" action="#{studentChargesController.printStudentCharges()}" target="_blank" styleClass="comand_link"/> 
+                </h:panelGrid>
+            </h:form>
+            <br/>
+            <h:form>
+                <p:dataTable value="#{studentChargesController.allStudentBill}" var="char" rows="12" paginator="true" paginatorAlwaysVisible="false">
+                    <p:column>
+                        <f:facet name="header">
+                            School Class
+                        </f:facet>
+                        <h:outputLabel value="#{char.schoolClass.className}"/>
+                    </p:column>
+                    <p:column sortBy="#{char.studentBillType.billTypeName}">
+                        <f:facet name="header">
+                            Bill Type
+                        </f:facet>
+                        <h:outputLabel value="#{char.studentBillType.billTypeName}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Bill Item
+                        </f:facet>
+                        <h:outputLabel value="#{char.billItem.itemName}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Day Student Amount
+                        </f:facet>
+                        <h:outputLabel value="#{char.dayStudentAmt}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Boarding Student Amount
+                        </f:facet>
+                        <h:outputLabel value="#{char.boardingStudentAmt}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Total
+                        </f:facet>
+                        <h:outputLabel value="#{char.boardingStudentAmt + char.dayStudentAmt}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </rich:panel>
+    </h:body>
+</html>
+

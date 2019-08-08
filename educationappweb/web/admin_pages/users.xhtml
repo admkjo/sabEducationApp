@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:panelGroup layout="block" styleClass="input_form">
+
+        <h:form>
+
+            <h:panelGrid columns="2">
+                <h:outputLabel value="#{bundle.EditUsersLabel_usersPK_schid}" for="usersPK_schid" />
+                <h:inputText id="usersPK_schid" value="#{usersController.user.usersPK.schid}" title="#{bundle.EditUsersTitle_usersPK_schid}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_usersPK_schid}"/>
+
+                <h:outputLabel value="#{bundle.EditUsersLabel_usersPK_userid}" for="usersPK_userid" />
+                <h:inputText id="usersPK_userid" value="#{usersController.user.usersPK.userid}" title="#{bundle.EditUsersTitle_usersPK_userid}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_usersPK_userid}"/>
+
+                <h:outputLabel value="#{bundle.EditUsersLabel_upassword}" for="uupassword" />
+                <h:inputText id="uupassword" value="#{usersController.user.upassword}" title="#{bundle.EditUsersTitle_upassword}" required="true" requiredMessage="#{bundle.EditUsersRequiredMessage_upassword}"/>
+                <h:outputLabel value="#{bundle.EditUsersLabel_oldUpassword}" for="uoldUpassword" />
+                <h:inputText id="uoldUpassword" value="#{usersController.user.oldUpassword}" title="#{bundle.EditUsersTitle_oldUpassword}" />
+                <h:outputLabel value="#{bundle.EditUsersLabel_featureAccess}" for="ufeatureAccess" />
+                <h:inputTextarea rows="4" cols="30" id="ufeatureAccess" value="#{usersController.user.featureAccess}" title="#{bundle.EditUsersTitle_featureAccess}" />
+            </h:panelGrid>
+
+            <h:panelGroup binding="#{usersController.userFormControl.component}" rendered="#{uar.users_edit}"/>
+
+        </h:form>
+
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" style="clear: both;" styleClass="input_form" rendered="#{uar.users_edit}">
+        <h:form>
+            <h:panelGroup binding="#{usersController.userDataPanel.searchPanel.component}"/>
+        </h:form>
+        <h:form id="frm_user_datatable" style="height: 220px; overflow: auto;">
+            <h:dataTable binding="#{usersController.userDataPanel.dataTable}"/>
+        </h:form>
+    </h:panelGroup>
+
+
+</html>
+

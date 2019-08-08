@@ -1,0 +1,96 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <style type="text/css">
+        .input_form td
+        {
+            padding: 3px;
+            margin: 3px;
+        }
+
+    </style>
+
+
+    <h:panelGroup layout="block" styleClass="input_form">
+        <h:form prependId="false" id="select">
+            <h:panelGrid columns="6">
+                <h:outputText  value="Education Level" />
+                <h:panelGroup >
+                    <h:selectOneMenu value="#{studentTermReportNoteController.selectedEducationalLevel}"
+                                     valueChangeListener="#{studentTermReportNoteController.loadClasses}"
+                                     id="level" >
+                        <f:selectItems value="#{commonOptions.educationalLevelOptions}" />
+                        <f:ajax render="school_class" execute="@form" />
+                    </h:selectOneMenu>
+                    <h:message for="level" />
+                </h:panelGroup>
+
+                <h:outputText  value="School Programme" />
+                <h:panelGroup>
+                    <h:selectOneMenu value="#{studentTermReportNoteController.selectedSchoolProgram}"
+                                     valueChangeListener="#{studentTermReportNoteController.loadClasses}"
+                                     id="programme" >
+                        <f:selectItems value="#{commonOptions.schoolProgrammeOptions}" />
+                        <f:ajax render="school_class promotedTo" execute="@form" />
+                    </h:selectOneMenu>
+                    <h:message for="programme" />
+                </h:panelGroup>
+
+                <h:outputText  value="School Class" />
+                <h:panelGroup>
+                    <h:selectOneMenu value="#{studentTermReportNoteController.selectedCurrentClass}" id="school_class" >
+                        <f:selectItems value="#{studentTermReportNoteController.schoolClassesOptions}" />
+                    </h:selectOneMenu>
+                    <h:message for="school_class" />
+                </h:panelGroup>
+
+                <h:outputText id="default_status" value="Default Promotion Status" />
+                <h:panelGroup>
+                    <h:selectOneMenu value="#{studentTermReportNoteController.defaultPromotionStatus}" >
+                        <f:selectItems value="#{commonOptions.promotionStatusOptions}" />
+                    </h:selectOneMenu>
+                    <h:message for="default_status" />
+                </h:panelGroup>
+
+                <h:outputText  value="Promoted To" />
+                <h:panelGroup>
+                    <h:selectOneMenu value="#{studentTermReportNoteController.selectedPromotedToClass}" id="promotedTo" >
+                        <f:selectItems value="#{studentTermReportNoteController.promotionClassesOptions}" />
+                    </h:selectOneMenu>
+                    <h:message for="promotedTo" />
+                </h:panelGroup>
+
+                <h:outputText value="Next Academic Year" />
+                <h:inputText value="#{studentTermReportNoteController.nextAcademicYearID}"
+                             disabled="true"
+                             style="font-size: 14px;"/>
+
+            </h:panelGrid>
+
+            <h:commandButton value="Load Class Members" id="load"
+                             action="#{studentTermReportNoteController.loadClassMembers}" >
+                <!--                <f:ajax  render="load" execute="@form"/>-->
+            </h:commandButton>
+
+
+        </h:form>
+
+        
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" styleClass="input_form">
+
+        <h:form prependId="false" id="lll" >
+            <h:commandButton value="Save All Promotion Status"   action="#{studentTermReportNoteController.saveStudentPromotionStatus}" />
+
+
+            <h:commandButton value="Effect All Promotions" action="#{studentTermReportNoteController.effectAllPromotions}" style="margin-left: 15px;"/>
+
+            <h:panelGroup layout="block" id="termNote_div">
+                <h:dataTable rendered="true" binding="#{studentTermReportNoteController.studentTermReportNoteDataPanel.dataTable}" />
+            </h:panelGroup>
+        </h:form>
+    </h:panelGroup>
+</html>
+

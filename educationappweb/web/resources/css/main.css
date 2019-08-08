@@ -1,0 +1,15 @@
+
+@import "default.css";
+
+@import "layout.css";
+
+@import "messages.css";
+
+@import "education.css"; /*  application.css  */
+
+@import "user_account_layout.css";
+@import "smess_layout.css";
+@import "smess_styles.css";
+
+@import "../theme/default/style/main_seth.css";
+@import "../theme/default/style/default_seth.css";

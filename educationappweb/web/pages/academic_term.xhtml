@@ -1,0 +1,79 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:panelGroup layout="block" styleClass="input_form">
+        <h:form id="frmAcademicTermInput" >
+            <h:panelGrid columns="4">
+                <h:outputText value ="Academic Year"/>
+                <h:panelGroup>
+                    <h:selectOneMenu id="academicYear" value="#{academicTermController.academicTerm.academicYear}" required="true" requiredMessage="*" >
+                        <f:selectItems value ="#{commonOptions.academicYearOptions}" />
+                    </h:selectOneMenu>
+                    <h:message for="academicYear" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputText value ="School Term"/>
+                <h:panelGroup>
+                    <h:selectOneMenu id="term" value="#{academicTermController.academicTerm.schoolTerm}" required="true" requiredMessage="*" >
+                        <f:selectItems value ="#{commonOptions.schoolTermsOptions}" />
+                    </h:selectOneMenu>
+                    <h:message for="term" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputText value ="Begin Date"/>
+                <h:panelGroup>
+                    <rich:calendar id="beginDate" value="#{academicTermController.academicTerm.beginDate}" required="true" requiredMessage="*"  />
+                    <h:message for="beginDate" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputText value ="End Date"/>
+                <h:panelGroup>
+                    <rich:calendar id="endDate" value="#{academicTermController.academicTerm.endDate}" required="true" requiredMessage="*"  />
+                    <h:message for="endDate" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputText value ="Exam Begin Date"/>
+                <h:panelGroup>
+                    <rich:calendar id="examBeginDate" value="#{academicTermController.academicTerm.examBeginDate}" required="true" requiredMessage="*"  />
+                    <h:message for="examBeginDate" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputText value ="Exam End Date"/>
+                <h:panelGroup>
+                    <rich:calendar id="examEndDate" value="#{academicTermController.academicTerm.examEndDate}" required="true" requiredMessage="*"  />
+                    <h:message for="examEndDate" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+            </h:panelGrid>
+
+            <h:panelGroup binding="#{academicTermController.academicTermFormControl.component}"/>
+
+        </h:form>
+
+    </h:panelGroup>
+
+    <rich:panel  >
+        <f:facet name="header"><h:outputLabel value="Current Term" /></f:facet>
+        <h:form>
+            <h:commandButton value="Set Selected Term [ #{academicTermController.academicTerm} ] As Current Term"
+                             action="#{academicTermController.setSelectedTermAsCurrentTerm}" />
+        </h:form>
+
+    </rich:panel>
+
+    <h:panelGroup layout="block" styleClass="input_form">
+        <h:form id="frmAcademicTerm_search_panel">
+            <h:panelGroup binding="#{academicTermController.academicTermDataPanel.searchPanel.component}"/>
+        </h:form>
+        <h:form id="frmAcademicTerm_datatable">
+            <div style="overflow: scroll;height: 400px;">
+                <h:dataTable binding="#{academicTermController.academicTermDataPanel.dataTable}"/>
+            </div>
+        </h:form>
+    </h:panelGroup>
+
+</html>
+
+

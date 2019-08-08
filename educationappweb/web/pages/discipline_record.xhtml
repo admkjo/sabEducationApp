@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:rich="http://richfaces.org/rich">
+
+    <h:panelGroup layout="block">
+
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmDisciplineRecordInput">
+
+                <h:panelGroup layout="block">
+
+                    <ui:include src="../pagefragments/single_class_selection.xhtml" />
+                </h:panelGroup>
+
+
+                <h:panelGrid columns="4">
+                    <h:outputText value ="Student Id"/>
+                    <h:panelGroup>
+                        <h:inputText id="student" value="#{disciplineRecordController.studentId}"   />
+                        <h:message for="student" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="Discipline Record Item"/>
+                    <h:panelGroup>
+                        <h:selectOneMenu id="item" value="#{disciplineRecordController.disciplineRecord.disciplineRecordItem}"  >
+                            <f:selectItems value ="#{commonOptions.disciplineRecordItemOptions}" />
+                        </h:selectOneMenu>
+                        <h:message for="item" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="Discipline Details"/>
+                    <h:panelGroup>
+                        <h:inputTextarea id="disciplineDetails" value="#{disciplineRecordController.disciplineRecord.recordDetails}" required="true" requiredMessage="*"  />
+                        <h:message for="disciplineDetails" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="Comment"/>
+                    <h:panelGroup>
+                        <h:inputTextarea id="comment" value="#{disciplineRecordController.disciplineRecord.comment}"/>
+                        <h:message for="comment" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputLabel value ="Date Of Occurence"/>
+                    <h:panelGroup>
+                        <rich:calendar  id="dateOfOccurence"
+                                        value="#{disciplineRecordController.disciplineRecord.dateOfOccurence}" required="true" requiredMessage="*" />
+                        <h:message for="dateOfOccurence" errorClass="noTextErrorStyle" />
+                    </h:panelGroup>
+
+                </h:panelGrid>
+
+                <h:panelGroup binding="#{disciplineRecordController.disciplineRecordFormControl.component}"/>
+
+            </h:form>
+
+            <h:form>
+                <h:commandLink value="Generate discipline record report" target="_blank"
+                               styleClass="report_link" action="#{disciplineRecordController.reportDisciplineRecordReport}"/>
+            </h:form>
+
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="input_form">
+
+            <h:form id="frmDisciplinerecord_search_panel" rendered="true">
+                <h:panelGroup binding="#{disciplineRecordController.disciplineRecordDataPanel.searchPanel.component}"/>
+            </h:form>
+            <h:form id="frmDisciplinerecord_datatable">
+                <h:dataTable binding="#{disciplineRecordController.disciplineRecordDataPanel.dataTable}"/>
+            </h:form>
+        </h:panelGroup>
+
+
+
+
+    </h:panelGroup>
+
+
+</html>
+
+

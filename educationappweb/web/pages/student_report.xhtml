@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <style type="text/css">
+        .input_form td
+        {
+            padding: 3px;
+            margin: 3px;
+        }
+
+    </style>
+
+    <h:panelGroup layout="block" styleClass="input_form">
+
+       
+            
+        <h:form>
+            <ui:include src="../pagefragments/single_class_selection.xhtml" >
+                <ui:param name="#{numberOfColumns}" value="6"/>
+            </ui:include>
+            <h:commandButton value="Prepare Class Report" id="load"
+                             action="#{studentReportController.loadSelectedClassReport}" >
+            </h:commandButton>
+        </h:form>
+    </h:panelGroup>
+
+    <h:form id="frm_report_display" style="height: 350px; overflow: auto;">
+        <h:commandLink value="View Selected Report" target="_blank" styleClass="comand_link"
+                       action="#{studentReportController.viewSelectedReportDetail}"
+                       rendered="#{uar.studRpt_PrintReport}"/>
+        <h:outputText value="View Mode " />
+        <h:selectOneMenu value="#{studentReportController.reportViewingMode}" >
+                <f:selectItems value="#{commonOptions.reportViewingModeOptions}" />
+        </h:selectOneMenu>
+
+        
+        <h:dataTable binding="#{studentReportController.studentReportDetailDataPanel.dataTable}" />
+    </h:form>
+
+</html>
+

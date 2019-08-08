@@ -1,0 +1,90 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+     >
+
+    <h:panelGroup layout="block" styleClass="input_form">
+
+        <h:panelGroup layout="block" style="float: left" >
+
+            <h:form>
+                <h:panelGrid columns="3">
+                <h:outputText value="Student Id" />
+                    <h:inputText  value="#{clearanceFormController.studentId}"/>
+                
+                    <h:commandButton value="Load Student Ledger" 
+                                     action="#{clearanceFormController.loadStudentLedgerHistory()}"/>
+                </h:panelGrid>
+            </h:form>
+            <br/>
+
+               
+
+            <h:form>
+                <h:panelGrid columns="2">
+                <h:commandLink value="Generate Clearance Form" target="_blank"
+                                   action="#{clearanceFormController.reportStudentLedgerDetail()}"
+                                   styleClass="report_link" style="color: #fff;"/>
+                </h:panelGrid>
+
+            </h:form>
+
+
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" style="float: right; width: 250px; overflow: auto;">
+            <h:panelGrid columns="2" styleClass="data_table_panel">
+                
+                <h:outputText value="Student Name" />
+                <h:panelGroup style="float: left; text-align: center;" >
+                    <img height="100px;" width="90px;"
+                             style="display: block; border: solid #f9dd34 1px;"
+                             src="#{clearanceFormController.billPaymentInfo.selectedStudent.studentPictureURL}"
+                             alt="#{clearanceFormController.billPaymentInfo.selectedStudent.studentName}"/>
+                    <h:outputText value="#{clearanceFormController.billPaymentInfo.selectedStudent}"
+                              id="student_name"/>
+
+                                                     
+
+                </h:panelGroup>
+               
+                <h:outputText value="Programe of Study" />
+                <h:outputText value="#{clearanceFormController.billPaymentInfo.selectedStudent.programmeOffered}"
+                              id="programme_name"/>
+
+                <h:outputText value="Student Class" />
+                <h:outputText value="#{clearanceFormController.billPaymentInfo.selectedStudent.currentClass}"
+                              id="class_name"/>
+
+                <h:outputText value="Student Category" />
+                <h:outputText value="#{clearanceFormController.billPaymentInfo.selectedStudent.boardingStatus}"/>
+
+                <h:outputText value="Prev Term Arrears" />
+                <h:outputText value="#{clearanceFormController.billPaymentInfo.previousTermsBalance}" />
+
+
+                <h:outputText value="Term Bills Payable" />
+                <h:outputText value="#{clearanceFormController.billPaymentInfo.termBillsPayable}" />
+
+
+                <h:outputText value="Total Bills Payable" />
+                <h:outputText value="#{clearanceFormController.billPaymentInfo.totalBillsPayable}" />
+
+                <h:outputText value="Amount Paid So far" />
+                <h:outputText value="#{clearanceFormController.billPaymentInfo.amountPaidSoFar}" />
+
+                
+                <h:outputText value="Outstanding Bal" />
+                <h:outputText value="#{clearanceFormController.billPaymentInfo.outstandingBalance}" style="font-weight: bolder;color: red"/>
+
+                <h:outputText value="Cleared" />
+                <h:outputText value="#{clearanceFormController.billPaymentInfo.outstandingBalance >0 ? 'NO':'YES' }" 
+                              style="font-weight: bolder;font-size: larger;
+                              color:#{clearanceFormController.billPaymentInfo.outstandingBalance >0 ? 'red':'green' } "/>
+            </h:panelGrid>
+        </h:panelGroup>
+
+
+         
+    </h:panelGroup>
+</html>
+

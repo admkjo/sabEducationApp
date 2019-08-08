@@ -1,0 +1,77 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <style type="text/css">
+        .adv_right_content td
+        {
+            padding: 3px;
+            margin: 3px;
+        }
+
+        #footer_login {
+            background-color: #660000;
+            color: white;
+            font-weight: bolder;
+            text-align: center;
+        }
+    </style>
+
+
+    <h:panelGroup layout="block" styleClass="adv_header"> </h:panelGroup>
+    <h:panelGroup layout="block" styleClass="adv_content">
+        <h:panelGroup layout="block" styleClass="adv_left_content">
+
+            <h:graphicImage url="resources/theme/default/nav/school.jpg" alt="School" />
+
+            <h:panelGroup layout="block" styleClass="school_profile">
+                <h:panelGroup layout="block" styleClass="h4">
+                    <h:outputText  value="Guest,You´re welcome!" />
+                </h:panelGroup>
+
+                <h3 style="padding: 1px;"><span style="color:darkgoldenrod">SABONAY EDUCATION</span> is an all-in- one educational software built to suit your school’s peculiar needs. Sabonay Education is designed
+                    to give educational institutions a touch of class with modern technology-bringing with it the benefits of computers-making work easier and faster.
+                    It is user friendly, coming along with an easy to understand manual to guide you. </h3>
+
+            </h:panelGroup>
+
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" styleClass="adv_right_content">
+
+            <h:panelGroup layout="block" styleClass="adv_login">
+
+                <fieldset class="field_set" style="width:120px">
+                    <legend>APPLICATION LICENSE RENEWAL FORM</legend>
+
+                    <h:form id="licenseForm">
+
+                        <h:panelGroup layout="block" styleClass="container">
+
+                            <h:outputLabel value="License has expired!!!" />
+                            <br></br>
+                            <h:outputLabel value="Please enter a valid licence key" />
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="#{bundle.LicenceKeyLabel}" for="licenseid" />
+                                <h:inputText id="licenseid" value="#{indexPageController.newLicenseKey}" title="#{bundle.LicenceKeyTitle}" />
+                                
+                            </h:panelGrid>
+
+                            <h:commandButton value="UpdateKey" action="#{indexPageController.setNewLicenseKey}" rendered="true"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{indexPageController.lic_warn_msg}" rendered="#{indexPageController.lic_warn}" />
+
+                        <h:outputLabel value="#{indexPageController.disp_status_msg}" rendered="#{indexPageController.disp_status}" />
+                    </h:form>
+
+                </fieldset>
+
+            </h:panelGroup>
+
+        </h:panelGroup>
+        
+    </h:panelGroup>
+</html>
+
+
+

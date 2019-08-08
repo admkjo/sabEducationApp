@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:commandButton value="Load Term Bill" action="#{studentOwnBillController.loadStudentLedgerHistory()}"/>
+    </h:form>
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:panelGroup layout="block" style="float: left" >
+        
+        </h:panelGroup>
+            <h:panelGroup layout="block" style="float: left" >
+                <p:dataTable value="#{studentOwnBillController.studentBillList}" var="stud" resizableColumns="true" rendered="#{studentOwnBillController.renderBillDataModel}">
+                <p:column>
+                    <f:facet name="header">
+                        Student Bill Type
+                    </f:facet>
+                    <h:outputLabel value="#{stud.studentBillType.billTypeName}"/>
+                </p:column>
+                    <p:column resizable="true">
+                    <f:facet name="header">
+                        Bill Item
+                    </f:facet>
+                    <h:outputLabel value="#{stud.billItem.itemName}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        School Class
+                    </f:facet>
+                    <h:outputLabel value="#{stud.schoolClass.className}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        Academic Term
+                    </f:facet>
+                    <h:outputLabel value="#{stud.academicTerm}"/>
+                </p:column>
+                    <p:column rendered="#{studentOwnBillController.renderDayStudentAmt}"> 
+                    <f:facet name="header">
+                        Day  Amt
+                    </f:facet>
+                    <h:outputLabel value="#{stud.dayStudentAmt}"/>
+                </p:column>
+                    <p:column rendered="#{studentOwnBillController.renderBoardingAmt}">
+                    <f:facet name="header">
+                        Boarding Amt
+                    </f:facet>
+                    <h:outputLabel value="#{stud.boardingStudentAmt}"/>
+                </p:column>
+            </p:dataTable>
+            </h:panelGroup>
+             <h:panelGroup layout="block" style="float: left; width: 250px; overflow: auto;">
+            <h:panelGrid columns="2" styleClass="data_table_panel">
+                
+                <h:outputText value="Student Name" />
+                <h:panelGroup style="float: left; text-align: center;" >
+                    <img height="100px;" width="90px;"
+                             style="display: block; border: solid #f9dd34 1px;"
+                             src="#{studentOwnBillController.billPaymentInfo.selectedStudent.studentPictureURL}"
+                             alt="#{studentOwnBillController.billPaymentInfo.selectedStudent.studentName}"/>
+                    <h:outputText value="#{studentOwnBillController.billPaymentInfo.selectedStudent}"
+                              id="student_name"/>
+
+                                                     
+
+                </h:panelGroup>
+               
+                <h:outputText value="Programe of Study" />
+                <h:outputText value="#{studentOwnBillController.billPaymentInfo.selectedStudent.programmeOffered}"
+                              id="programme_name"/>
+
+                <h:outputText value="Student Class" />
+                <h:outputText value="#{studentOwnBillController.billPaymentInfo.selectedStudent.currentClass}"
+                              id="class_name"/>
+
+                <h:outputText value="Student Category" />
+                <h:outputText value="#{studentOwnBillController.billPaymentInfo.selectedStudent.boardingStatus}"/>
+
+                <h:outputText value="Prev Term Arrears" />
+                <h:outputText value="#{studentOwnBillController.billPaymentInfo.previousTermsBalance}" />
+
+
+                <h:outputText value="Term Bills Payable" />
+                <h:outputText value="#{studentOwnBillController.billPaymentInfo.termBillsPayable}" />
+
+
+                <h:outputText value="Total Bills Payable" />
+                <h:outputText value="#{studentOwnBillController.billPaymentInfo.totalBillsPayable}" />
+
+                <h:outputText value="Amount Paid So far" />
+                <h:outputText value="#{studentOwnBillController.billPaymentInfo.amountPaidSoFar}" />
+
+                
+                <h:outputText value="Outstanding Bal" />
+                <h:outputText value="#{studentOwnBillController.billPaymentInfo.outstandingBalance}" style="font-weight: bolder;color: red"/>
+
+            </h:panelGrid>
+             </h:panelGroup>
+             </h:panelGroup>
+        <h:form>
+            
+        </h:form>
+           
+    </h:body>
+</html>
+
+

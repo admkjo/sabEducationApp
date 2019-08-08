@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:panelGroup layout="block" styleClass="input_form">
+
+        <h:form>
+
+            <h:panelGrid columns="2">
+                <h:outputLabel value="#{bundle.EditGradSysLabel_gradingEvgcpfbnPK_schid}" for="schid" />
+                <h:inputText id="schid" value="#{gradingSystemController.schid}" title="#{bundle.EditGradSysTitle_gradingEvgcpfbnPK_schid}" readonly="true"
+                             style="color: red;margin-bottom: 20px;text-decoration: blink;font-size: 12px"/>
+                
+                <h:outputLabel value="#{bundle.EditGradSysLabel_gradingEvgcpfbnPK_gradeName}" for="gradeName" />
+                <h:inputText id="gradeName" value="#{gradingSystemController.gradeName}" title="#{bundle.EditGradSysTitle_gradingEvgcpfbnPK_gradeName}" required="true" 
+                             requiredMessage="#{bundle.EditGradSysRequiredMessage_gradingEvgcpfbnPK_gradeName}"/>
+                
+                <h:outputLabel value="#{bundle.EditGradSysLabel_gradeUpperBound}" for="gradeLowerBound" />
+                <h:inputText id="gradeLowerBound" value="#{gradingSystemController.gradeLowerBound}" title="#{bundle.EditGradSysTitle_gradeUpperBound}" required="true" 
+                             requiredMessage="#{bundle.EditGradSysRequiredMessage_gradeLowerBound}"/>
+                
+                <h:outputLabel value="#{bundle.EditGradSysLabel_gradeUpperBound}" for="gradeUpperBound" />
+                <h:inputText id="gradeUpperBound" value="#{gradingSystemController.gradeUpperBound}" title="#{bundle.EditGradSysTitle_gradeUpperBound}" required="true" 
+                             requiredMessage="#{bundle.EditGradSysRequiredMessage_gradeUpperBound}"/>
+                
+                <h:outputLabel value="#{bundle.EditGradSysLabel_gradeDescription}" for="gradeDescription" />
+                <h:inputText id="gradeDescription" value="#{gradingSystemController.gradeDescription}" title="#{bundle.EditGradSysTitle_gradeDescription}" required="true" 
+                             requiredMessage="#{bundle.EditGradSysRequiredMessage_gradeDescription}"/>
+            </h:panelGrid>
+            
+            <h:panelGroup binding="#{gradingSystemController.gradsysFormControl.component}" rendered="#{uar.grading_system_edit}"/>
+        </h:form>
+
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" style="clear: both;" styleClass="input_form" rendered="#{uar.grading_system_edit}">
+        <h:form>
+            <h:panelGroup binding="#{gradingSystemController.gradsysDataPanel.searchPanel.component}"/>
+        </h:form>
+        <h:form id="frm_gradsys_datatable" style="height: 220px; overflow: auto;">
+            <h:dataTable binding="#{gradingSystemController.gradsysDataPanel.dataTable}"/>
+        </h:form>
+    </h:panelGroup>
+
+</html>
+

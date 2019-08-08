@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:panelGroup layout="block">
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmAcademicYearInput">
+                <h:panelGrid columns="4">
+                    <h:outputText value ="Begin Date"/>
+                    <h:panelGroup>
+                        <rich:calendar id="beginDate" value="#{academicYearController.academicYear.beginDate}" required="true" requiredMessage="*"  />
+                        <h:message for="beginDate" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="End Date"/>
+                    <h:panelGroup>
+                        <rich:calendar id="endDate" value="#{academicYearController.academicYear.endDate}" required="true" requiredMessage="*"  />
+                        <h:message for="endDate" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                </h:panelGrid>
+
+                <h:panelGroup binding="#{academicYearController.academicYearFormControl.component}"/>
+
+            </h:form>
+
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmAcademicYear_search_panel">
+                <h:panelGroup binding="#{academicYearController.academicYearDataPanel.searchPanel.component}"/>
+            </h:form>
+            <h:form id="frmAcademicYear_datatable">
+                <h:dataTable binding="#{academicYearController.academicYearDataPanel.dataTable}"/>
+            </h:form>
+        </h:panelGroup>
+
+    </h:panelGroup>
+
+</html>
+
+

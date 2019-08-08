@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:panelGroup layout="block" styleClass="input_form">
+
+        <h:form>
+
+<!--            <h:panelGrid columns="2">
+                <h:outputLabel value="#{bundle.EditSettingLabel_settingsKey}" for="settingsKey" />
+                <h:inputText id="settingsKey" value="#{settingController.settingsKey}" title="#{bundle.EditSettingTitle_settingsKey}" required="true" requiredMessage="#{bundle.EditSettingRequiredMessage_settingsKey}"/>
+                <h:outputLabel value="#{bundle.EditSettingLabel_settingsValue}" for="settingsValue" />
+                <h:inputTextarea rows="4" cols="30" id="settingsValue" value="#{settingController.settingsValue}" title="#{bundle.EditSettingTitle_settingsValue}" />
+                <h:outputLabel value="#{bundle.EditSettingLabel_schoolNumber}" for="schoolNumber" />
+                <h:inputText id="schoolNumber" value="#{settingController.schoolNumber}" title="#{bundle.EditSettingTitle_schoolNumber}" />
+                <h:outputLabel value="#{bundle.EditSettingLabel_settingId}" for="settingId" />
+                <h:inputText id="settingId" value="#{settingController.settingId}" title="#{bundle.EditSettingTitle_settingId}" required="true" requiredMessage="#{bundle.EditSettingRequiredMessage_settingId}"/>
+                <h:outputLabel value="#{bundle.EditSettingLabel_deleted}" for="deleted" />
+                <h:inputText id="deleted" value="#{settingController.deleted}" title="#{bundle.EditSettingTitle_deleted}" />
+                <h:outputLabel value="#{bundle.EditSettingLabel_updated}" for="updated" />
+                <h:inputText id="updated" value="#{settingController.updated}" title="#{bundle.EditSettingTitle_updated}" />
+            </h:panelGrid>-->
+
+            <h:panelGroup binding="#{settingController.settingsPanel.component}" />
+
+            <h:commandButton value="Update School Settings" 
+                             action="#{settingController.printValues}" 
+                             rendered="#{uar.school_settings_edit}"/>
+
+        </h:form> 
+    </h:panelGroup> 
+</html>
+

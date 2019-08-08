@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:panelGroup layout="block" >
+
+
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmSubjectInput">
+                <h:panelGrid columns="4">
+                    <h:outputText value ="Subject Code"/>
+                    <h:panelGroup>
+                        <h:inputText id="subjectCode" value="#{subjectController.subject.subjectCode}" required="true" requiredMessage="*"  />
+                        <h:message for="subjectCode" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="Subject Name"/>
+                    <h:panelGroup>
+                        <h:inputText id="subjectName" value="#{subjectController.subject.subjectName}" required="true" requiredMessage="*"  />
+                        <h:message for="subjectName" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="Subject Initials"/>
+                    <h:panelGroup>
+                        <h:inputText id="subjectInitials" value="#{subjectController.subject.subjectInitials}" required="true" requiredMessage="*"  />
+                        <h:message for="subjectInitials" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="Subject Category"/>
+                    <h:panelGroup>
+                        <h:selectOneMenu id="subjectCategory" value="#{subjectController.subject.subjectCategory}" required="true" requiredMessage="*" >
+                            <f:selectItems value ="#{commonOptions.subjectCategoryOptions}" />
+                        </h:selectOneMenu>
+                        <h:message for="subjectCategory" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                </h:panelGrid>
+
+                <h:panelGroup binding="#{subjectController.subjectFormControl.component}"/>
+
+            </h:form>
+
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmSubject_search_panel">
+                <h:panelGroup binding="#{subjectController.subjectDataPanel.searchPanel.component}"/>
+            </h:form>
+            <h:form id="frmSubject_datatable">
+                <div style="height: 300px; overflow: auto;">
+                <h:dataTable binding="#{subjectController.subjectDataPanel.dataTable}"/>
+                </div>
+            </h:form>
+        </h:panelGroup>
+
+
+
+    </h:panelGroup>
+
+
+</html>
+
+

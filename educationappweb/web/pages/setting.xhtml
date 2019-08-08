@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    
+
+    <h:panelGroup layout="block" styleClass="input_form">
+
+        <h:form>
+
+        <h:panelGroup binding="#{settingController.settingsPanel.component}" />
+
+        <h:commandButton value="Update School Settings" action="#{settingController.printValues}" />
+        
+        </h:form>
+
+
+    </h:panelGroup>
+
+
+</html>
+

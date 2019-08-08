@@ -1,0 +1,17 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <rich:panel >
+        <f:facet name="header">
+            <h:outputText value="School Subject for Selection" />
+        </f:facet>
+        <h:panelGroup layout="block" style="height: 200px; overflow: auto;">
+            <h:dataTable binding="#{subjectCombinationController.subjectDataPanel.dataTable}"/>
+        </h:panelGroup>
+    </rich:panel>
+
+</html>
+
+

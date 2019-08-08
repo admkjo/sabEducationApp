@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <body>
+    <ui:composition template="./../resources/templates/client_template.xhtml">
+        <ui:define name="title">
+            SMessaging :: Profile
+        </ui:define>
+        <ui:define name="clientpagesnav">
+            <li><h:link outcome="contacts" value="Contacts"/></li>
+            <li><h:link outcome="groups" value="Contact Groups"/></li>
+            <li><h:link outcome="messages" value="Messages"/></li>
+            <li class="currentPage"><h:link outcome="client_invoices" value="Invoices" /></li>
+            <li><h:link outcome="profile" value="Profile"/></li>
+        </ui:define>
+        <ui:define name="clientcontent">
+            <div id="invoiceContent">
+                <h:form prependId="false">
+                    <div class="alcenter">
+                        Filter:
+                        <h:commandLink value="Pending" action="#{clientInvoicesController.filterShowPending}" /> |
+                        <h:commandLink value="Paid" action="#{clientInvoicesController.filterShowPaid}" /> |
+                        <h:commandLink value="Part Paid" action="#{clientInvoicesController.filterShowPartPaid}"/> |
+                        <h:commandLink value="All" action="#{clientInvoicesController.filterShowAll}"/>
+                    </div>
+                </h:form>
+                <h:form prependId="false">
+                    <h:dataTable id="clientInvoicesTable"
+                                     value="#{clientInvoicesController.listOfInvoices}"
+                                     var="invoiceItem"
+                                     binding="#{clientInvoicesController.invoicesTable}"
+                                     rowClasses="evenRow, oddRow"
+                                     styleClass="alcenter fulltable">
+                            <h:column>
+                                <f:facet name="header">month</f:facet>
+                                <h:outputText value="#{invoiceItem.monthEnding}" />
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">quantity</f:facet>
+                                <h:outputText value="#{invoiceItem.qty}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">total cost</f:facet>
+                                <h:outputText value="#{invoiceItem.price}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Preview summary invoice</f:facet>
+                                <h:commandLink value="preview invoice" action="#{clientInvoicesController.viewInvoicePreview}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Preview itemized invoice</f:facet>
+                                <h:commandLink value="preview itemized invoice" action="#{clientInvoicesController.viewItemizedInvoicePreview}"/>
+                            </h:column>
+                        </h:dataTable>
+                </h:form>
+            </div>
+        </ui:define>
+    </ui:composition>
+</body>
+</html>

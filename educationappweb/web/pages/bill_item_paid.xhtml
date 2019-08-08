@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:body>
+
+        <h:form>
+            <h:panelGrid columns="7" width="99%">
+                <h:outputLabel value="Select Bill Item"/>
+                <h:selectOneMenu style="width: 130px" value="#{billItemPaidController.selectedBillItem}">
+                    <f:selectItem itemLabel="SELECT ONE"/>
+                    <f:selectItems value="#{billItemPaidController.allBillItem}"/> 
+                </h:selectOneMenu>
+                <h:outputLabel value="Report Type"/>
+                <h:selectOneMenu style="width: 160px" value="#{billItemPaidController.selectedReportType}">
+                    <f:selectItem itemValue="DAILY_REPORT"/>
+                    <f:selectItem itemValue="MONTHLY_REPORT"/>
+                    <f:selectItem itemValue="TERMLY_REPORT"/>
+                </h:selectOneMenu>
+                <h:outputLabel value="Date/Month"/>
+                <rich:calendar zindex="1000" value="#{billItemPaidController.selectedDate}"/>
+
+                <h:commandButton value="Load Summary" action="#{billItemPaidController.loadStudentLedger()}" />
+
+
+            </h:panelGrid>
+            <br/>
+            <h:panelGrid columns="4">
+                <h:outputLabel value="Class"/>
+                <h:selectOneMenu value="#{billItemPaidController.selectedSchoolClass}">
+                    <f:selectItem itemLabel="All Student"/>
+                    <f:selectItems value="#{commonOptions.academicYearActiveSchoolClassesOptions}" />
+                </h:selectOneMenu>
+                <h:commandLink value="Report" action="#{billItemPaidController.printFeesCollection()}" target="_blank" styleClass="comand_link"/>
+            </h:panelGrid>
+        </h:form>
+        <br/>
+        <h:form>
+            <p:dataTable value="#{billItemPaidController.allLedger}" var="leg" rows="13" paginator="true" paginatorAlwaysVisible="false">
+                <p:column >
+                    <f:facet name="header">
+                        <h:outputLabel value="Bill Type"/>
+                    </f:facet>
+                    <h:outputLabel value="#{leg.studentBillType.billTypeName}"/>
+                </p:column>
+                <p:column sortBy="#{leg.student.studentFullId}"> 
+                    <f:facet name="header">
+                        <h:outputLabel value="Student"/>
+                    </f:facet>
+                    <h:outputLabel value="#{leg.student.studentFullId}"/>
+                </p:column>
+
+                <p:column sortBy="#{leg.dateOfPayment}">
+                    <f:facet name="header">
+                        <h:outputLabel value="Date Paid"/>
+                    </f:facet>
+                    <h:outputLabel value="#{leg.dateOfPayment}"/>
+                </p:column>
+                <p:column sortBy="#{leg.amountInvolved}">
+                    <f:facet name="header">
+                        <h:outputLabel value="Amount Involve"/>
+                    </f:facet>
+                    <h:outputLabel value="#{leg.amountInvolved}"/>
+                </p:column>
+
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="Receipt Number"/>
+                    </f:facet>
+                    <h:outputLabel value="#{leg.receiptNumber}"/>
+                </p:column>
+                <p:column sortBy="#{leg.recordedBy.staffName}">
+                    <f:facet name="header">
+                        <h:outputLabel value="Recorded By"/>
+                    </f:facet>
+                    <h:outputLabel value="#{leg.recordedBy.staffName}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+
+    </h:body>
+</html>
+

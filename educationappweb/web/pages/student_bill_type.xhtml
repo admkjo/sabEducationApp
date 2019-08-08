@@ -1,0 +1,70 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:panelGroup layout="block">
+
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmStudentBillItemInput">
+                <rich:panel style="width:70%"> 
+                    <f:facet name="header"><h:outputText value="Bill Type" /></f:facet>
+                    <h:panelGrid columns="4">
+                        <h:outputText value ="Bill Type Name"/>
+                        <h:panelGroup>
+                            <h:inputText id="billType" value="#{studentBillTypeController.billType.billTypeName}" required="true" requiredMessage="*Required"  />
+                            <h:message for="billType" errorClass="noTextErrorStyle"/>
+                        </h:panelGroup>
+
+                        <h:outputText value ="Bill Type Description"/>
+                        <h:panelGroup>
+                            <h:inputTextarea id="billDescription" value="#{studentBillTypeController.billType.billTypeDescription}"   />
+                        </h:panelGroup>
+                        <h:outputText value ="Bill Type Priority"/>
+                        <h:panelGroup>
+                            <h:inputText id="billPriority" value="#{studentBillTypeController.billType.orderBy}"   />
+                        </h:panelGroup>
+                    </h:panelGrid> 
+                    <h:panelGrid columns="3" style="width: 30%">
+                        <h:panelGroup rendered="#{studentBillTypeController.saveBtn}">
+                            <h:commandButton value="Save" action="#{studentBillTypeController.saveBillType()}"/> 
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{studentBillTypeController.editBtn}">
+                            <h:commandButton value="Edit" action="#{studentBillTypeController.updateBillType()}"/> 
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{studentBillTypeController.delBtn}">
+                            <h:commandButton value="Delete" action="#{studentBillTypeController.deleteBillType()}"/> 
+                        </h:panelGroup> 
+                        <h:panelGroup rendered="#{studentBillTypeController.clearBtn}">
+                            <h:commandButton value="Clear" action="#{studentBillTypeController.reset()}"/> 
+                        </h:panelGroup> 
+                    </h:panelGrid>
+                </rich:panel>
+            </h:form>
+
+            <h:form> 
+                <p:dataTable value="#{studentBillTypeController.billTypeModel}" var="billType">
+                    <p:column headerText="Bill Type Name">
+                        <h:outputText value="#{billType.billTypeName}" />
+                    </p:column>
+                    <p:column headerText="Bill Type Description">
+                        <h:outputText value="#{billType.billTypeDescription}"/>
+                    </p:column>
+                    <p:column headerText="Order By">
+                        <h:outputText value="#{billType.orderBy}"/>
+                    </p:column>
+                    <p:column headerText="Action">
+                        <h:commandLink value="Select" action="#{studentBillTypeController.selectBillType()}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+
+        </h:panelGroup>
+
+    </h:panelGroup>
+
+</html>
+
+

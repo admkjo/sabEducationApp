@@ -1,0 +1,32 @@
+/*#account_input{
+    width: 40%;
+    height: 30%;
+    overflow: auto;
+    float: left;
+}*/
+
+#staff_cross_check{
+    width: 60%;
+    height: 30%;
+    overflow: auto;
+    float: left;
+}
+
+#user_rights
+{
+width: 30%;
+float: left;
+height: 120%;
+overflow: auto;
+}
+
+#left_pane{
+    width: 70%;
+    float: left;
+}
+
+#existing_users
+{
+    height: 300px;
+    overflow: auto;
+}

@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <style type="text/css">
+        .adv_right_content td
+        {
+            padding: 3px;
+            margin: 3px;
+        }
+
+        #footer_login {
+            background-color: #660000;
+            color: white;
+            font-weight: bolder;
+            text-align: center;
+        }
+    </style>
+
+    <h:panelGroup layout="block" styleClass="adv_header"> </h:panelGroup>
+    <h:panelGroup layout="block" styleClass="adv_content">
+        <h:panelGroup layout="block" styleClass="adv_left_content">
+            <h:graphicImage url="resources/theme/default/nav/school.jpg" alt="School" />
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" styleClass="adv_right_content">
+
+            <h:panelGroup layout="block" styleClass="adv_login">
+
+                <fieldset class="field_set">
+                    <legend>PASSWORD RESET ERROR</legend>
+                    <h2 style="padding: 1px;"><span style="color:darkgoldenrod">SABONAY EDUCATION</span>
+                        <br></br>Sorry, invalid user or password. Please try again: 
+                        <a href='#{indexPageController.resetpage}' >Login</a>
+                    </h2>
+                </fieldset>
+
+            </h:panelGroup>
+
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="clear"/>
+        <h:panelGroup id="footer_login" layout="block">
+            Developed by <a href="http://www.sabonay.com">Sabonay Technologies</a> located at Buokrom. Office 032-2072797,2013
+        </h:panelGroup>
+    </h:panelGroup>
+</html>
+

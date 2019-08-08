@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+     >
+    <h:body>
+        <h:panelGroup layout="block" styleClass="input_form">
+        <h:form>
+            <h:panelGrid columns="5">
+                
+                <h:commandButton value="Load Fees For Selected Term" styleClass="action_button" action="#{auditTrayController.loadTray()}"/>
+                <h:commandLink value="Print Report" styleClass="action_button" action="#{auditTrayController.printDailyFeesCollection()}"
+                               target="_blank"/>
+            </h:panelGrid>
+        </h:form>
+        <br/>
+        <h:form>
+            <p:dataTable value="#{auditTrayController.collectionListAudited}" var="fees" rows="10" paginator="true" paginatorAlwaysVisible="false">
+                <p:column>
+                    <f:facet name="header">
+                        Tran. Date
+                    </f:facet>
+                    <h:outputLabel value="#{fees.dateOfPayment}">
+                        <f:convertDateTime dateStyle="short" pattern="dd/MMM/yyyy"/>
+                    </h:outputLabel>
+                </p:column>
+                <p:column sortBy="#{fees.student.surname},#{fees.student.othernames}">
+                    <f:facet name="header">
+                        Student
+                    </f:facet>
+                    <h:outputLabel value="#{fees.student.surname},#{fees.student.othernames}"/>
+                </p:column>
+               
+                <p:column sortBy="#{fees.amountInvolved}">
+                    <f:facet name="header">
+                        Amount
+                    </f:facet>
+                    <h:outputLabel value="#{fees.amountInvolved}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        Receipt No.
+                    </f:facet>
+                    <h:outputLabel value="#{fees.receiptNumber},#{fees.recordedBy.staffName}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                       Entry Type 
+                    </f:facet>
+                    <h:outputLabel value="#{fees.typeOfEntry.initials}"/>
+                </p:column>
+                <p:column sortBy="#{fees.studentBillType.billTypeName}"> 
+                    <f:facet name="header">
+                        Bill Type
+                    </f:facet>
+                    <h:outputLabel value="#{fees.studentBillType.billTypeName}"/>
+                </p:column>
+                <p:column sortBy="#{fees.recordedBy.staffName}"> 
+                    <f:facet name="header">
+                        Recorded By
+                    </f:facet>
+                    <h:outputLabel value="#{fees.recordedBy.staffName}"/>
+                </p:column>
+                <p:column sortBy="#{fees.mediumOfPayment}"> 
+                    <f:facet name="header">
+                        Payment Mode
+                    </f:facet>
+                    <h:outputLabel value="#{fees.mediumOfPayment}"/>
+                </p:column>
+                <p:column sortBy="#{fees.termOfEntry.academicYear.academicYearId},#{fees.recordedBy.staffName}"> 
+                    <f:facet name="header">
+                       Academic Year
+                    </f:facet>
+                    <h:outputLabel value="#{fees.termOfEntry.academicYear.academicYearId}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+        </h:panelGroup>
+    </h:body>
+</html>
+
+

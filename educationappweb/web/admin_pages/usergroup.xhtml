@@ -1,0 +1,106 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich" >
+    
+    <h:panelGroup layout="block" styleClass="input_form">
+
+        <h:form>
+
+            <h:panelGrid columns="2" style="float: left;" styleClass="input_table">
+                <rich:panel>
+                    <f:facet name="header"><h:outputText value="User Information" /></f:facet>
+
+                    <h:panelGrid columns="2">
+
+                        <h:outputLabel value="#{bundle.EditUsersLabel_usersPK_schid}" for="usersPK_schid" />
+                        <h:inputText id="usersPK_schid" value="#{usergroupUserController.schid}" 
+                                     title="#{bundle.EditUsersTitle_usersPK_schid}"
+                                     readonly="true"
+                                     style="color: red;margin-bottom: 20px;text-decoration: blink;font-size: 12px"/>
+
+                        <h:outputLabel value="#{bundle.EditUsersLabel_usersPK_userid}" for="usersPK_userid" />
+                        <h:inputText id="usersPK_userid" value="#{usergroupUserController.userid}" 
+                                     title="#{bundle.EditUsersTitle_usersPK_userid}" />
+
+                        <h:outputLabel value="#{bundle.EditUsergroupLabel_usergroupPK_groupid}" for="user_groupid" />
+                        <h:panelGroup>
+                            <h:selectOneMenu  id="user_groupid" value="#{usergroupUserController.user_groupid}" >
+                                <f:selectItems value ="#{usergroupController.roleOptions}" />
+                            </h:selectOneMenu>
+                            <h:message for="user_groupid" errorClass="noTextErrorStyle"/>
+                        </h:panelGroup>
+                    </h:panelGrid>
+
+                    <h:commandButton value="Assign User to Group" rendered="true"
+                                     action="#{usergroupUserController.assignUserToGroup}" />
+
+                </rich:panel>
+            </h:panelGrid>
+
+            <h:panelGrid columns="2" style="float: left;" styleClass="input_table">
+                <rich:panel>
+                    <f:facet name="header"><h:outputText value="User Group Information" /></f:facet>
+
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.EditUsergroupLabel_usergroupPK_schid}" for="usergroupPK_schid" />
+                        <h:panelGroup>
+                            <h:inputText id="usergroupPK_schid" value="#{usergroupController.ugrp.usergroupPK.schid}" 
+                                         title="#{bundle.EditUsergroupTitle_usergroupPK_schid}" 
+                                         readonly="true"
+                                         style="color: red;margin-bottom: 20px;text-decoration: blink;font-size: 12px"/>
+                            <h:message for="usergroupPK_schid" errorClass="noTextErrorStyle"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.EditUsergroupLabel_usergroupPK_userid}" for="usergroupPK_userid" />
+                        <h:panelGroup>
+                            <h:inputText id="usergroupPK_userid" value="#{usergroupController.ugrp.usergroupPK.userid}" 
+                                         title="#{bundle.EditUsergroupTitle_usergroupPK_userid}" />
+                            <h:message for="usergroupPK_userid" errorClass="noTextErrorStyle"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value="#{bundle.EditUsergroupLabel_usergroupPK_groupid}" for="usergroupPK_groupid" />
+                        <h:panelGroup>
+                            <h:selectOneMenu  id="usergroupPK_groupid" 
+                                              value="#{usergroupController.ugrp.usergroupPK.groupid}" >
+                                <f:selectItems value ="#{usergroupController.roleOptions}" />
+                            </h:selectOneMenu>
+                            <h:message for="usergroupPK_groupid" errorClass="noTextErrorStyle"/>
+                        </h:panelGroup>
+
+                    </h:panelGrid>
+
+                </rich:panel>
+            </h:panelGrid>
+
+            <h:panelGroup binding="#{usergroupController.usergrpFormControl.component}" 
+                          rendered="#{uar.usergroup_edit}"/>
+
+        </h:form>
+
+    </h:panelGroup>
+
+    <h:panelGrid columns="2" style="float: left;" styleClass="input_table">
+
+        <h:panelGroup layout="block" style="clear: both;" styleClass="input_form" rendered="#{uar.usergroup_edit}">
+            <h:form>
+                <h:panelGroup binding="#{usergroupUserController.userDataPanel.searchPanel.component}"/>
+            </h:form>
+            <h:form id="frm_user_datatable" style="height: 220px; overflow: auto;">
+                <h:dataTable binding="#{usergroupUserController.userDataPanel.dataTable}"/>
+            </h:form>
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" style="clear: both;" styleClass="input_form" rendered="#{uar.usergroup_edit}">
+            <h:form>
+                <h:panelGroup binding="#{usergroupController.usergrpDataPanel.searchPanel.component}"/>
+            </h:form>
+            <h:form id="frm_usergrp_datatable" style="height: 220px; overflow: auto;">
+                <h:dataTable binding="#{usergroupController.usergrpDataPanel.dataTable}"/>
+            </h:form>
+        </h:panelGroup>
+
+    </h:panelGrid>
+
+</html>
+

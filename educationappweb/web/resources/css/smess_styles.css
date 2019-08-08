@@ -1,0 +1,712 @@
+/**********************************************************/
+/*                                              GENERICS */
+/********************************************************/
+
+body {
+    background-color: #ffffff;
+    font-size: 11px;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    color: #000000;  
+    margin: 3px;
+}
+
+h1, h2, h3, h4, h5, h6{
+    padding: 0px;
+    margin: 2px;
+}
+
+h1 {
+    border-bottom: 2px solid #036FAB;
+}
+
+a{
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+a:link, a:visited {
+    color: #045491;
+    font-weight : bold;
+    text-decoration: none;
+}
+
+a:link:hover, a:visited:hover  {
+    color: black;
+    font-weight : bold;
+}
+
+li {
+    display: inline;
+}
+
+table{
+    border-collapse: collapse;
+    text-align: left;
+}
+
+table.fulltable{
+    width: 100%;
+    font-size: 10px;
+}
+
+thead, tfoot{
+    background-color: #C2DFEF;
+    text-align: center !important;
+    font-weight: bold;
+}
+
+/*********************************************************/
+/*                                                  IDS */
+/*******************************************************/
+
+#nav{
+    text-align: left;
+    display: inline;
+}
+
+#nav li {
+    margin: 0 5px;
+    padding: 10px 5px;
+}
+
+#signup {
+    margin-top: 10px;
+    width: 100%;
+}
+
+#signup a{
+    color: black;
+}
+
+#signup a:hover{
+    text-decoration: underline;
+}
+
+#contactsList{
+    margin-bottom: 15px;
+    padding: 5px;
+    overflow: auto;
+    max-height: 370px;
+    width: 65%;
+    background-color: #C2DFEF;
+    min-height: 161px;
+}
+
+#contactsTableList{
+    margin: 5px 1px;
+    overflow: auto;
+    max-height: 310px;
+}
+
+#contactsControls{
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 5px;
+    width: 270px;
+    height: 201px;
+    background-color: #C2DFEF;
+}
+
+
+#contactsTable{
+    width: 100%;
+
+}
+
+#contactsTable tbody{
+    max-height: 200px !important;
+    overflow: auto;
+}
+
+#groupsList{
+    background-color: #C2DFEF;
+    max-height: 350px;
+    width: 200px;
+    overflow: auto;
+}
+
+#groupsTable{
+    text-align: left;
+}
+
+#groupsTable tbody{
+    max-height: 240px;
+    overflow: auto;
+}
+
+#groupManagement{
+    margin-left: 10px;
+    background-color: #C2DFEF;
+    width: 655px;
+}
+
+#groupManagement table{
+    margin: 0;
+}
+
+#avaliableGroupMembersList, #existingGroupMembersList{
+    width: 300px;
+    overflow: auto;
+}
+
+#availableContactsList tbody, #existingContactsList tbody{
+    max-height: 240px;
+    overflow: auto;
+}
+
+#sendingOpts{
+/*    margin: 5px;*/
+    width: 35%;
+}
+
+#toGroups, #toIndividuals, #toAppIndividualsGHA, #toAppIndividualsCIV, #toAppIndividualsNGA, #uploadIndividuals, #uploadIndividualsTmp, #previousMessages, #draftMessages{
+    background-color: #C2DFEF;
+}
+
+#toGroups{
+    padding-bottom: 10px;
+}
+
+#toIndividuals, #toAppIndividualsGHA, #toAppIndividualsCIV, #toAppIndividualsNGA, #uploadIndividuals, #uploadIndividualsTmp{
+    margin-top: 10px;
+    text-align: center;
+    padding: 5px;
+}
+
+#previousMessages, #draftMessages{
+    margin-top: 10px;
+    text-align: center;
+    padding: 5px;
+}
+
+#composeMessage{
+    margin: 5px;
+    width: 60%;
+    background-color: #C2DFEF;
+}
+
+#drafts{
+    background-color: #C2DFEF;
+    width: 45%;
+    float: left;
+    display: none;
+}
+
+#msgtemplates{
+    background-color: #C2DFEF;
+    width: 45%;
+    float: right;
+    display: none;
+}
+
+#reg_table, #profile_info{
+    width: 80%;
+    margin: 0 auto;
+    font-size: 16px;
+    text-align: center;
+    border-collapse: separate;
+}
+
+#reg_table .alright, #profile_info .alright{
+    text-align: right;
+    width: 40%;
+    background-color: #95CEE6;
+}
+
+#reg_table tr, #profile_info tr{
+    margin: 10px 1px;
+}
+
+#reg_table .styled_input, #profile_info .styled_input{
+    width: 90%;
+    color: black !important;
+    background-color: white !important;
+}
+
+#reg_table .styled_textarea, #profile_info .styled_textarea{
+    width: 90%;
+    color: black !important;
+    background-color: white !important;
+}
+
+#messageTitle{
+    width: 98%;
+    padding: 5px;
+}
+
+#messageBody{
+    height: 170px;
+    width: 98%;
+    padding: 5px;
+}
+
+#addNewGrpTitle{
+    margin-bottom: 5px;
+    display: inline;
+}
+
+#loginRegPanel{
+    float: right;
+    margin: 2px;
+    padding: 10px;
+    background-color: #95CEE6;
+    border: 2px solid #C2DFEF;
+    /* width: 200px; */
+    font-size: 16px;
+    height: 240px;
+}
+
+#invPreviewTable{
+    border-collapse: separate;
+}
+
+#invOptions{
+    text-align: center;
+}
+
+#invOptionsLinks a:hover{
+    color: black;
+}
+
+#invHead{
+    border-bottom: 2px solid black;
+    padding: 2px;
+}
+
+#leftContent{
+    text-align: center;
+}
+
+#clientsListTable{
+    text-align: center;
+}
+
+#clientStats table{
+    text-align: left;
+}
+
+#loggedInPanel{
+    width: 500px;
+    height: 300px;
+    /*    border: 1px solid red;*/
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+#adminlogin a.neatbtns{
+    background-color: #F2F1F0;
+    color: black;
+    font-size: 16px;
+}
+
+#sendDateCalContent{
+    width:  auto;
+}
+
+#sendWhenOptions{
+    width: auto;
+    display: inline;
+}
+
+#clientProfile{
+    background-color: #C2DFEF;
+}
+
+#topupAndPayments{
+    float: left;
+    width: 66%;
+}
+
+#sabonayInfos{
+    font-size: 24px;
+}
+
+#sabonayInfosn li{
+    display: block !important;
+}
+
+#registerbtn{
+    display: block;
+    height: 50px;
+    font-weight: bold;
+    width: 200px;
+    margin-top: 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+#loginbtn{
+    border: 1px solid #036FAB;
+    padding: 3px;
+    -moz-border-radius: 5px;
+    display: block;
+}
+
+#loginbtn a:hover{
+    color: white;
+}
+
+#contactsListInfoArea{
+    margin: 5px;
+    width: 25%;
+    background-color: #C2DFEF;
+}
+
+#contactsListArea{
+    margin: 5px;
+    width: 70%;
+    background-color: #C2DFEF;
+}
+
+#contactsListArea2{
+    margin: 5px;
+    width: 70%;
+    background-color: #C2DFEF;
+}
+
+#contactsCounter{
+
+}
+
+#contactsCounter h4{
+    
+}
+
+#counterVal{
+    font-size: 64px;
+    text-align: center;
+    background-color: white;
+}
+
+#paginatorControls{
+/*    outline: 1px solid black;*/
+}
+
+#bulkUploadbtn a.neatbtns{
+    display: inline-block;
+}
+
+#checkSending{
+    font-size: 16px;
+}
+
+#checkSendingTable{
+    margin: auto;
+    background-color: white;
+}
+
+#btnAdminLogin{
+    margin-top: 10px;
+}
+
+#settingsListing{
+    margin-left: 20px;
+    width: 60%;
+}
+
+#cLogoutform, #aLogoutform{
+    background-color: white;
+}
+
+#changePassDiv{
+    margin: 0 auto;
+    width: 300px;
+    font-size: 18px;
+}
+
+#sendLaterCalContent{
+    background-color: #95CEE6;
+}
+
+/*********************************************************/
+/*                                              CLASSES */
+/*******************************************************/
+
+.contactsbtn{
+    font-size: 11px !important;
+    display: inline-block;
+    margin: 1px !important;
+    padding: 2px !important;
+}
+
+.login_input{
+    border: 1px solid black;
+    font-size: 16px;
+    padding: 3px;
+    width: 97%;
+}
+
+.alcenter{
+    text-align: center !important;
+}
+
+
+.alleft{
+    text-align: left !important;
+}
+
+.alright{
+    text-align: right !important;
+}
+
+.neatbtns{
+    border: 1px solid black;
+    font-weight: bold;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    color: black !important;
+    background-color: white;
+/*    font-size: 16px !important;*/
+}
+
+.setborder{
+    border: 1px solid black;
+}
+
+.cblack a:hover{
+    color: black !important;
+}
+
+td.valtop{
+    vertical-align: top;
+}
+
+.sendtoAllBtn{
+    margin-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+
+}
+
+.sendtoGrpBtn{
+    margin-top: 10px;
+}
+
+.success{
+    background-color: greenyellow;
+}
+
+.error{
+    background-color: red;
+}
+
+.info{
+    background-color: goldenrod;
+}
+
+.infomsg{
+    height: 30px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.hints{
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.gotoAccountLink{
+    font-weight: bold;
+    font-size: 16px;
+    background-color: white;
+    border: 2px solid black;
+    padding: 10px;
+    display: block;
+}
+
+.bandLine{
+    width:100%;
+    height: 30px;
+    background-color: #95CEE6
+}
+
+.fullwidth{
+    width: 100%;
+}
+
+.evenRow, .evenCol{
+    background-color: #F8F8F7;
+}
+
+.oddRow, .oddCol{
+    background-color: #BAE3F7;
+}
+
+.clear_float{
+    clear: both;
+}
+
+span.formelement{
+    display: block;
+    width: 300px;
+}
+
+span.formelement label{
+    width: 50px;
+    margin-right: 10px;
+}
+
+.errorMsg{
+    font-size: 10px;
+    color: #F00003;
+    text-align: center;
+    margin-right: 40px;
+}
+
+.profile_info{
+    font-size: 16px;
+}
+
+.required{
+    color: #F00003;
+}
+
+.invLable{
+    background-color: #EDECEB;
+}
+
+.footer{
+    text-align: center;
+    font-size: 10px;
+    word-spacing: 2px;
+}
+
+.styled_input{
+    border: 1px solid black;
+    font-size: 20px !important;
+    height: 35px;
+}
+
+.styled_textarea{
+    font-size: 16px;
+    border: 1px solid black;
+    height: 70px;
+    padding: 5px 0;
+    color: black !important;
+    background-color: white !important;
+}
+
+.hide{
+    display: none;
+}
+
+.spacer{
+    height: 10px;
+}
+
+.radioButtons{
+    width: auto;
+}
+
+.removeGrpCol{
+    width: 20%;
+}
+
+.grpNameCol{
+    width: 50%;
+}
+
+.grpActionCol{
+    width: 30%;
+}
+
+.subnav{
+    margin-bottom: 4px;
+}
+
+.currentPage{
+    border-bottom:  5px solid #036FAB;
+}
+
+.right {
+    float: right;
+/*    background-color: #C2DFEF;*/
+    padding: 0px;
+}
+
+.logout{
+    color: red;
+    /*    border: 1px solid black;*/
+    padding: 0px;
+    cursor: pointer;
+    padding: 2px;
+}
+
+li a.logout a:hover{
+    color: red !important;
+}
+
+div.box{
+    padding: 5px;
+}
+
+div.displayBox{
+    padding: 5px;
+    background-color: #C2DFEF;
+}
+
+ul.nav{
+    padding: 5px 0px;
+    margin: 0px;
+}
+
+ul.nav li{
+    margin: 0 5px;
+    /* padding: 1px 5px; */
+}
+
+.dateErrorMsg{
+    width: 60%;
+    margin-left: 170px;
+}
+
+td.center{
+    text-align: center;
+}
+
+ul.listing li{
+    display: block;
+}
+
+ul.listing{
+    list-style: disc;
+}
+
+.infopage{
+    font-size: 16px;
+    background-color: white;
+}
+
+.uploadOpts{
+    width: 30px;
+}
+
+table.highlight tr:hover, table.highlight td:hover{
+    background-color: #7FA9DB;
+}
+
+.sendToIndividuslsBtnLink{
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 8px;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+
+#invPerview table td{
+    border-bottom: 1px solid black;
+}
+
+.sendMsgBtn{
+    margin-top: 10px;
+}
+
+.makeInline{
+    display: inline !important;
+}

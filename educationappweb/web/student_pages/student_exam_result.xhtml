@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <h:form>
+
+
+        <h:commandButton value="Load Term Report" action="#{studentExamResultController.loadSelectedTermReport}"/>
+    </h:form>
+
+
+    <h:panelGroup layout="block">
+
+      <h:form id="frm_exam_report">
+          <h:dataTable binding="#{studentExamResultController.studentMarkDetailDataPanel.dataTable}"/>
+      </h:form>
+   </h:panelGroup>
+
+
+</html>
+
+

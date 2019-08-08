@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <style type="text/css">
+        .adv_right_content td
+        {
+            padding: 3px;
+            margin: 3px;
+        }
+
+        #footer_login {
+            background-color: #660000;
+            color: white;
+            font-weight: bolder;
+            text-align: center;
+        }
+    </style>
+
+
+    <h:panelGroup layout="block" styleClass="adv_header"> </h:panelGroup>
+    <h:panelGroup layout="block" styleClass="adv_content">
+        <h:panelGroup layout="block" styleClass="adv_left_content">
+
+            <h:graphicImage url="resources/theme/default/nav/school.jpg" alt="School" />
+
+            <h:panelGroup layout="block" styleClass="school_profile">
+                <h:panelGroup layout="block" styleClass="h4">
+                    <h:outputText  value="Guest,You´re welcome!" />
+                </h:panelGroup>
+
+                <h3 style="padding: 1px;"><span style="color:darkgoldenrod">SABONAY EDUCATION</span> is an all-in- one educational software built to suit your school’s peculiar needs. Sabonay Education is designed
+                    to give educational institutions a touch of class with modern technology-bringing with it the benefits of computers-making work easier and faster.
+                    It is user friendly, coming along with an easy to understand manual to guide you. </h3>
+
+            </h:panelGroup>
+
+
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" styleClass="adv_right_content">
+
+            <h:panelGroup layout="block" styleClass="adv_login">
+
+                <fieldset class="field_set">
+                    <legend>FORBIDDEN ACCESS</legend>
+                    Access to Requested Page Denied: 
+                    <a href='#{facesContext.externalContext.requestContextPath}/' >Forbidden</a>
+                </fieldset>
+
+            </h:panelGroup>
+
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="clear"/>
+        <h:panelGroup id="footer_login" layout="block">
+            Developed by <a href="http://www.sabonay.com">Sabonay Technologies</a> located at Buokrom. Office 032-2072797,2011
+        </h:panelGroup>
+    </h:panelGroup>
+</html>
+

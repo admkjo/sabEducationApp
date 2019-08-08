@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Manage Student Picture</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:fileUpload fileUploadListener="#{studentController.handleFileUpload}" update="cropt"/>
+            
+       
+            <h:panelGroup layout="block" style="width: 200px; height: 250px;" rendered="#{studentController.studentPictureURI != null}">
+                <p:commandButton value="Crop Image" action="#{studentController.cropImage}"  />
+                <p:imageCropper value="#{studentController.studentCroppedImage}"
+                                image="#{studentController.studentPictureURI}" 
+                                aspectRatio=".2" id="cropt" initialCoords="225,75,300,125"/>
+            </h:panelGroup>
+       
+        </h:form>
+
+    </h:body>
+</html>
+
+

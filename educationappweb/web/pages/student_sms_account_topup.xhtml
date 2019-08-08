@@ -1,0 +1,45 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://java.sun.com/jsf/html">
+
+
+    <h:panelGroup layout="block">
+
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmStudentSmsAccountInput">
+                <h:panelGrid columns="4">
+                    <h:outputText value ="Student"/>
+                    <h:panelGroup>
+                        <h:inputText id="student" value="#{studentSmsAccountController.studentSmsAccount.student}" required="true" requiredMessage="*"  />
+                        <h:message for="student" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="Amount Involved"/>
+                    <h:panelGroup>
+                        <h:inputText id="amountInvolved" value="#{studentSmsAccountController.studentSmsAccount.amountInvolved}" required="true" requiredMessage="*"  />
+                        <h:message for="amountInvolved" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                </h:panelGrid>
+
+                <h:panelGroup binding="#{studentSmsAccountController.studentSmsAccountFormControl.component}"/>
+
+            </h:form>
+
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmStudentSmsAccount_search_panel">
+                <h:panelGroup binding="#{studentSmsAccountController.studentSmsAccountDataPanel.searchPanel.component}"/>
+            </h:form>
+            <h:form id="frmStudentSmsAccount_datatable">
+                <h:dataTable binding="#{studentSmsAccountController.studentSmsAccountDataPanel.dataTable}"/>
+            </h:form>
+        </h:panelGroup>
+
+
+    </h:panelGroup>
+
+
+
+</div>
+

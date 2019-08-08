@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+    <h:panelGroup layout="block" id="alb">
+        <h:form id="albfrm">
+            <h:panelGrid columns="3">
+
+                <p:panel header="Class Selection">
+                    <ui:include src="/pagefragments/single_class_selection.xhtml" />
+                    <h:commandButton/>
+                    <h:commandButton value="View Student Album" action="#{studentAlbumController.selectedAlbum}"/>
+                </p:panel>
+<!--                <p:panel header="VIEW OPTIONS">
+                    <h:commandLink style="background-color: #d14444; padding: 5px; border-radius: 5px; color: black; " target="_blank" value="WAEC ALBUM" action="#{studentAlbumController.reportStudentAlbum()}" /><br/><br/>
+                    <h:commandLink style="background-color: #d14444; padding: 5px; border-radius: 5px;  color: black" value="SCHOOL ALBUM"  />
+                </p:panel>-->
+
+
+
+            </h:panelGrid>
+            <h:form>
+                <h:panelGroup >
+
+                    <p:dataGrid value="#{studentAlbumController.selectedClassAlbum}" var="clsalb" columns="5"
+                                rows="20" paginator="true" id="albumtable"
+                                paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                rowsPerPageTemplate="20,40,60">
+
+                        <f:facet name="header">
+                            <h:outputText value="STUDENTS ALBUM" style="text-align: center" />
+                        </f:facet>
+                        <f:facet name="footer">
+                            <h:outputText value="NUMBER OF STUDENTS: #{studentAlbumController.selectedClassAlbum.size()}" style="text-align: center" />
+                        </f:facet>
+                        
+
+                        <p:panel footer=" #{clsalb.studentName}" header="#{clsalb.studentBasicId}" style="text-align:center">
+                            <h:panelGrid columns="1" style="width:100%">
+                                <img style="width: 120px; height: 120px; align-content: center; " src="#{userdata.studentPictureBaseURI}#{clsalb.studentBasicId}.jpg" /><br/>
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:dataGrid>
+                </h:panelGroup>
+
+
+
+            </h:form>
+            <h:panelGroup layout="block" styleClass="clear"  />
+
+        </h:form>
+
+    </h:panelGroup>
+
+</html>
+
+

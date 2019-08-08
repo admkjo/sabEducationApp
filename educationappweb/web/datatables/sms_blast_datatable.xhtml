@@ -1,0 +1,87 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:f="http://java.sun.com/jsf/core"
+              xmlns:rich="http://richfaces.org/rich"
+              xmlns:a4j="http://richfaces.org/a4j"
+              xmlns:p="http://primefaces.prime.com.tr/ui"
+              xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:form id="frmSmsBlast_search_panel">
+        <h:panelGroup>
+            <h:panelGrid columns="4" >
+                <h:outputLabel value ="Search" />
+                <h:inputText value ="#{searchText}" />
+                <h:selectOneMenu value ="#{searchField}">
+                    <f:selectItem itemLabel="Sms Blast Id" itemValue="smsBlastId" />
+                    <f:selectItem itemLabel="Sms Title" itemValue="smsTitle" />
+                    <f:selectItem itemLabel="Sms Send Date" itemValue="smsSendDate" />
+                    <f:selectItem itemLabel="Contact Group" itemValue="contactGroup" />
+                    <f:selectItem itemLabel="Contact Group Value" itemValue="contactGroupValue" />
+                    <f:selectItem itemLabel="Last Modified By" itemValue="lastModifiedBy" />
+
+                </h:selectOneMenu >
+                <h:commandButton value="Search" action ="#{searchAction}" />
+            </h:panelGrid>
+        </h:panelGroup>
+    </h:form>
+
+    <h:form id="frmSmsBlast_datatable">
+        <h:dataTable value="#{tableList}" var="listItem" binding="#{dataTable}"
+                     styleClass="data_table_panel" >
+            <h:column>
+                <f:facet name="header">
+                    <h:outputLabel value="Sms Subject" />
+                </f:facet>
+                <h:outputText value="#{listItem.smsSubject}" />
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">
+                    <h:outputLabel value="Sms Send Date" />
+                </f:facet>
+                <h:outputText value="#{listItem.smsSendDate}" >
+                    <f:convertDateTime pattern="EEE dd MMM yyyy HH:mm a" />
+                </h:outputText>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">
+                    <h:outputLabel value="Contact Group" />
+                </f:facet>
+                <h:outputText value="#{listItem.contactGroup}" />
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">
+                    <h:outputLabel value="Contact Group Value" />
+                </f:facet>
+                <h:outputText value="#{listItem.contactGroupValue}" />
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">
+                    <h:outputLabel value="Last Modified Date" />
+                </f:facet>
+                <h:outputText value="#{listItem.lastModifiedDate}" >
+                    <f:convertDateTime pattern="EEE, dd MMM yyyy" />
+                </h:outputText>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">
+                    <h:outputLabel value="Last Modified By" />
+                </f:facet>
+                <h:outputText value="#{listItem.lastModifiedBy}" />
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">
+                    <h:outputLabel value="Select" />
+                </f:facet>
+                <h:commandLink value="Select" action="#{smsBlastController.smsBlastDataTableRowSelectionAction}"/>
+            </h:column>
+
+        </h:dataTable>
+    </h:form>
+</h:panelGroup>
+

@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <style type="text/css">
+        .input_form td
+        {
+            padding: 3px;
+            margin: 3px;
+        }
+
+    </style>
+
+    <h:panelGroup layout="block">
+
+        <h:panelGroup layout="block" styleClass="input_form" >
+            <h:form>
+
+                <h:panelGroup layout="block" style="float: left; width: 450px; overflow: auto;">
+
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Select Staff" />
+                        <h:outputLabel value="#{teachingSubAndClassesController.selectedSchoolStaff}" id="staff_name"/>
+
+                        <h:outputText value="Select Subject" style="padding-right: 3px;" />
+                        <h:selectOneMenu value="#{teachingSubAndClassesController.teachingSubAndClasses.schoolSubject}" >
+                            <f:selectItems value="#{commonOptions.selectOneOption}" />
+                            <f:selectItems value="#{commonOptions.schoolSubjectOptions}" />
+                        </h:selectOneMenu>
+
+                    </h:panelGrid>
+                    <br />
+
+                    <h:dataTable binding="#{teachingSubAndClassesController.teachingSubAndClassesDataPanel.dataTable}"/>
+
+                    <br />
+
+
+                </h:panelGroup>
+
+                <h:panelGroup  layout="block" style="float: left; height: 300px; overflow: auto; " >
+
+                    <ui:include src="/pagefragments/multi_school_class_selection.xhtml" />
+
+
+                </h:panelGroup>
+
+
+                <h:panelGroup layout="block" styleClass="clear" />
+
+                <h:panelGroup binding="#{teachingSubAndClassesController.teachingSubAndClassesFormControl.component}"/>
+
+            </h:form>
+
+        </h:panelGroup>
+
+
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmSchoolStaff_in_teaching_class_search_panel">
+                <h:panelGroup binding="#{teachingSubAndClassesController.schoolStaffDataPanel.searchPanel.component}"/>
+            </h:form>
+            <h:form id="frmSchoolStaff_in_teaching_class_datatable" style="overflow: auto;height: 250px;">
+                <h:dataTable binding="#{teachingSubAndClassesController.schoolStaffDataPanel.dataTable}"/>
+            </h:form>
+        </h:panelGroup>
+
+    </h:panelGroup>
+
+</html>
+
+

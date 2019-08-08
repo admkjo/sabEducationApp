@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    
+    <h:panelGroup layout="block" styleClass="input_form">
+        <h:form id="frmSchoolClassInput">
+            <h:panelGrid columns="4">
+                <h:outputLabel value ="Class Name"/>
+                <h:panelGroup>
+                    <h:inputText id="className" value="#{schoolClassController.schoolClass.className}" required="true" requiredMessage="*"  />
+                    <h:message for="className" errorClass="errorStyle"/>
+                </h:panelGroup>
+                <h:outputLabel value ="Educational Level"/>
+                <h:panelGroup>
+                    <h:selectOneMenu id="educationalLevel" value="#{schoolClassController.schoolClass.educationalLevel}" required="true" requiredMessage="*" >
+                        <f:selectItems value ="#{commonOptions.educationalLevelOptions}" />
+                    </h:selectOneMenu>
+                    <h:message for="educationalLevel"/>
+                </h:panelGroup>
+
+                <h:outputLabel value ="Class Programme "/>
+                <h:panelGroup>
+                    <h:selectOneMenu id="classProgrammeCode" value="#{schoolClassController.schoolClass.classSchoolPrograme}" required="true" requiredMessage="*" >
+                        <f:selectItems value ="#{commonOptions.schoolProgrammeOptions}" />
+                    </h:selectOneMenu>
+                    <h:message for="classProgrammeCode"/>
+                </h:panelGroup>
+
+            </h:panelGrid>
+
+            <h:panelGroup binding="#{schoolClassController.schoolClassFormControl.component}"/>
+
+        </h:form>
+
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" styleClass="input_form">
+        <h:form id="frmSchoolClass_search_panel">
+            <h:panelGroup binding="#{schoolClassController.schoolClassDataPanel.searchPanel.component}"/>
+        </h:form>
+        <h:form id="frmSchoolClass_datatable">
+            <div style="overflow: scroll;height: 300px;">
+                <h:dataTable binding="#{schoolClassController.schoolClassDataPanel.dataTable}"/>
+            </div>
+        </h:form>
+    </h:panelGroup>
+
+</html>
+
+

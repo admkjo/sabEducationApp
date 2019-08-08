@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:panelGroup layout="block" style="float: left" >
+        <h:form>
+            <h:panelGrid columns="4">
+                <h:outputLabel value="Student Number"/>
+                <h:inputText value="#{singleStudentBillReportController.studentId}"/>
+                <h:commandButton value="Load Term Bill" action="#{singleStudentBillReportController.loadStudentLedgerHistory()}"/>
+            </h:panelGrid>
+            
+    </h:form>
+        </h:panelGroup>
+             <h:panelGroup layout="block" style="float: left; width: 250px; overflow: auto;">
+            <h:panelGrid columns="2" styleClass="data_table_panel">
+                
+                <h:outputText value="Student Name" />
+                <h:panelGroup style="float: left; text-align: center;" >
+                    <img height="100px;" width="90px;"
+                             style="display: block; border: solid #f9dd34 1px;"
+                             src="#{singleStudentBillReportController.billPaymentInfo.selectedStudent.studentPictureURL}"
+                             alt="#{singleStudentBillReportController.billPaymentInfo.selectedStudent.studentName}"/>
+                    <h:outputText value="#{singleStudentBillReportController.billPaymentInfo.selectedStudent}"
+                              id="student_name"/>
+
+                                                     
+
+                </h:panelGroup>
+               
+                <h:outputText value="Programe of Study" />
+                <h:outputText value="#{singleStudentBillReportController.billPaymentInfo.selectedStudent.programmeOffered}"
+                              id="programme_name"/>
+
+                <h:outputText value="Student Class" />
+                <h:outputText value="#{singleStudentBillReportController.billPaymentInfo.selectedStudent.currentClass}"
+                              id="class_name"/>
+
+                <h:outputText value="Student Category" />
+                <h:outputText value="#{singleStudentBillReportController.billPaymentInfo.selectedStudent.boardingStatus}"/>
+
+               
+
+            </h:panelGrid>
+             </h:panelGroup>
+            <h:panelGroup layout="block" style="clear: both;" styleClass="input_form"></h:panelGroup>
+            
+            <h:panelGroup layout="block" >
+                <h:form>
+                    <h:commandLink value="Print Bill Report" styleClass="report_link" action="#{singleStudentBillReportController.reportStudentBillForSelectedClass()}" target="_blank"/>
+                <p:dataTable value="#{singleStudentBillReportController.studentBillList}" var="stud" resizableColumns="true" rendered="#{singleStudentBillReportController.renderBillDataModel}">
+                    <p:column sortBy="#{stud.billItem.studentBillType.billTypeName}">
+                    <f:facet name="header">
+                        Student Bill Type
+                    </f:facet>
+                    <h:outputLabel value="#{stud.billItem.studentBillType.billTypeName}"/>
+                </p:column>
+                    <p:column resizable="true" sortBy="#{stud.billItem.itemName} #{stud.billItem.studentBillType.billTypeName}">
+                    <f:facet name="header">
+                        Bill Item
+                    </f:facet>
+                    <h:outputLabel value="#{stud.billItem.itemName}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        School Class
+                    </f:facet>
+                    <h:outputLabel value="#{stud.schoolClass.className}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        Academic Term
+                    </f:facet>
+                    <h:outputLabel value="#{stud.academicTerm}"/>
+                </p:column>
+                    <p:column rendered="#{singleStudentBillReportController.renderDayStudentAmt}"> 
+                    <f:facet name="header">
+                        Day  Amt
+                    </f:facet>
+                    <h:outputLabel value="#{stud.dayStudentAmt}"/>
+                </p:column>
+                    <p:column rendered="#{singleStudentBillReportController.renderBoardingAmt}">
+                    <f:facet name="header">
+                        Boarding Amt
+                    </f:facet>
+                    <h:outputLabel value="#{stud.boardingStudentAmt}"/>
+                </p:column>
+                     <p:column >
+                    <f:facet name="header">
+                        Action
+                    </f:facet>
+                         <h:commandLink value="Remove" action="#{singleStudentBillReportController.removeBill()}"/>
+                </p:column>
+            </p:dataTable>
+                    </h:form>
+            </h:panelGroup>
+            
+             </h:panelGroup>
+        <h:form>
+            
+        </h:form>
+           
+    </h:body>
+</html>
+
+

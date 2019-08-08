@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:body>
+        <p:panel style="height: 600px">
+            <f:facet name="header">
+                <span style="float: left">Class Teacher Report Comment</span>
+            </f:facet>
+            <h:form>
+                <h:panelGrid columns="2" width="60%">
+                    <h:outputLabel value="Staff Class"/>
+                    <h:selectOneMenu style="width: 120px" value="#{classTeacherReportCommentController.selectedClass}">
+                        <p:ajax event="change" listener="#{classTeacherReportCommentController.loadStudentInSelectedClassTeacherClass()}" update="studen"/>
+                        <f:selectItem itemLabel="--Select--" />
+                        <f:selectItems value="#{classTeacherReportCommentController.staffClass}" />
+                    </h:selectOneMenu>
+
+                </h:panelGrid>
+                <h:panelGrid columns="2" width="70%">
+                    <h:outputLabel value="Student List"/>
+                    <h:selectOneMenu style="width: 120px" value="#{classTeacherReportCommentController.selectedStudent}" id="studen">
+                        <p:ajax event="change" listener="#{classTeacherReportCommentController.loadStudentMarks()}" update="mark studName allCond allAttitu allInterst allRema att exp"/>
+                        <f:selectItem itemLabel="--Select--"/>
+                        <f:selectItems value="#{classTeacherReportCommentController.allStudentInSelectedClass}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="Selected Student"/>
+                    <h:inputText id="studName" value="#{classTeacherReportCommentController.student.studentName}" size="48" readonly="true" style="background-color: #ffef8f;font-weight: 400"/>
+                    <h:commandButton value="Previous Student" action="#{classTeacherReportCommentController.loadPreviousStudent()}"/> 
+                    <h:commandButton value=" Next Student" action="#{classTeacherReportCommentController.loadNextStudent()}"/>
+                </h:panelGrid>
+                <br/>
+                <p:dataTable id="mark" value="#{classTeacherReportCommentController.allStudentMarks}" var="stud">
+                    <p:column>
+                        <f:facet name="header">
+                            Subject
+                        </f:facet>
+                        <h:outputLabel value="#{stud.schoolSubject.subjectName}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Class Score
+                        </f:facet>
+                        <h:outputLabel value="#{stud.classMark}">
+                            <f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+                        </h:outputLabel>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Exam Score
+                        </f:facet>
+                        <h:outputLabel value="#{stud.examMark}">
+                            <f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+                        </h:outputLabel>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Total
+                        </f:facet>
+                        <h:outputLabel value="#{stud.classMark + stud.examMark}">
+                            <f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+                        </h:outputLabel>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Grade
+                        </f:facet>
+                        <h:outputLabel value="#{stud.grade}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Remarks
+                        </f:facet>
+                        <h:outputLabel value="#{stud.grade_remark}"/>
+                    </p:column>
+                </p:dataTable>
+
+
+                <h:panelGroup layout="block" style="margin-top: 4px">
+                    <p:separator style="width: 100%;height: 3px"/>
+                    <h:panelGrid columns="4" width="50%">
+                        <h:outputLabel value="Attendance"/>
+                        <h:inputText id="att" value="#{classTeacherReportCommentController.studentAttendance}"   requiredMessage="Please Enter Attendance"/>
+                        <h:outputLabel value="Out Of "/>
+                        <h:inputText id="exp" value="#{classTeacherReportCommentController.expectedAttendance}"   requiredMessage="Please Enter Out Of Attendance"/>
+                    </h:panelGrid>
+                    <br/>
+                    <h:panelGrid columns="2" width="99%"> 
+                        <h:panelGrid columns="2">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Conduct"/>
+                                <h:selectOneMenu style="width: 120px" value="#{classTeacherReportCommentController.selectedConduct}">
+                                    <f:selectItem itemLabel="--select--"/>
+                                    <f:selectItems value="#{classTeacherReportCommentController.allConductComment}"/>
+                                    <p:ajax event="change" listener="#{classTeacherReportCommentController.addConduct()}" update="allCond" />
+                                </h:selectOneMenu>
+                            </h:panelGrid>
+                            <h:inputTextarea cols="20" rows="2" value="#{classTeacherReportCommentController.allConduct}" id="allCond"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Attitude"/>
+                                <h:selectOneMenu style="width: 120px" value="#{classTeacherReportCommentController.selectedAttitude}">
+                                    <f:selectItem itemLabel="--select--"/>
+                                    <f:selectItems value="#{classTeacherReportCommentController.allAttitudeComment}"/>
+                                    <p:ajax event="change" listener="#{classTeacherReportCommentController.addAttitude()}" update="allAttitu" />
+
+                                </h:selectOneMenu>
+                            </h:panelGrid>
+                            <h:inputTextarea cols="20" rows="2" value="#{classTeacherReportCommentController.allAttitude}" id="allAttitu"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Interest"/>
+                                <h:selectOneMenu style="width: 120px" value="#{classTeacherReportCommentController.selectedInterest}">
+                                    <f:selectItem itemLabel="--select--"/>
+                                    <f:selectItems value="#{classTeacherReportCommentController.allInterestComment}"/>
+                                    <p:ajax event="change" listener="#{classTeacherReportCommentController.addInterest()}" update="allInterst" />
+                                </h:selectOneMenu>
+
+                            </h:panelGrid>
+                            <h:inputTextarea cols="20" rows="2" value="#{classTeacherReportCommentController.allInterest}" id="allInterst"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Remarks"/>
+                                <h:selectOneMenu style="width: 120px" value="#{classTeacherReportCommentController.selectedRemark}">
+                                    <f:selectItem itemLabel="--select--"/>
+                                    <f:selectItems value="#{classTeacherReportCommentController.allRemarkComment}"/>
+                                    <p:ajax event="change" listener="#{classTeacherReportCommentController.addRemark()}" update="allRema" />
+                                </h:selectOneMenu>
+
+                            </h:panelGrid>
+                            <h:inputTextarea cols="20" rows="2" value="#{classTeacherReportCommentController.allRemark}" id="allRema"/>
+                        </h:panelGrid>
+
+                    </h:panelGrid>
+
+                </h:panelGroup>
+                <h:panelGrid columns="1">
+                    <h:commandButton value="Save" action="#{classTeacherReportCommentController.saveAll()}" />
+                </h:panelGrid>
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>
+
+

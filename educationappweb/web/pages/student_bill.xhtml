@@ -1,0 +1,138 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+    <h:panelGroup layout="block">
+
+        <h:panelGroup layout="block" styleClass="input_form">
+
+            <h:form id="frmStudentBillInput">
+                <ui:include src="../pagefragments/single_class_selection.xhtml" />
+                <h:panelGroup layout="block">
+
+
+                    <h:panelGrid columns="2" width="40%">
+                        <h:panelGroup>
+                            <h:outputLabel value="Apply to All Year Group" />
+                            <h:selectBooleanCheckbox value="#{studentBillController.applyBillToAllYearGroup}">
+                                <p:ajax listener="#{studentBillController.changeApplyToAllYearGroup()}"/>
+                            </h:selectBooleanCheckbox>
+                        </h:panelGroup>
+                        <h:panelGroup>
+                            <h:outputLabel value="Apply to All Classes" />
+                            <h:selectBooleanCheckbox value="#{studentBillController.applyBillToAllClass}">
+                                <p:ajax listener="#{studentBillController.changeApplyToAllClass()}"/>
+                            </h:selectBooleanCheckbox>
+
+                        </h:panelGroup>
+                    </h:panelGrid>
+                </h:panelGroup>
+
+
+                <h:panelGrid columns="4">
+                    <h:outputText value ="Student Bill Type"/>
+                    <h:panelGroup>
+                        <h:selectOneMenu id="studentBillType" value="#{studentBillController.studentBill.studentBillType}" required="true" requiredMessage="*" >
+                            <f:selectItems value ="#{commonOptions.paymentTypeOptions}" />
+                        </h:selectOneMenu>
+                        <h:message for="studentBillType" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="Bill Item"/>
+                    <h:panelGroup>
+                        <h:selectOneMenu id="billItem" value="#{studentBillController.studentBill.billItem}" required="true" requiredMessage="*" >
+                            <f:selectItems value ="#{commonOptions.studentBillItemOptions}" />
+                        </h:selectOneMenu>
+                        <h:message for="billItem" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="Day Student Amt"/>
+                    <h:panelGroup>
+                        <h:inputText id="dayStudentAmt" value="#{studentBillController.studentBill.dayStudentAmt}" required="true" requiredMessage="*"  />
+                        <h:message for="dayStudentAmt" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="Boarding Student Amt"/>
+                    <h:panelGroup>
+                        <h:inputText id="boardingStudentAmt" value="#{studentBillController.studentBill.boardingStudentAmt}" required="true" requiredMessage="*"  />
+                        <h:message for="boardingStudentAmt" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+                    <h:outputLabel value="Gender"/>
+                    <h:panelGroup>
+                        <h:selectOneMenu value="#{studentBillController.selectedGender}">
+                            <f:selectItem itemValue="All"/>
+                            <f:selectItem itemValue="Male"/>
+                            <f:selectItem itemValue="Female"/>
+                        </h:selectOneMenu>
+                    </h:panelGroup>
+                    <h:outputLabel value="Type Of Entry"/>
+                    <h:panelGroup>
+                        <h:selectOneMenu value="#{studentBillController.debitCredit}">
+                            <f:selectItem itemValue="DEBIT" itemLabel="DEBIT"/>
+                            <f:selectItem itemValue="CREDIT" itemLabel="CREDIT"/> 
+                        </h:selectOneMenu>
+                    </h:panelGroup>
+
+
+                </h:panelGrid>
+
+                <h:panelGroup binding="#{studentBillController.studentBillFormControl.component}"/>
+
+            </h:form>
+
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="input_form">
+
+            <h:form>
+
+                <h:commandButton value="Load Bill For Selected Class"
+                                 action="#{studentBillController.loadStudentBillForSelectedClass}"
+                                 styleClass="comand_link" />
+
+                <h:selectOneMenu value="#{studentBillController.selectedSchoolClass}">
+                    <f:selectItems value="#{commonOptions.academicYearActiveSchoolClassesOptions}" />
+                </h:selectOneMenu>
+                <h:panelGrid columns="2">
+
+                    <h:commandLink value="Report Bill For Selected Class" target="_blank"
+                                   action="#{studentBillController.reportStudentBillForSelectedClass}"
+                                   styleClass="comand_link" />
+
+                    <h:commandButton value="Reverse Bill for Year Group" 
+                                     action="#{studentBillController.reverseBillForYearGroup()}"
+                                     />
+
+                </h:panelGrid>
+
+            </h:form>
+
+            <h:form id="frmStudentBill_search_panel" rendered="false">
+                <h:panelGroup binding="#{studentBillController.studentBillDataPanel.searchPanel.component}"/>
+            </h:form>
+            <h:form id="frmStudentBill_datatable">
+                <h:dataTable binding="#{studentBillController.studentBillDataPanel.dataTable}"/>
+            </h:form>
+        </h:panelGroup>
+
+        <h:panelGroup layout="block">
+            <h:form>
+                <h:panelGrid columns="4">
+
+                    <h:commandButton value="Apply Bill to Student Ledger Account"
+                                     action="#{studentBillController.applyPreparedCommonBillToStudentLedger}"/>
+
+                </h:panelGrid>
+            </h:form>
+        </h:panelGroup>
+
+
+    </h:panelGroup>
+
+
+</html>
+
+

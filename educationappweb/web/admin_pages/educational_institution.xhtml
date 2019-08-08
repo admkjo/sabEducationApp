@@ -1,0 +1,126 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:panelGroup layout="block">
+        <h:form id="frmEducationalInstitutionInput">
+            <h:panelGrid columns="4">
+                <h:outputText value ="School Number"/>
+                <h:panelGroup>
+                    <h:inputText id="schoolNumber" value="#{educationalInstitutionController.educationalInstitution.schoolNumber}" required="true" requiredMessage="*"  />
+                    <h:message for="schoolNumber" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputText value ="School Name"/>
+                <h:panelGroup>
+                    <h:inputText id="schoolName" value="#{educationalInstitutionController.educationalInstitution.schoolName}" required="true" requiredMessage="*"  />
+                    <h:message for="schoolName" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputText value ="Date of Registration"/>
+                <h:panelGroup>
+                    <rich:calendar id="dateOfRegistration" value="#{educationalInstitutionController.educationalInstitution.dateOfRegistration}" required="true" requiredMessage="*"  />
+                    <h:message for="dateOfRegistration" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputText value ="Education Institution Cycle"/>
+                <h:panelGroup>
+                    <h:selectOneMenu id="EducationInstitutionCycle" value="#{educationalInstitutionController.educationalInstitution.educationInstitutionCycle}" required="true" requiredMessage="*" >
+                        <f:selectItems value ="#{commonOptions.educationInstitutionCycleOptions}" />
+                    </h:selectOneMenu>
+                    <h:message for="EducationInstitutionCycle" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputText value ="Grading System"/>
+                <h:panelGroup>
+                    <h:inputText id="gradingSystemId" value="#{educationalInstitutionController.educationalInstitution.gradingSystem}" required="false" requiredMessage="*"  />
+                    <h:message for="gradingSystemId" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputText value ="School Contact Number"/>
+                <h:panelGroup>
+                    <h:inputText id="schoolContactNumber" value="#{educationalInstitutionController.educationalInstitution.schoolContactNumber}" required="true" requiredMessage="*"  />
+                    <h:message for="schoolContactNumber" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputText value ="School Address"/>
+                <h:panelGroup>
+                    <h:inputTextarea id="schoolAddress" value="#{educationalInstitutionController.educationalInstitution.schoolAddress}" required="true" requiredMessage="*"  />
+                    <h:message for="schoolAddress" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputText value ="Average Class Score"/>
+                <h:panelGroup>
+                    <h:inputText id="averageClassScore" value="#{educationalInstitutionController.educationalInstitution.averageClassScore}" required="true" requiredMessage="*"  />
+                    <h:message for="averageClassScore" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputText value ="Average Exam Score"/>
+                <h:panelGroup>
+                    <h:inputText id="averageExamScore" value="#{educationalInstitutionController.educationalInstitution.averageExamScore}" required="true" requiredMessage="*"  />
+                    <h:message for="averageExamScore" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+                <h:outputText value ="Total Class Score"/>
+                <h:panelGroup>
+                    <h:inputText id="totalClassMark" value="#{educationalInstitutionController.educationalInstitution.totalClassMark}"
+                                 required="true" requiredMessage="*"  >
+                    </h:inputText>
+                    <h:message for="totalClassMark" errorClass="noTextErrorStyle"/>
+                </h:panelGroup> 
+                <h:outputText value ="Total Exam Score"/>
+                <h:panelGroup>
+                    <h:inputText id="totalExamMark" value="#{educationalInstitutionController.educationalInstitution.totalExamMark}" required="true" requiredMessage="*"  />
+                    <h:message for="totalExamMark" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+                <h:outputText value ="School Alias"/>
+                <h:panelGroup>
+                    <h:inputText id="schoolAlias" value="#{educationalInstitutionController.educationalInstitution.schoolAlias}" required="false" requiredMessage="*"  />
+                    <h:message for="schoolAlias" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputText value ="School Motor"/>
+                <h:panelGroup>
+                    <h:inputTextarea id="schoolMotor" value="#{educationalInstitutionController.educationalInstitution.schoolMotor}" required="true" requiredMessage="*"  />
+                    <h:message for="schoolMotor" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputText value ="Master Username"/>
+                <h:panelGroup>
+                    <h:inputText id="masterUsername" value="#{educationalInstitutionController.educationalInstitution.masterUsername}" required="true" requiredMessage="*"  />
+                    <h:message for="masterUsername" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputText value ="Master Password"/>
+                <h:panelGroup>
+                    <h:inputText id="masterPassword" value="#{educationalInstitutionController.educationalInstitution.masterPassword}" required="true" requiredMessage="*"  />
+                    <h:message for="masterPassword" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputText value ="SMS Name"/>
+                <h:panelGroup>
+                    <h:inputText id="smsName" value="#{educationalInstitutionController.educationalInstitution.schSendingId}" required="false" requiredMessage="*"  />
+                    <h:message for="smsName" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+            </h:panelGrid>
+
+            <h:panelGroup binding="#{educationalInstitutionController.educationalInstitutionFormControl.component}"
+                          rendered="#{uar.sabonay_edit}" />
+
+        </h:form>
+
+    </h:panelGroup>
+    <h:panelGroup layout="block">
+        <h:form id="frmEducationalInstitution_search_panel">
+            <h:panelGroup binding="#{educationalInstitutionController.educationalInstitutionDataPanel.searchPanel.component}"
+                          rendered="#{uar.sabonay_edit}" />
+        </h:form>
+        <h:form id="frmEducationalInstitution_datatable">
+            <h:dataTable binding="#{educationalInstitutionController.educationalInstitutionDataPanel.dataTable}"/>
+        </h:form>
+    </h:panelGroup>
+
+
+</html>
+

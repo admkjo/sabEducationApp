@@ -1,0 +1,128 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:panelGroup layout="block" styleClass="input_form">
+        <h:form id="frmSchoolStaffInput">
+            <h:panelGrid columns="4">
+                <h:outputLabel value ="Staff Id"/>
+                <h:panelGroup>
+                    <h:inputText id="staffId" value="#{schoolStaffController.schoolStaffId}"  required="true" requiredMessage="*Required">
+                        <!--<p:ajax event="blur" listener="#{schoolStaffController.staffIdCheck()}" update="schStaff" />-->
+                        <p:ajax   event="blur" listener="#{schoolStaffController.staffIdCheck()}"    update="idExist" />
+                    </h:inputText>
+
+                    <h:outputLabel value="#{schoolStaffController.staffIdExist}" id="idExist" style="color: #F00003"/>
+                    <h:message id="schStaff" for="staffId" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+                <h:outputLabel value ="Surname"/>
+                <h:panelGroup>
+                    <h:inputText id="surname" value="#{schoolStaffController.schoolStaff.surname}" required="true" requiredMessage="*Required"  />
+                    <h:message for="surname" errorClass="noTextErrorStyle"/>
+                </h:panelGroup> 
+          
+                <h:outputLabel value ="Othernames"/>
+                <h:panelGroup>
+                    <h:inputText id="othernames" value="#{schoolStaffController.schoolStaff.othernames}" required="true" requiredMessage="*Required"  />
+                    <h:message for="othernames" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+                <h:outputLabel value ="Gender"/>
+                <h:panelGroup>
+                    <h:selectOneMenu id="gender" value="#{schoolStaffController.schoolStaff.gender}" required="true" requiredMessage="*Required" >
+                        <f:selectItems value ="#{commonOptions.genderOptions}" />
+                    </h:selectOneMenu>
+                    <h:message for="gender" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputLabel value ="Date Of Birth"/>
+                <h:panelGroup>
+                    <rich:calendar id="dateOfBirth" value="#{schoolStaffController.schoolStaff.dateOfBirth}" required="true" requiredMessage="*Required" />
+                    <h:message for="dateOfBirth" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputLabel value ="Disabilities/Allergies"/>
+                <h:panelGroup>
+                    <h:inputText id="diabilitiesAllergies" value="#{schoolStaffController.schoolStaff.diabilitiesAllergies}"  />
+                    <h:message for="diabilitiesAllergies" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputLabel value ="Region"/>
+                <h:panelGroup>
+                    <h:selectOneMenu id="regionId" value="#{schoolStaffController.schoolStaff.region}" required="true" requiredMessage="*Required" >
+                        <f:selectItems value="#{commonOptions.regionOptions}" />
+                    </h:selectOneMenu>
+                    <h:message for="regionId" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputLabel value ="Hometown"/>
+                <h:panelGroup>
+                    <h:inputText id="hometown" value="#{schoolStaffController.schoolStaff.hometown}" required="true" requiredMessage="*Required"  />
+                    <h:message for="hometown" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputLabel value ="Date Of Appointment"/>
+                <h:panelGroup>
+                    <rich:calendar id="dateOfAppointment" value="#{schoolStaffController.schoolStaff.dateOfAppointment}" required="true" requiredMessage="*Required"  />
+
+                    <h:message for="dateOfAppointment" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputLabel value ="Email Address"/>
+                <h:panelGroup>
+                    <h:inputText id="emailAddress" value="#{schoolStaffController.schoolStaff.emailAddress}" required="true" requiredMessage="*Required"  />
+                    <h:message for="emailAddress" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputLabel value ="Contact Number"/>
+                <h:panelGroup>
+                    <h:inputText id="contactNumber" value="#{schoolStaffController.schoolStaff.contactNumber}" required="true" requiredMessage="*Required"  />
+                    <h:message for="contactNumber" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputLabel value ="Staff Category" />
+                <h:panelGroup>
+                    <h:selectOneMenu id="staffCategory" value="#{schoolStaffController.schoolStaff.staffCategory}" required="true" requiredMessage="*Required" >
+                        <f:selectItems value ="#{commonOptions.staffCategoryOptions}" />
+                    </h:selectOneMenu>
+                    <h:message for="staffCategory" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+                <h:outputLabel value ="In Service" />
+                <h:panelGroup>
+                    <h:selectOneMenu id="inService" value="#{schoolStaffController.schoolStaff.inService}" required="true" requiredMessage="*Required" >
+                        <f:selectItems value ="#{commonOptions.yesNoStringOptions}" />
+                    </h:selectOneMenu>
+                    <h:message for="inService" errorClass="noTextErrorStyle"/>
+                </h:panelGroup>
+
+            </h:panelGrid>
+
+            <h:panelGroup binding="#{schoolStaffController.schoolStaffFormControl.component}" rendered="#{uar.schStaff_Write}"/>
+
+        </h:form>
+
+
+    </h:panelGroup>
+    <rich:panel header="Staff Info Print out" >
+
+        <h:form>
+            <h:commandLink value="In Service Staff Summary Info" target="_blank" styleClass="report_link"
+                           action="#{schoolStaffController.reportStaffSummaryInfo}"/>
+
+            <h:commandLink value="Staff Detail info" target="_blank" styleClass="report_link"  rendered="false"    />
+        </h:form>
+
+    </rich:panel>
+    <h:panelGroup layout="block" styleClass="input_form">
+        <h:form id="frmSchoolStaff_search_panel">
+            <h:panelGroup binding="#{schoolStaffController.schoolStaffDataPanel.searchPanel.component}"/>
+        </h:form>
+        <h:form id="frmSchoolStaff_datatable" >
+            <h:dataTable binding="#{schoolStaffController.schoolStaffDataPanel.dataTable}"/>
+        </h:form>
+    </h:panelGroup>
+
+</html>
+

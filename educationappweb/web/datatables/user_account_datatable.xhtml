@@ -1,0 +1,68 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:f="http://java.sun.com/jsf/core"
+              xmlns:rich="http://richfaces.org/rich"
+              xmlns:a4j="http://richfaces.org/a4j"
+              xmlns:p="http://primefaces.org/ui"
+              xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:panelGroup>
+        <h:panelGrid columns="4" >
+            <h:outputLabel value ="Search" />
+            <h:inputText value ="#{searchText}" />
+            <h:selectOneMenu value ="#{searchField}">
+                <f:selectItem itemLabel="Staff Surname" itemValue="schoolStaff.surname" />
+                <f:selectItem itemLabel="Username" itemValue="username" />
+                <f:selectItem itemLabel="User Category" itemValue="userCategory" />
+            </h:selectOneMenu >
+            <h:commandButton binding ="#{searchButton}" />
+        </h:panelGrid>
+    </h:panelGroup>
+
+    <h:dataTable value="#{tableList}" var="listItem" binding="#{dataTable}"
+                 styleClass="data_table_panel" rowClasses="odd_row,even_row" >
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputLabel value="School Staff" />
+            </f:facet>
+            <h:outputText id="school_staff_name" value="#{listItem.schoolStaff}" />
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputLabel value="Username" />
+            </f:facet>
+            <h:outputText value="#{listItem.username}" />
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputLabel value="User Category" />
+            </f:facet>
+            <h:outputText value="#{listItem.userCategory}" />
+        </h:column>
+
+        <h:column rendered="false">
+            <f:facet name="header">
+                <h:outputLabel value="User Access" />
+            </f:facet>
+            <h:outputText value="#{listItem.userAccess}" />
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputLabel value="School Number" />
+            </f:facet>
+            <h:outputText value="#{listItem.schoolNumber}" />
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputLabel value="Select" />
+            </f:facet>
+            <h:commandLink binding="#{rowSelectionAction}" />
+        </h:column>
+
+    </h:dataTable>
+</h:panelGroup>

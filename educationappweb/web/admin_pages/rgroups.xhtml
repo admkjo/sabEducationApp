@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:panelGroup layout="block" styleClass="input_form">
+
+        <h:form>
+
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Application ID" for="appid" />
+                <h:inputText id="appid" value="#{rgroupsController.appid}" title="AppID" readonly="true"
+                             style="color: red;margin-bottom: 20px;text-decoration: blink;font-size: 12px"/>
+                
+                <h:outputLabel value="#{bundle.EditRgroupsLabel_groupid}" for="rgroupid" />
+                <h:inputText id="rgroupid" value="#{rgroupsController.groupid}" title="#{bundle.EditRgroupsTitle_groupid}" required="true" requiredMessage="#{bundle.EditRgroupsRequiredMessage_groupid}"/>
+                <h:outputLabel value="#{bundle.EditRgroupsLabel_groupdesc}" for="rgroupdesc" />
+                <h:inputText id="rgroupdesc" value="#{rgroupsController.groupdesc}" title="#{bundle.EditRgroupsTitle_groupdesc}" />
+            </h:panelGrid>
+            
+            <h:panelGroup binding="#{rgroupsController.rgroupFormControl.component}" rendered="#{uar.rgroup_edit}"/>
+
+        </h:form>
+
+    </h:panelGroup>
+    
+    <h:panelGroup layout="block" style="clear: both;" styleClass="input_form" rendered="#{uar.rgroup_edit}">
+        <h:form>
+            <h:panelGroup binding="#{rgroupsController.rgroupDataPanel.searchPanel.component}"/>
+        </h:form>
+        <h:form id="frm_rgroup_datatable" style="height: 220px; overflow: auto;">
+            <h:dataTable binding="#{rgroupsController.rgroupDataPanel.dataTable}"/>
+        </h:form>
+    </h:panelGroup>
+
+
+</html>
+

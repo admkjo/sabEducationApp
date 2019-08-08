@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:panelGroup layout="block">
+
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmStudentBillItemInput">
+                <h:panelGrid columns="6">
+                    <h:outputText value ="Item Name"/>
+                    <h:panelGroup>
+                        <h:inputText id="itemName" value="#{studentBillItemController.studentBillItem.itemName}" required="true" requiredMessage="*Required"  />
+                        <h:message for="itemName" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+                    <h:outputText value="Bill Item Type"/>
+                    <h:selectOneMenu value="#{studentBillItemController.studentBillItem.studentBillType}">
+                        <f:selectItems value="#{commonOptions.studentBillType}" />
+                    </h:selectOneMenu>
+                    <h:outputText value ="Item Description"/>
+                    <h:panelGroup>
+                        <h:inputTextarea id="itemDescription" value="#{studentBillItemController.studentBillItem.itemDescription}" required="true" requiredMessage="*Required"  />
+                        <h:message for="itemName" errorClass="noTextErrorStyle"/> 
+                    </h:panelGroup> 
+                </h:panelGrid>
+
+                <h:panelGroup binding="#{studentBillItemController.studentBillItemFormControl.component}"/>
+
+            </h:form>
+
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmStudentBillItem_search_panel">
+                <h:panelGroup binding="#{studentBillItemController.studentBillItemDataPanel.searchPanel.component}"/>
+            </h:form>
+            <h:form id="frmStudentBillItem_datatable">
+                <h:dataTable binding="#{studentBillItemController.studentBillItemDataPanel.dataTable}"/>
+            </h:form>
+        </h:panelGroup>
+
+
+    </h:panelGroup>
+
+</html>
+
+

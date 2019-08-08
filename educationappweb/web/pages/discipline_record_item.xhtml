@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:panelGroup layout="block">
+
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmDisciplineRecordItemInput">
+
+                <h:panelGrid columns="2">
+
+                    <h:outputText value ="School ID"/>
+                    <h:panelGroup>
+                        <h:inputText id="schid" value="#{disciplineRecordItemController.disciplineRecordItem.schoolNumber}"
+                                     readonly="true"
+                                     style="color: red;margin-bottom: 20px;text-decoration: blink;font-size: 12px"/>
+                        <h:message for="schid" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+                    
+                    <h:outputText value ="Record Item Name"/>
+                    <h:panelGroup>
+                        <h:inputText id="recordItemName" value="#{disciplineRecordItemController.disciplineRecordItem.recordItemName}" required="true" requiredMessage="*Required"/>
+                        <h:message for="recordItemName" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="Record Description"/>
+                    <h:panelGroup>
+                        <h:inputTextarea id="recordDescription" value="#{disciplineRecordItemController.disciplineRecordItem.recordItemDescription}"  />
+                        <h:message for="recordDescription" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                </h:panelGrid>
+
+                <h:panelGroup binding="#{disciplineRecordItemController.disciplineRecordItemFormControl.component}"/>
+
+            </h:form>
+
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="input_form">
+
+            <h:form id="frmDisciplinerecorditem_search_panel" rendered="true">
+                <h:panelGroup binding="#{disciplineRecordItemController.disciplineRecordItemDataPanel.searchPanel.component}"/>
+            </h:form>
+            <h:form id="frmDisciplinerecorditem_datatable">
+                <h:dataTable binding="#{disciplineRecordItemController.disciplineRecordItemDataPanel.dataTable}"/>
+            </h:form>
+        </h:panelGroup>
+
+    </h:panelGroup>
+
+</html>
+
+

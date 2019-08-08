@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGroup layout="block" styleClass="input_form">
+                <h:panelGrid columns="6" width="99%">
+                    <h:outputLabel value="Select Bill Item"/>
+                    <h:selectOneMenu style="width: 130px">
+                        <f:selectItem itemLabel="SELECT ONE"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Academic Year"/>
+                    <h:selectOneMenu style="width: 160px">
+                        <f:selectItem itemLabel="DAILY_REPORT"/>
+                        <f:selectItem itemLabel="MONTHLY_REPORT"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Academic Term"/>
+                    <h:selectOneMenu style="width: 160px">
+                        <f:selectItem itemLabel="DAILY_REPORT"/>
+                        <f:selectItem itemLabel="MONTHLY_REPORT"/>
+                    </h:selectOneMenu>
+                    <h:commandButton value="Load Summary"/>
+                    <h:commandButton value="Report"/>
+                </h:panelGrid>
+                <br/>
+                <p:dataTable>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Bill Item"/>
+                        </f:facet>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Date Paid"/>
+                        </f:facet>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Amount Involve"/>
+                        </f:facet>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Receipt Number"/>
+                        </f:facet>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="Recorded By"/>
+                        </f:facet>
+                    </p:column>
+                </p:dataTable>
+            </h:panelGroup>
+        </h:form>
+    </h:body>
+</html>
+

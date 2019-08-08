@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="student_pages/student_exam_result.xhtml" x="1400" y="450" zoom="true"/>
+        <Node id="pagefragments/toolbar.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="pages/school_programme.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="pagefragments/login.xhtml" x="400" y="1050" zoom="true"/>
+        <Node id="pages/subject_combination.xhtml" x="1400" y="750" zoom="true"/>
+        <Node id="pages/class_membership.xhtml" x="1150" y="750" zoom="true"/>
+        <Node id="pages/teaching_subject.xhtml" x="2900" y="300" zoom="true"/>
+        <Node id="smessaging/preview_invoice.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="smessaging/bill_report_blast.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="pages/bill_payment_report.xhtml" x="1400" y="900" zoom="true"/>
+        <Node id="pages/general_reports.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="index.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="pages/mock_exam_mark.xhtml" x="650" y="750" zoom="true"/>
+        <Node id="pages/student_bill_item.xhtml" x="400" y="750" zoom="true"/>
+        <Node id="pagefragments/multi_school_class_selection.xhtml" x="1650" y="600" zoom="true"/>
+        <Node id="default.xhtml" x="2150" y="150" zoom="true"/>
+        <Node id="smessaging/check_sending.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="pages/financial_report.xhtml" x="1900" y="750" zoom="true"/>
+        <Node id="view_params/vp_student_mark.xhtml" x="1150" y="450" zoom="true"/>
+        <Node id="pagefragments/user_action.xhtml" x="1150" y="300" zoom="true"/>
+        <Node id="pages/school_staff.xhtml" x="2650" y="150" zoom="true"/>
+        <Node id="pages/class_teacher.xhtml" x="400" y="600" zoom="true"/>
+        <Node id="admin_pages/educational_institution.xhtml" x="3150" y="150" zoom="true"/>
+        <Node id="datatables/school_staff_datatable_4_user_account.xhtml" x="1400" y="300" zoom="true"/>
+        <Node id="smessaging/sms_blast.xhtml" x="150" y="900" zoom="true"/>
+        <Node id="student_pages/student.xhtml" x="650" y="1050" zoom="true"/>
+        <Node id="pages/discipline_record_item.xhtml" x="650" y="1350" zoom="true"/>
+        <Node id="pages/academic_year.xhtml" x="150" y="1650" zoom="true"/>
+        <Node id="pages/school_billpayment_summary.xhtml" x="900" y="750" zoom="true"/>
+        <Node id="pages/student.xhtml" x="150" y="1350" zoom="true"/>
+        <Node id="pages/student_sms_account_topup.xhtml" x="900" y="900" zoom="true"/>
+        <Node id="pagefragments/user_action_links.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="pages/school_subject.xhtml" x="1650" y="750" zoom="true"/>
+        <Node id="pages/academic_term_active_classes.xhtml" x="1650" y="300" zoom="true"/>
+        <Node id="frontpage.xhtml" x="1150" y="600" zoom="true"/>
+        <Node id="pages/school_house.xhtml" x="1150" y="900" zoom="true"/>
+        <Node id="pages/academic_term.xhtml" x="650" y="1200" zoom="true"/>
+        <Node id="pagefragments/single_class_selection.xhtml" x="1400" y="150" zoom="true"/>
+        <Node id="pages/school_class.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="smessaging/client_invoices.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="pagefragments/multi_school_subject_selection.xhtml" x="1900" y="600" zoom="true"/>
+        <Node id="pages/discipline_record.xhtml" x="1400" y="1050" zoom="true"/>
+        <Node id="pages/setting.xhtml" x="1400" y="600" zoom="true"/>
+        <Node id="pages/student_marks.xhtml" x="150" y="750" zoom="true"/>
+        <Node id="pages/student_ledger.xhtml" x="1650" y="150" zoom="true"/>
+        <Node id="pages/student_bill.xhtml" x="1150" y="1200" zoom="true"/>
+        <Node id="pages/student_broadsheet.xhtml" x="2400" y="150" zoom="true"/>
+        <Node id="startpage.html" x="2400" y="600" zoom="true"/>
+        <Node id="datatables/sms_blast_datatable.xhtml" x="1650" y="900" zoom="true"/>
+        <Node id="view_expired.xhtml" x="2150" y="750" zoom="true"/>
+        <Node id="startuppage.xhtml" x="1150" y="1050" zoom="true"/>
+        <Node id="pages/student_initial_financial_balance.xhtml" x="650" y="1500" zoom="true"/>
+        <Node id="datatables/user_account_datatable.xhtml" x="650" y="600" zoom="true"/>
+        <Node id="pages/student_report.xhtml" x="2150" y="600" zoom="true"/>
+        <Node id="pages/student_term_report_note.xhtml" x="650" y="900" zoom="true"/>
+        <Node id="pagefragments/student_picture.xhtml" x="2150" y="300" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

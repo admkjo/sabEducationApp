@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:panelGroup layout="block" styleClass="current_page_name" style="width: 100%; background: #2694e8; background-color: #2694e8; display: block;">
+
+        <h:form>
+
+            <!-- getUserRequestedPageURL
+            <h:outputLabel  value="Current Page:  #{userdata.userRequestedPageName}" style="float: left; font-weight: bolder;"/>
+
+                        <rich:toolbar itemSeparator="grid" >
+            -->
+
+            <h:outputLabel  value="Current Page:  #{userdata.userRequestedPageName}" style="float: left; font-weight: bolder;"/>
+
+            <h:commandButton value="logout" action="#{indexPageController.logoutUser}"
+                             styleClass="barsearchbutton" style="float: right; padding-right: 5px;" />
+
+            <h:commandLink rendered="false"  target="_blank" styleClass="report_link"  value="User Guide" style="float: right;" action="#{indexPageController.showUserGuide}"  />
+            <!--
+                        </rich:toolbar>-->
+
+        </h:form>
+
+    </h:panelGroup>
+
+</html>
+
+

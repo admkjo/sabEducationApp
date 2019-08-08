@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="waec_album" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" uuid="0be437fa-85f3-4f0c-8197-cf78198b93e5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>	
+	<parameter name="schoolBadge" class="java.lang.String"/>
+	<parameter name="schoolName" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="reportTitle" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="academicYear" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="dateOfReport" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="numberOnRoll" class="java.lang.String"/>
+	<parameter name="headSignature" class="java.lang.String" isForPrompting="false"/>
+	<field name="studentName" class="java.lang.String"/>
+	<field name="studentBasicId" class="java.lang.String"/>
+	<field name="studentPicture" class="java.lang.String"/>
+	<variable name="todayDate" class="java.util.Date">
+		<variableExpression><![CDATA[new java.util.Date()]]></variableExpression>
+	</variable>
+	<variable name="studentsImagesV" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="12" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="443" splitType="Stretch">
+			<elementGroup>
+				<line>
+					<reportElement key="line-2" x="0" y="67" width="535" height="1" uuid="a34a23d3-ebbb-4d66-b2f5-1b187262df3f"/>
+					<graphicElement fill="Solid">
+						<pen lineWidth="0.6"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement key="line-3" x="0" y="64" width="535" height="1" uuid="e3cffdec-ee21-4059-83e1-4768ef09f67c"/>
+					<graphicElement>
+						<pen lineWidth="2.0"/>
+					</graphicElement>
+				</line>
+				<image scaleImage="FillFrame">
+					<reportElement key="image-1" x="3" y="2" width="68" height="66" uuid="d6df104f-6c9e-48e6-a7ce-ca7ac0cdc078"/>
+					<imageExpression><![CDATA[$P{schoolBadge}]]></imageExpression>
+				</image>
+			</elementGroup>
+			<staticText>
+				<reportElement x="118" y="2" width="266" height="15" uuid="9fec3b3f-4a46-48d9-bd44-212f9f1c2863"/>
+				<text><![CDATA[THE WEST AFRICAN EXAMINATIONS COUNCIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="17" width="314" height="17" uuid="e8b2f01a-d1ba-4233-9715-cbd938109fdb"/>
+				<text><![CDATA[WEST AFRICAN SENIOR SCHOOL CERTIFICATE EXAMINATION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="215" y="44" width="127" height="20" uuid="908f6016-01db-4fab-9138-ac7a517ff37a"/>
+				<text><![CDATA[PHOTO ALBUM - FINAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="68" width="187" height="20" uuid="7e1910b0-6484-4f4d-a2ef-0a1edc533347"/>
+				<text><![CDATA[SCHOOL NUMBER:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="88" width="187" height="20" uuid="0800ebd3-380d-4975-b5a5-5341bd298fc2"/>
+				<text><![CDATA[SCHOOL NAME:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="120" width="71" height="50" uuid="cb3b19d2-cb4c-4ed4-a5ab-37f42f57fc85"/>
+			</image>
+			<textField>
+				<reportElement x="274" y="138" width="100" height="20" uuid="cdabe849-1cf6-4e50-a2bb-99ac35bb7228"/>
+				<textFieldExpression><![CDATA[$F{studentBasicId}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="115" y="150" width="100" height="20" uuid="d7a166dc-67c2-434d-bce7-1715687ffea1"/>
+				<text><![CDATA[studentPicture]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="396" y="150" width="100" height="20" uuid="022dc469-c399-4a0c-bfdc-8f1c6ae9463b"/>
+				<textFieldExpression><![CDATA[$F{studentPicture}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="12" splitType="Stretch">
+			<staticText>
+				<reportElement x="305" y="0" width="229" height="12" forecolor="#999999" uuid="e8fb1db1-eda6-4ba9-af28-eebeeb24d0b5"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[(c) Sabonay Education]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band splitType="Stretch"/>
+	</lastPageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

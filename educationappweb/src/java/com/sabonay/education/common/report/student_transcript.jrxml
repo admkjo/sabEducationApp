@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="student_transcript" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" uuid="45b620ba-aea3-41a1-ac01-a84ee0162232">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="36"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Sabonay\\Sabonay Education\\sabonayEducation\\sabonayEducationDesktop\\src\\java\\com\\sabonay\\education\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="detailMarksSubReport" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="schoolBadge" class="java.lang.String"/>
+	<parameter name="schoolAddress" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="schoolName" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="schoolPhoneNumber" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="reportTitle" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="nextTermBegins" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="academicYear" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="dateOfReport" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="numberOnRoll" class="java.lang.String"/>
+	<parameter name="grading" class="java.lang.String" isForPrompting="false"/>
+	<field name="studentName" class="java.lang.String"/>
+	<field name="studentBasicId" class="java.lang.String"/>
+	<field name="programmeOfStudy" class="java.lang.String"/>
+	<field name="currentClass" class="java.lang.String"/>
+	<field name="boardingStatus" class="java.lang.String"/>
+	<field name="houseOfResidence" class="java.lang.String"/>
+	<field name="studentPicture" class="java.lang.String"/>
+	<field name="academicYear" class="java.lang.String"/>
+	<field name="academicTerm" class="java.lang.String"/>
+	<field name="termName" class="java.lang.String"/>
+	<field name="subjectGrade" class="java.lang.String"/>
+	<field name="subjectName" class="java.lang.String"/>
+	<field name="subjectScore" class="java.lang.String"/>
+	<variable name="todayDate" class="java.util.Date">
+		<variableExpression><![CDATA[new java.util.Date()]]></variableExpression>
+	</variable>
+	<group name="studentGroup">
+		<groupExpression><![CDATA[$F{studentBasicId}]]></groupExpression>
+		<groupHeader>
+			<band height="199">
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField" x="425" y="148" width="107" height="15" uuid="bc4d3722-11e5-4032-ab7e-f4ae7cf3e0ed"/>
+					<box leftPadding="3">
+						<bottomPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement>
+						<font fontName="Calibri" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{currentClass}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField" x="117" y="148" width="178" height="15" uuid="513d9be5-3cae-4d32-95d7-6e4584e5219c"/>
+					<box leftPadding="3">
+						<bottomPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement>
+						<font fontName="Calibri" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{programmeOfStudy}]]></textFieldExpression>
+				</textField>
+				<image scaleImage="FillFrame">
+					<reportElement x="468" y="1" width="66" height="62" uuid="bf085bea-ee15-4312-87d2-d7293b139ccd">
+						<printWhenExpression><![CDATA[$F{studentPicture} != null]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<pen lineWidth="0.75"/>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
+					</box>
+					<imageExpression><![CDATA[$F{studentPicture}]]></imageExpression>
+				</image>
+				<textField isBlankWhenNull="true">
+					<reportElement key="textField" mode="Opaque" x="425" y="165" width="107" height="15" uuid="19551735-725d-4d00-988f-cefee1e6cb27"/>
+					<box leftPadding="3">
+						<bottomPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement>
+						<font fontName="Calibri" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{boardingStatus}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField" x="117" y="165" width="178" height="15" uuid="46277f78-a9e5-49f5-8e4d-d05d2e1a86b5"/>
+					<box leftPadding="3">
+						<bottomPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement>
+						<font fontName="Calibri" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{dateOfReport}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField" mode="Opaque" x="0" y="86" width="535" height="24" forecolor="#FFFFFF" backcolor="#333333" uuid="bdba3315-aef3-41c0-b838-69d5bf5e6d80"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Cambria" size="15" isBold="true" isUnderline="false" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{reportTitle}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement key="staticText-7" x="305" y="132" width="116" height="15" uuid="48596f8e-75a4-4fc9-b537-7464d8cd64fb"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="Calibri" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[HOUSE:]]></text>
+				</staticText>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField" x="425" y="132" width="107" height="15" uuid="5e6989de-8924-49ec-8216-b5f8e46bf863"/>
+					<box leftPadding="3">
+						<bottomPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement>
+						<font fontName="Calibri" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{houseOfResidence}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement key="textField-1" positionType="Float" x="81" y="45" width="303" height="12" forecolor="#003366" uuid="58bec921-2676-4d5c-a14f-970dcb0be0e9"/>
+					<textElement>
+						<font size="9" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{schoolPhoneNumber}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField" x="117" y="116" width="415" height="15" uuid="d59b662b-3bfb-4b03-9b2f-ff6a32382b18"/>
+					<box leftPadding="3">
+						<bottomPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement>
+						<font fontName="Calibri" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{studentName}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField" x="117" y="132" width="178" height="15" uuid="de5d88f0-6ad9-4222-9d68-4f03a263437a"/>
+					<box leftPadding="3">
+						<bottomPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement>
+						<font fontName="Calibri" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{studentBasicId}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement key="staticText-8" x="305" y="165" width="116" height="15" uuid="0223d34d-590d-4f9b-b99a-e3b4f2be14ee"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="Calibri" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[BOARDING STATUS:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-7" x="305" y="148" width="116" height="15" uuid="95a7d2b3-3d4e-4f8f-b176-97a7dc6c8ddd"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="Calibri" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[CLASS:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-6" x="5" y="148" width="109" height="15" uuid="eec0571a-e204-4ebf-bc94-b037613b466e"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="Calibri" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[PROGRAMME:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-5" x="5" y="165" width="109" height="15" uuid="cc4d8fd6-d1b8-4d80-9748-971594497eff"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="Calibri" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[DATE OF REPORT:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-4" x="5" y="132" width="109" height="15" uuid="54720300-641b-428c-92c9-20805509452d"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="Calibri" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[SCHOOL NUMBER:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-3" x="5" y="116" width="109" height="15" uuid="4b4d5660-bcf9-4e36-bfc5-507a287e00c6"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font fontName="Calibri" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[NAME OF STUDENT:]]></text>
+				</staticText>
+				<elementGroup>
+					<rectangle>
+						<reportElement key="rectangle-2" x="0" y="-4" width="535" height="75" isRemoveLineWhenBlank="true" uuid="182c08b2-58cc-4c42-b7b6-f6fa2c92a5c1"/>
+						<graphicElement>
+							<pen lineWidth="1.0" lineStyle="Solid"/>
+						</graphicElement>
+					</rectangle>
+					<textField isBlankWhenNull="false">
+						<reportElement key="textField" x="79" y="1" width="438" height="24" forecolor="#660000" uuid="6ec2b9bf-e027-4168-86ed-959a825cec08"/>
+						<textElement>
+							<font size="18" isBold="true" pdfFontName="Helvetica-Bold" isPdfEmbedded="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$P{schoolName}]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement key="textField" positionType="Float" x="81" y="26" width="363" height="13" forecolor="#003366" uuid="1a0c8e4d-30d5-41de-8033-1ea207e5e586"/>
+						<textElement>
+							<font size="9"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$P{schoolAddress}]]></textFieldExpression>
+					</textField>
+					<line>
+						<reportElement key="line-2" x="0" y="82" width="535" height="1" uuid="f77de45d-243b-4a7a-98dd-ca5a8261c027"/>
+						<graphicElement fill="Solid">
+							<pen lineWidth="0.6"/>
+						</graphicElement>
+					</line>
+					<line>
+						<reportElement key="line-3" positionType="Float" x="5" y="70" width="526" height="1" uuid="38a41f39-8faa-480a-bef7-8528060d32ad"/>
+						<graphicElement>
+							<pen lineWidth="2.0"/>
+						</graphicElement>
+					</line>
+					<image scaleImage="FillFrame">
+						<reportElement key="image-1" x="3" y="1" width="68" height="66" uuid="33afe3ba-58aa-4f5e-9552-167ed931f151">
+							<printWhenExpression><![CDATA[$P{schoolBadge} != null]]></printWhenExpression>
+						</reportElement>
+						<imageExpression><![CDATA[$P{schoolBadge}]]></imageExpression>
+					</image>
+				</elementGroup>
+				<textField>
+					<reportElement x="81" y="45" width="363" height="14" uuid="7c86b2b9-6fd9-4608-99ef-52dc0e5d9e38"/>
+					<textFieldExpression><![CDATA[$P{schoolPhoneNumber}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<group name="academicYearGroup">
+		<groupExpression><![CDATA[$P{academicYear}]]></groupExpression>
+		<groupHeader>
+			<band height="23">
+				<textField>
+					<reportElement x="0" y="0" width="535" height="16" uuid="4be31e49-b020-4426-8370-8bdaf407e921"/>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$F{academicYear} + " Academic Year"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="9">
+				<line>
+					<reportElement x="0" y="3" width="535" height="1" uuid="e4ad8623-cf4f-4c1c-9edb-c0b57a779a6a"/>
+					<graphicElement>
+						<pen lineWidth="0.25" lineStyle="Dashed" lineColor="#CCCCCC"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="acadaemicTerm">
+		<groupExpression><![CDATA[$F{academicTerm}]]></groupExpression>
+		<groupHeader>
+			<band height="34">
+				<textField>
+					<reportElement x="0" y="0" width="535" height="15" uuid="3d002dcb-eec5-4c2e-aa8f-2e9a8ecd8858"/>
+					<textFieldExpression><![CDATA[$F{academicYear} +"  "+$F{termName}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="16" y="22" width="261" height="12" backcolor="#CCCCCC" uuid="1fea6ea7-fc61-47fd-b381-66d6c80f6a8a"/>
+					<box>
+						<bottomPen lineWidth="1.25"/>
+					</box>
+					<textElement>
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Subject Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="276" y="22" width="94" height="12" backcolor="#CCCCCC" uuid="e890d5f4-1bfa-4cdf-b534-17761cc9560a"/>
+					<box>
+						<bottomPen lineWidth="1.25"/>
+					</box>
+					<textElement>
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Subject  Score]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="369" y="22" width="100" height="12" backcolor="#CCCCCC" uuid="5cf6308e-a6c8-4c55-94e7-da9226df3744"/>
+					<box>
+						<bottomPen lineWidth="1.25"/>
+					</box>
+					<textElement>
+						<font size="9"/>
+					</textElement>
+					<text><![CDATA[Subject Grade]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="10"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="4" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="7" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="13" splitType="Stretch">
+			<textField>
+				<reportElement x="16" y="2" width="261" height="11" uuid="b0fbe9a8-0386-416a-ba5f-9ed333bc6c6a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subjectName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="277" y="2" width="94" height="11" uuid="46995478-b42b-4c83-b727-a8e5dfb1c5fd"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subjectScore}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="371" y="2" width="100" height="11" uuid="0a306d13-6732-4531-8bf2-ff8dfa16569b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subjectGrade}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="12" splitType="Stretch">
+			<staticText>
+				<reportElement x="305" y="0" width="229" height="12" forecolor="#999999" uuid="b83b8da2-a0b0-4e85-bb08-bb9f903d1499"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[(c) Sabonay Education (0244371615, 0208274131)]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band splitType="Stretch"/>
+	</lastPageFooter>
+	<summary>
+		<band height="59" splitType="Stretch">
+			<line>
+				<reportElement x="297" y="20" width="173" height="1" uuid="28487062-ff70-465c-a873-31af187b75b0"/>
+				<graphicElement>
+					<pen lineWidth="1.25" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="297" y="22" width="159" height="13" uuid="d3146427-524e-45a4-a28a-702449c96510"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[(Headmaster / Headmistress)]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="0" y="44" width="535" height="14" uuid="1b3e2f86-5153-44e6-8815-c82950765bd0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{grading}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

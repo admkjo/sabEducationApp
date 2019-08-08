@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:panelGroup layout="block" style="clear: both;" styleClass="input_form">
+            <h:panelGroup layout="block" style="float: left" styleClass="input_form" >
+                <h:form>
+                    <rich:panel  header="View All Students Assigned">
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Scholarship"/>
+                            <h:selectOneMenu style="width: 160px" value="#{studentScholarshipController.selectedScholarOnly}">
+                                <f:selectItems value="#{studentScholarshipController.allScholarship}"/>
+                            </h:selectOneMenu>
+                            <h:commandButton value="View Members" action="#{studentScholarshipController.loadAllStudentInScholarship()}"/>
+                            <h:commandButton value="Print Report"/>
+                        </h:panelGrid> 
+                    </rich:panel>
+                </h:form>
+            </h:panelGroup>
+            <h:panelGroup layout="block" style="float: left" styleClass="input_form" >
+                <h:form>
+                    <rich:panel header="View Students Assigned In Class">
+
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Scholarship"/>
+                            <h:selectOneMenu style="width: 160px" value="#{studentScholarshipController.selectedScholarshipClass}">
+                                <f:selectItems value="#{studentScholarshipController.allScholarship}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="Class"/>
+                            <h:selectOneMenu style="width: 160px" value="#{studentScholarshipController.selectedSchoolClass}">
+                                <f:selectItems value="#{studentScholarshipController.allSchoolClass}"/>
+                            </h:selectOneMenu>
+                            <h:commandButton value="View Members" action="#{studentScholarshipController.loadstudentClassScholar()}"/>
+                            <h:commandButton value="Print Report"/>
+                        </h:panelGrid>
+                    </rich:panel>
+                </h:form>
+            </h:panelGroup>
+            <h:panelGroup layout="block" style="float: left" styleClass="input_form" >
+                <h:form>
+                    <rich:panel header="Assign Student to scholarship">
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Student Id"/>
+                            <h:inputText required="true" requiredMessage="Please enter Student ID" value="#{studentScholarshipController.studentId}" id="sid"/>
+
+                            <h:outputLabel value="Scholarship"/>
+                            <h:selectOneMenu style="width: 160px" value="#{studentScholarshipController.selectedStudentScholarship}">
+                                <f:selectItems value="#{studentScholarshipController.allScholarship}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="Date Signed"/>
+                            <rich:calendar value="#{studentScholarshipController.studentScholarship.dateSigned}"/>
+                            <h:outputLabel value="Apply to student Bill"/>
+                            <h:selectBooleanCheckbox value="#{studentScholarshipController.applyScholarshipToBill}"/>
+                            <h:commandButton value="Assign" action="#{studentScholarshipController.saveStudentScholarShip()}"/>
+                        </h:panelGrid> 
+                    </rich:panel>
+                </h:form>
+            </h:panelGroup>
+        </h:panelGroup>
+        <h:form>
+            <h:dataTable value="#{studentScholarshipController.allStudentScholarship}" var="sch"
+                         styleClass="data_table_panel" rowClasses="odd_row,even_row" >
+                <h:column >
+                    <f:facet name="header">
+                        <h:outputLabel value="Scholarship" />
+                    </f:facet>
+                    <h:outputText value="#{sch.scholarship.scholarship}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="Student Id" />
+                    </f:facet>
+                    <h:outputText  value="#{sch.student.studentBasicId}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="Student Name" />
+                    </f:facet>
+                    <h:outputText  value="#{sch.student.studentName}"/>
+                </h:column>
+                <h:column >
+                    <f:facet name="header">
+                        <h:outputLabel value="Status" />
+                    </f:facet>
+                    <h:outputText value="#{sch.student.boardingStatus}"/>
+                </h:column>
+                <h:column >
+                    <f:facet name="header">
+                        <h:outputLabel value="Class" />
+                    </f:facet>
+                    <h:outputText value="#{sch.student.currentClass.className}"/>
+                </h:column>
+                <h:column >
+                    <f:facet name="header">
+                        <h:outputLabel value="Programme" />
+                    </f:facet>
+                    <h:outputText value="#{sch.student.programmeOffered.programName}"/>
+                </h:column>
+                <h:column >
+                    <f:facet name="header">
+                        <h:outputLabel value="Date Signed" />
+                    </f:facet>
+                    <h:outputText value="#{sch.dateSigned}">
+                        <f:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="Select" />
+                    </f:facet>
+                    <h:commandLink  value="select" action="#{studentScholarshipController.selectStudentScholarship()}"/>
+                </h:column>
+
+            </h:dataTable>
+        </h:form>
+
+    </h:body>
+</html>
+

@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
+
+    <h:panelGroup layout="block">
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmSchoolProgramInput">
+                <h:panelGrid columns="4">
+                    <h:outputText value ="Year Group Code"/>
+                    <h:panelGroup>
+                        <h:inputText id="yeargroupcode" value="#{educationalLevelController.educationalLevel.eduLevelId}" required="true" requiredMessage="*"  />
+                        <h:message for="yeargroupcode" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="Year Group Name"/>
+                    <h:panelGroup>
+                        <h:inputText id="yeargroupname" value="#{educationalLevelController.educationalLevel.eduLevelName }" required="true" requiredMessage="*"  />
+                        <h:message for="yeargroupname" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                </h:panelGrid>
+
+                <h:panelGroup binding="#{educationalLevelController.educationalLevelFormControl.component}"/>
+
+            </h:form>
+
+        </h:panelGroup>
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmSchoolProgram_search_panel">
+                <h:panelGroup binding="#{educationalLevelController.educationalLevelDataPanel.searchPanel.component}"/>
+            </h:form>
+            <h:form id="frmSchoolProgram_datatable">
+                <h:dataTable binding="#{educationalLevelController.educationalLevelDataPanel.dataTable}"/>
+            </h:form>
+        </h:panelGroup>
+
+    </h:panelGroup>
+
+</html>
+

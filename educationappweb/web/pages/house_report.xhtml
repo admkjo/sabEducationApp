@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:body>
+        <rich:panel header="House Year Group" style="width: 48%; height: 200px; float: left ">
+            <h:form>
+
+                <h:panelGrid columns="2" width="100%">
+                    <h:outputLabel value="Year Group"/>
+                    <h:selectOneMenu style="width: 170px" value="#{schoolHouseReportController.selectedEducationalLevel}">
+                        <f:selectItems value="#{commonOptions.educationalLevelOptions}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="House"/>
+                    <h:selectOneMenu style="width: 160px" value="#{schoolHouseReportController.selectedHouse}">
+                        <f:selectItems value="#{commonOptions.schoolHousesOptions}"/>
+                    </h:selectOneMenu>
+
+                </h:panelGrid>
+
+                <h:panelGrid columns="2" width="90%">
+                    <h:commandButton value="Load Students" styleClass="load_data"
+                                     action="#{schoolHouseReportController.loadStudentInSelectedSchoolHouse()}"/>
+                    <br/>
+                    <h:panelGrid columns="3" width="99%">
+                        <h:commandLink target="_blank" value="Male Report Only" action="#{schoolHouseReportController.generateMaleReport()}"/>
+                        <h:commandLink target="_blank" value="Female Report Only" action="#{schoolHouseReportController.generateFeMaleReport()}"/>
+
+                        <h:commandLink target="_blank" styleClass="report_link"
+                                       value="Print Report"  action="#{schoolHouseReportController.reportSchoolHouseMembershipList()}"/>
+                        <h:commandLink target="_blank" value="Day Student Only" action="#{schoolHouseReportController.reportSchoolHouseMembershipListForDayStudent()}"/>
+                        <h:commandLink target="_blank" value="Boarding Student Only" action="#{schoolHouseReportController.reportSchoolHouseMembershipListForDayStudent()}"/>
+                    </h:panelGrid>
+                </h:panelGrid>
+            </h:form>
+        </rich:panel>
+        <rich:panel header="House Year Group" style="width: 48%; height: 200px; float: left ">
+            <h:form>
+                <ui:include src="../pagefragments/single_class_selection.xhtml"/> 
+                <h:panelGrid columns="3" width="30%">
+                    <h:outputLabel value="House"/>
+                    <h:selectOneMenu style="width: 160px" value="#{schoolHouseReportController.selectedHouseByClass}">
+                        <f:selectItems value="#{commonOptions.schoolHousesOptions}"/>
+                    </h:selectOneMenu>
+                    <h:commandButton value="Load Student" styleClass="load_data"
+                                     action="#{schoolHouseReportController.loadStudentInSelectedSchoolHouseByClass()}"/>
+                </h:panelGrid>
+                <h:panelGrid columns="3" width="90%">
+                    <h:commandLink target="_blank" value="Male Report Only" action="#{schoolHouseReportController.generateMaleReportBYClass()}"/>
+                    <h:commandLink target="_blank" value="Female Report Only" action="#{schoolHouseReportController.generateFeMaleReportByClass()}"/>
+
+                    <h:commandLink target="_blank" styleClass="report_link"
+                                   value="Print Report"  action="#{schoolHouseReportController.reportSchoolHouseMembershipListByClass()}"/>
+                </h:panelGrid>
+            </h:form>
+        </rich:panel>
+
+        <h:form>
+            <p:dataTable value="#{schoolHouseReportController.allStudentMemberShip}" var="stud" style="margin-top: 210px" rows="9" paginator="true"
+                         paginatorAlwaysVisible="false" id="data">
+                <p:column sortBy="#{stud.student.studentFullId}">
+                    <f:facet name="header">
+                        Student Number
+                    </f:facet>
+                    <h:outputLabel value="#{stud.student.studentFullId}"/>
+                </p:column>
+                <p:column sortBy="#{stud.student.surname} #{stud.student.othernames}">
+                    <f:facet name="header">
+                        Student Name
+                    </f:facet>
+                    <h:outputLabel value="#{stud.student.surname} #{stud.student.othernames}"/>
+                </p:column>
+                <p:column sortBy="#{stud.student.currentClass.classCode}">
+                    <f:facet name="header">
+                        Class
+                    </f:facet>
+                    <h:outputLabel value="#{stud.student.currentClass.classCode}"/>
+                </p:column>
+                <p:column sortBy="#{stud.student.currentClass.educationalLevel.eduLevelId}">
+                    <f:facet name="header">
+                        Edu. Level
+                    </f:facet>
+                    <h:outputLabel value="#{stud.student.currentClass.educationalLevel.eduLevelId}"/>
+                </p:column>
+                <p:column sortBy="#{stud.student.gender}">
+                    <f:facet name="header">
+                        Gender
+                    </f:facet>
+                    <h:outputLabel value="#{stud.student.gender}"/>
+                </p:column>
+                <p:column sortBy="#{stud.student.programmeOffered.programName}">
+                    <f:facet name="header">
+                        Program
+                    </f:facet>
+                    <h:outputLabel value="#{stud.student.programmeOffered.programName}"/>
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        Sub Comb
+                    </f:facet>
+                    <h:outputLabel value="#{stud.student.currentSubjectCombination.combinationShortName}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
+

@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
+    <h:panelGroup styleClass="user_action_link" rendered="#{userPage.separateWindow}">
+        <h:commandLink value="#{userPage.pageName}" 
+                       style="font-size: 13px; width: 100%; margin-bottom: 3px;"
+                       onclick="#{userPage.popupCode}" />
+    </h:panelGroup>
+
+    <h:panelGroup styleClass="user_action_link"  rendered="#{!userPage.separateWindow}">
+        <h:commandLink value="#{userPage.pageName}" 
+                       action="#{userdata.setRequestedPageURL(userPage.pageURL)}"
+                       style="font-size: 13px; width: 100%; margin-bottom: 3px;" />
+    </h:panelGroup>
+
+</html>
+
+

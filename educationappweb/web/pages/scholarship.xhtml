@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:rich="http://richfaces.org/rich">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:panelGroup layout="block" styleClass="input_form">
+            <h:form>
+                <rich:panel  header="Student scholarship"> 
+                    <h:panelGrid columns="6">
+                        <h:outputLabel value="Scholarship Name"/>
+                        <h:inputText size="30" required="true" requiredMessage="*Required" value="#{scholarshipController.scholarship.scholarship}"/>
+                        <h:outputText value ="Bill Item"/>
+                        <h:panelGroup>
+                            <h:selectOneMenu id="billItem" value="#{scholarshipController.scholarship.studentBillItem}" required="true" requiredMessage="*" >
+                                <f:selectItems value ="#{scholarshipController.billItems}" />
+                            </h:selectOneMenu>
+                            <h:message for="billItem" errorClass="noTextErrorStyle"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value="Scholarship Amount"/>
+                        <h:inputText size="30" required="true" requiredMessage="*Required" value="#{scholarshipController.scholarship.amountInvolve}"/>
+                        <h:outputLabel value="Sponsor"/>
+                        <h:inputText size="30" required="true" requiredMessage="*Required" value="#{scholarshipController.scholarship.sponsor}"/>
+                        <h:outputLabel value="Contact Person"/>
+                        <h:inputText size="30" required="true" requiredMessage="*Required" value="#{scholarshipController.scholarship.sponsorContactPerson}"/>
+                        <h:outputLabel value="Contact Person Tel"/>
+                        <h:inputText required="true" requiredMessage="*Required" value="#{scholarshipController.scholarship.sponsorContact}"/>
+                    </h:panelGrid> 
+                </rich:panel>
+                <h:panelGrid columns="3">
+                    <h:commandButton value="#{scholarshipController.saveEditButton}" styleClass="action_button" action="#{scholarshipController.saveMethod()}"/>
+                    <h:commandButton value="Delete" styleClass="action_button" onclick="return confirm('Deleting selected Record')" action="#{scholarshipController.deleteMethod()}"/>
+                    <h:commandButton value="Clear" styleClass="action_button" action="#{scholarshipController.resetMethod()}"/>
+                </h:panelGrid>
+            </h:form>
+        </h:panelGroup>
+        <h:form>
+            <h:panelGrid columns="5">
+                <h:outputLabel value="Enter Text"/>
+                <h:inputText value="#{scholarshipController.searchValue}"/>
+                <h:selectOneMenu style="width: 150px" value="#{scholarshipController.searchAttribute}">
+                    <f:selectItem itemLabel="Scholarship Name" itemValue="scholarship"/>
+                    <f:selectItem itemLabel="Scholarship Sponsor" itemValue="sponsor"/>
+                </h:selectOneMenu>
+                <h:commandButton value="Search" styleClass="action_button" action="#{scholarshipController.searchMethod()}"/>
+            </h:panelGrid>
+        </h:form>
+        <h:form>
+            <h:dataTable value="#{scholarshipController.allScholarship}" var="sch"
+                         styleClass="data_table_panel" rowClasses="odd_row,even_row" >
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="Scholarship Name" />
+                    </f:facet>
+                    <h:outputText  value="#{sch.scholarship}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="Scholarship Amount" />
+                    </f:facet>
+                    <h:outputText  value="#{sch.amountInvolve}">
+                        <f:convertNumber pattern="GHc #,###.##" maxFractionDigits="2" minFractionDigits="2" type="currency"/>
+                    </h:outputText>
+                </h:column>
+
+                <h:column >
+                    <f:facet name="header">
+                        <h:outputLabel value="Sponsor" />
+                    </f:facet>
+                    <h:outputText value="#{sch.sponsor}"/>
+                </h:column>
+
+                <h:column >
+                    <f:facet name="header">
+                        <h:outputLabel value="Contact Person" />
+                    </f:facet>
+                    <h:outputText value="#{sch.sponsorContactPerson}"/>
+                </h:column>
+                <h:column >
+                    <f:facet name="header">
+                        <h:outputLabel value="Contact Person Tel" />
+                    </f:facet>
+                    <h:outputText value="#{sch.sponsorContact}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="Select" />
+                    </f:facet>
+                    <h:commandLink  value="select" action="#{scholarshipController.selectMethod()}"/>
+                </h:column>
+
+            </h:dataTable>
+        </h:form>
+
+    </h:body>
+</html>
+

@@ -1,0 +1,293 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <style>
+        .tooltip {
+            background-color: #{ richSkin.generalBackgroundColor};
+            border-width:3px;
+        }
+        .tooltip-custom-body {
+            background-color: orange;
+        }
+
+        .tooltip-text {
+            width: 350px;
+            height: 80px;
+            cursor: arrow;
+            border-width: 2px;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .tooltipData {
+            font-weight: bold;
+        }
+
+
+
+    </style>
+
+    <rich:panel >
+        <f:facet name="header"> <h:outputText value="Select Broadsheet Type" /></f:facet>
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:panelGrid columns="1">
+                    <h:selectOneMenu value="#{studentBroadsheetController.broadSheetOptions}"  valueChangeListener="#{studentBroadsheetController.handleBroadSheetSelection}">
+                        <f:selectItems value="#{commonOptions.broadSheetOptions}" />
+                        <f:ajax execute="@all" render="@all"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:panelGrid columns="1" id="classselect" rendered="#{studentBroadsheetController.bsClass}"
+                             style="color: #036FAB; font-weight: bold; border:  solid #b2b1b4 thin;">
+                    <h:outputText value="Select School Class" />
+                    <p:separator/>
+                    <ui:include src="/pagefragments/single_class_selection.xhtml" />
+                </h:panelGrid>
+                <h:panelGrid columns="1" id="yearselect" rendered="#{studentBroadsheetController.bsForm}"  
+                             style="color: #036FAB; font-weight: bold; border:  solid #b2b1b4 thin;">
+                    <h:outputText  value="Select Year Group" />  
+                    <p:separator/>
+                    <h:selectOneMenu value="#{studentBroadsheetController.selectedEducationalLevel}" valueChangeListener="#{studentBroadsheetController.handleProgramSelection}" >
+                        <f:selectItems value="#{commonOptions.educationalLevelOptions}" />
+                        <f:ajax execute="@form"  />
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                
+            </h:panelGrid>
+            <br/>
+            <h:outputText value ="Examination Type"/>
+            <h:panelGrid style="padding-right:3px; ">
+                <h:selectOneMenu id="examinationType" value="#{studentBroadsheetController.examinationType}" required="true" requiredMessage="*" style="padding-left:3px; " >
+                    <f:selectItems value="#{commonOptions.examinationTypeOptions}" />
+                </h:selectOneMenu>
+                <h:message for="examinationType" errorClass="noTextErrorStyle"/>
+            </h:panelGrid>
+            <br/>
+            <h:commandButton rendered="#{studentBroadsheetController.generateBs}" value="Generate Broadsheet" action="#{studentBroadsheetController.prepareStudentBroadsheet}"/>
+            <h:commandButton rendered="#{studentBroadsheetController.generateBsFYG}" value="Generate Broadsheet" action="#{studentBroadsheetController.prepareStudentBroadsheetForYearGroup()}"/>
+            <h:commandLink rendered="#{studentBroadsheetController.generateBs}" value="Report Broadsheet" styleClass="report_link" target="_blank"
+                           action="#{studentBroadsheetController.reportStudentBroadsheet}" />
+            <h:commandLink rendered="#{studentBroadsheetController.generateBsFYG}" value="Report Broadsheet" styleClass="report_link" target="_blank"
+                           action="#{studentBroadsheetController.reportStudentBroadsheetForYearGroup()}" />
+
+            <h:commandLink rendered="#{studentBroadsheetController.generateBs}" value="Student Without Marks" styleClass="report_link" target="_blank"
+                           action="#{studentBroadsheetController.reportStudentWithoutSomeMarks}" />
+ 
+
+
+        </h:form>
+
+    </rich:panel>
+
+
+
+    <h:panelGroup layout="block" style="height: 300px; overflow: auto" styleClass="input_form" >
+        <rich:dataTable value ="#{studentBroadsheetController.studentBroadSheetList}" var ="broadsheet" >
+            <rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="Student ID" title="Student School Number"/>
+                </f:facet>
+                <h:outputText value="#{broadsheet.studentId}" />
+            </rich:column>
+
+            <rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="Student Name" title="Student Name"/>
+                </f:facet>
+                <h:outputText value="#{broadsheet.studentName}" />
+            </rich:column>
+
+            <rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="#{studentBroadsheetController.subjectIds[0]}"
+                                   title="#{studentBroadsheetController.columnHeaderToolTips[0]}"/>
+                </f:facet>
+
+                <h:outputText value="#{broadsheet.firstSubjectMark}" />
+
+                <rich:tooltip styleClass="tooltip-custom-body" rendered="false">
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Class Score : " style="font-weight: bold"/>
+                        <h:outputText value="#{broadsheet.marksDetail[0].classScore}" />
+                        <h:outputText value="Exam Score : " style="font-weight: bold"/>
+                        <h:outputText value="#{broadsheet.marksDetail[0].examScore}" />
+                        <h:outputText value="Exam Grades : " style="font-weight: bold"/>
+                        <h:outputText value="#{broadsheet.marksDetail[0].grades}" />
+                        <h:outputText value="Position in Class : " style="font-weight: bold"/>
+                        <h:outputText value="#{broadsheet.marksDetail[0].positionInClass}" />
+                    </h:panelGrid>
+                </rich:tooltip>
+            </rich:column>
+
+
+            <rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="#{studentBroadsheetController.subjectIds[1]}"
+                                   title="#{studentBroadsheetController.columnHeaderToolTips[1]}"/>
+                </f:facet>
+                <h:outputText value="#{broadsheet.secondSubjectMark}" />
+
+                <rich:tooltip styleClass="tooltip-custom-body">
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Class Mark : " style="font-weight: bold"/>
+                        <h:outputText value="#{broadsheet.marksDetail[1].classScore}" />
+                        <h:outputText value="Exam Mark : " style="font-weight: bold"/>
+                        <h:outputText value="#{broadsheet.marksDetail[1].examScore}" />
+                        <h:outputText value="Exam Grades : " style="font-weight: bold"/>
+                        <h:outputText value="#{broadsheet.marksDetail[1].grades}" />
+                        <h:outputText value="Position in Class : " style="font-weight: bold"/>
+                        <h:outputText value="#{broadsheet.marksDetail[1].positionInClass}" />
+                    </h:panelGrid>
+                </rich:tooltip>
+            </rich:column>
+
+            <rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="#{studentBroadsheetController.subjectIds[2]}"
+                                   title="#{studentBroadsheetController.columnHeaderToolTips[2]}"/>
+                </f:facet>
+                <h:outputText value="#{broadsheet.thirdSubjectMark}" />
+
+                <rich:tooltip styleClass="tooltip-custom-body" rendered="false">
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Class Score : " style="font-weight: bold"/>
+                        <h:outputText value="#{broadsheet.marksDetail[2].classScore}" />
+                        <h:outputText value="Exam Score : " style="font-weight: bold"/>
+                        <h:outputText value="#{broadsheet.marksDetail[2].examScore}" />
+                        <h:outputText value="Exam Grades : " style="font-weight: bold"/>
+                        <h:outputText value="#{broadsheet.marksDetail[2].grades}" />
+                        <h:outputText value="Position in Class : " style="font-weight: bold"/>
+                        <h:outputText value="#{broadsheet.marksDetail[2].positionInClass}" />
+                    </h:panelGrid>
+                </rich:tooltip>
+            </rich:column>
+
+
+            <rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="#{studentBroadsheetController.subjectIds[3]}"
+                                   title="#{studentBroadsheetController.columnHeaderToolTips[3]}"/>
+                </f:facet>
+                <h:outputText value="#{broadsheet.fourthSubjectMark}" />
+            </rich:column>
+
+            <rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="#{studentBroadsheetController.subjectIds[4]}"
+                                   title="#{studentBroadsheetController.columnHeaderToolTips[4]}"/>
+                </f:facet>
+                <h:outputText value="#{broadsheet.fifthSubjectMark}" />
+            </rich:column>
+
+            <rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="#{studentBroadsheetController.subjectIds[5]}"
+                                   title="#{studentBroadsheetController.columnHeaderToolTips[5]}"/>
+                </f:facet>
+                <h:outputText value="#{broadsheet.sixthSubjectMark}" />
+            </rich:column>
+
+            <rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="#{studentBroadsheetController.subjectIds[6]}"
+                                   title="#{studentBroadsheetController.columnHeaderToolTips[6]}"/>
+                </f:facet>
+                <h:outputText value="#{broadsheet.seventhSubjectMark}" />
+            </rich:column>
+
+            <rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="#{studentBroadsheetController.subjectIds[7]}"
+                                   title="#{studentBroadsheetController.columnHeaderToolTips[7]}"/>
+                </f:facet>
+                <h:outputText value="#{broadsheet.eighthSubjectMark}" />
+            </rich:column><rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="#{studentBroadsheetController.subjectIds[8]}"
+                                   title="#{studentBroadsheetController.columnHeaderToolTips[8]}"/>
+                </f:facet>
+                <h:outputText value="#{broadsheet.ninthSubjectMark}" />
+            </rich:column>
+
+            <rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="#{studentBroadsheetController.subjectIds[9]}"
+                                   title="#{studentBroadsheetController.columnHeaderToolTips[9]}"/>
+                </f:facet>
+                <h:outputText value="#{broadsheet.tenthSubjectMark}" />
+            </rich:column>
+
+            <rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="#{studentBroadsheetController.subjectIds[10]}"
+                                   title="#{studentBroadsheetController.columnHeaderToolTips[10]}"/>
+                </f:facet>
+                <h:outputText value="#{broadsheet.eleventhSubjectMark}" />
+            </rich:column><rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="#{studentBroadsheetController.subjectIds[11]}"
+                                   title="#{studentBroadsheetController.columnHeaderToolTips[11]}"/>
+                </f:facet>
+                <h:outputText value="#{broadsheet.twelfthSubjectMark}" />
+            </rich:column>
+
+            <rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="#{studentBroadsheetController.subjectIds[12]}"
+                                   title="#{studentBroadsheetController.columnHeaderToolTips[12]}"/>
+                </f:facet>
+                <h:outputText value="#{broadsheet.thirteenthSubjectMark}" />
+            </rich:column>
+
+            <rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="Passes"
+                                   title="Number of Passes"/>
+                </f:facet>
+                <h:outputText value="#{broadsheet.numberOfPasses}" />
+            </rich:column>
+
+            <rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="Total Score"
+                                   title="Student Total Score"/>
+                </f:facet>
+                <h:outputText value="#{broadsheet.totalScore}" />
+            </rich:column>
+
+            <rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="Position in class"
+                                   title="Student Position in class"/>
+                </f:facet>
+                <h:outputText value="#{broadsheet.positionInClass}" />
+            </rich:column>
+
+            <rich:column>
+                <f:facet name="header">
+                    <h:outputLabel value="Remarks"
+                                   title="Remarks"/>
+                </f:facet>
+                <h:outputText value="#{broadsheet.remarks}" />
+            </rich:column>
+
+        </rich:dataTable>
+    </h:panelGroup>
+
+
+
+    <h:panelGroup layout="block" style="height: 300px; overflow: auto" rendered="false">
+        <h:dataTable 
+            binding="#{studentBroadsheetController.studentBroadSheetDataTable.dataTable}" />
+    </h:panelGroup>
+
+
+</html>
+
+

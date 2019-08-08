@@ -1,0 +1,81 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:panelGrid columns="2">
+        <h:panelGroup layout="block" styleClass="input_form">
+
+            <h:panelGroup layout="block"  >
+
+                <h:form>
+                    <h:outputText value="Student Id" />
+                    <h:inputText value="#{studentBillBalanceController.studentId}" />
+                    <h:commandButton value="Load Student Ledger" action="#{studentBillBalanceController.loadStudentLedgerHistory}"/>
+                    <br/>
+
+                    <h:outputLabel value="SELECTED STUDENT"/>
+                    <br/>
+                    <hr/>
+                    <h:panelGrid columns="6">
+                        <h:outputText value="Student Name" />
+                        <h:inputText value="#{studentBillBalanceController.selectedStudent.studentName}" readonly="true"/>
+                        <h:outputText value="Student Category" />
+                        <h:inputText value="#{studentBillBalanceController.selectedStudent.boardingStatus}" readonly="true"/>
+                        <h:outputText value="Student Class" />
+                        <h:inputText value="#{studentBillBalanceController.selectedStudent.currentClass}"  readonly="true"/> 
+                    </h:panelGrid>
+                </h:form>
+                <h:outputLabel value="TRANSACTION"/>
+                <br/>
+                <hr/>
+                <h:form id="frmStudentLedgerInput">
+                    <h:panelGrid columns="4">
+
+                        <h:outputLabel value ="Type Of Entry"/>
+                        <h:panelGroup>
+                            <h:selectOneMenu id="typeOfEntry" value="#{studentBillBalanceController.studentLedger.typeOfEntry}" required="true" requiredMessage="*" >
+                                <f:selectItems value ="#{commonOptions.debitCreditBalanceOptions}" />
+                            </h:selectOneMenu>
+                            <h:message for="typeOfEntry" errorClass="noTextErrorStyle"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value ="Amount Involved"/>
+                        <h:panelGroup>
+                            <h:inputText id="amountInvolved" value="#{studentBillBalanceController.studentLedger.amountInvolved}" required="true" requiredMessage="*"  />
+                            <h:message for="amountInvolved" errorClass="noTextErrorStyle"/>
+                        </h:panelGroup>
+
+                        <h:outputLabel value ="Balance For"/>
+                        <h:panelGroup>
+                            <h:selectOneMenu id="studentBillType" value="#{studentBillBalanceController.studentLedger.studentBillType}" required="true" requiredMessage="*" >
+                                <f:selectItems value ="#{commonOptions.schoolBillTypesOptions}" />
+                            </h:selectOneMenu>
+                            <h:message for="studentBillType" errorClass="noTextErrorStyle"/>
+                        </h:panelGroup>
+
+
+
+                    </h:panelGrid>
+
+                    <h:panelGroup binding="#{studentBillBalanceController.studentLedgerFormControl.component}"/>
+
+                </h:form>
+
+            </h:panelGroup>
+
+
+            <h:panelGroup layout="block" styleClass="clear" />
+
+            <h:panelGroup layout="block">
+                <h:form id="frmStudentLedger_search_panel" rendered="false">
+                    <h:panelGroup binding="#{studentBillBalanceController.studentLedgerDataPanel.searchPanel.component}"/>
+                </h:form>
+                <h:form id="frmStudentLedger_datatable" style="height: 300px; overflow: auto;">
+                    <h:dataTable binding="#{studentBillBalanceController.studentLedgerDataPanel.dataTable}"/>
+                </h:form>
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:panelGrid>
+
+</html>
+

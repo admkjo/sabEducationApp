@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="student_class_distribution" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="549" leftMargin="23" rightMargin="23" topMargin="20" bottomMargin="20" uuid="86737969-c722-454c-a2f0-5b111ce21be4">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="13"/>
+	<property name="ireport.y" value="187"/>
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="schoolName" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="schoolAddress" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="reportTitle" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="schoolBadge" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="dateOfReport" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="academicYear" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="className" class="java.lang.String"/>
+	<parameter name="educationalLevel" class="java.lang.String"/>
+	<field name="studentName" class="java.lang.String"/>
+	<field name="totalBillsPayable" class="java.lang.Double"/>
+	<field name="totalBillsPaid" class="java.lang.Double"/>
+	<field name="outstandingBalance" class="java.lang.Double"/>
+	<field name="boardingStatus" class="java.lang.String"/>
+	<field name="studentID" class="java.lang.String"/>
+	<variable name="todayDate" class="java.util.Date">
+		<variableExpression><![CDATA[new java.util.Date()]]></variableExpression>
+	</variable>
+	<variable name="numberOfClassPerLevel" class="java.lang.Integer" resetType="Group" resetGroup="educationlLevelGrp" calculation="Count">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<variable name="educationalLevelTotalFeesPayable" class="java.lang.Double" resetType="Group" resetGroup="educationlLevelGrp" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalBillsPayable}]]></variableExpression>
+	</variable>
+	<variable name="educationalLevelTotalFeesPaid" class="java.lang.Double" resetType="Group" resetGroup="educationlLevelGrp" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalBillsPaid}]]></variableExpression>
+	</variable>
+	<variable name="educationalLevelOutstandingBalance" class="java.lang.Double" resetType="Group" resetGroup="educationlLevelGrp" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalBillsPayable}-$F{totalBillsPaid}]]></variableExpression>
+	</variable>
+	<variable name="schoolTotalBillsPayable" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalBillsPayable}]]></variableExpression>
+	</variable>
+	<variable name="schoolTotalBillsPaid" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalBillsPaid}]]></variableExpression>
+	</variable>
+	<variable name="schoolTotalOutstandingBalance" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{outstandingBalance}]]></variableExpression>
+	</variable>
+	<variable name="totalClassBillpayable" class="java.lang.Double" calculation="Sum"/>
+	<variable name="totalClassBillPaid" class="java.lang.Double" calculation="Sum"/>
+	<variable name="totalClassOutstanding" class="java.lang.String"/>
+	<group name="educationlLevelGrp">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement mode="Opaque" x="0" y="0" width="549" height="17" backcolor="#00CCCC" uuid="86e041bb-0d56-4e4c-8a58-cec6a6321043"/>
+					<box leftPadding="3">
+						<bottomPen lineWidth="1.0" lineStyle="Double"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{educationalLevel}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="23">
+				<textField pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="385" y="3" width="55" height="20" forecolor="#993300" uuid="7573d143-91a3-478f-b01d-93d6f936b221"/>
+					<textElement textAlignment="Right">
+						<font size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{educationalLevelTotalFeesPaid}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="305" y="3" width="80" height="20" forecolor="#993300" uuid="641c28a2-22cc-4117-a4de-6c4d7cbb15ac"/>
+					<textElement textAlignment="Right">
+						<font size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{educationalLevelTotalFeesPayable}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00;(#,##0.00)">
+					<reportElement x="452" y="3" width="96" height="20" forecolor="#993300" uuid="c0ef9820-a9c2-4291-bb1c-a876a4c247bb"/>
+					<textElement textAlignment="Right">
+						<font size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{educationalLevelOutstandingBalance}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="20" y="0" width="199" height="20" forecolor="#993300" uuid="ae18beba-0146-40c4-a072-96e8a12ee60d"/>
+					<textElement textAlignment="Right">
+						<font size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{educationalLevel} + " Summary"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="classProgram group Header">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band height="39">
+				<staticText>
+					<reportElement key="staticText-7" mode="Opaque" x="20" y="20" width="123" height="19" forecolor="#FFFFFF" backcolor="#003366" uuid="7f7aa909-f10b-44fc-a658-c703cc0cda03"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#009999"/>
+						<topPen lineWidth="0.5" lineColor="#009999"/>
+						<leftPen lineWidth="0.5" lineColor="#009999"/>
+						<bottomPen lineWidth="0.5" lineColor="#009999"/>
+						<rightPen lineWidth="0.5" lineColor="#009999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Student Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-7" mode="Opaque" x="143" y="20" width="76" height="19" forecolor="#FFFFFF" backcolor="#003366" uuid="b01aa675-4189-4b2c-ac25-26ee8f21a647"/>
+					<box leftPadding="2">
+						<pen lineWidth="0.5" lineColor="#009999"/>
+						<topPen lineWidth="0.5" lineColor="#009999"/>
+						<leftPen lineWidth="0.5" lineColor="#009999"/>
+						<bottomPen lineWidth="0.5" lineColor="#009999"/>
+						<rightPen lineWidth="0.5" lineColor="#009999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Student ID]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-11" mode="Opaque" x="322" y="20" width="63" height="19" forecolor="#FFFFFF" backcolor="#003366" uuid="c940b5f0-464b-4b4f-9f8e-22326e8420f5"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#009999"/>
+						<topPen lineWidth="0.5" lineColor="#009999"/>
+						<leftPen lineWidth="0.5" lineColor="#009999"/>
+						<bottomPen lineWidth="0.5" lineColor="#009999"/>
+						<rightPen lineWidth="0.5" lineColor="#009999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Bills Payable]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-11" mode="Opaque" x="219" y="20" width="103" height="19" forecolor="#FFFFFF" backcolor="#003366" uuid="f762ee00-7ad6-4aa4-ae52-ee5fd406dd74"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#009999"/>
+						<topPen lineWidth="0.5" lineColor="#009999"/>
+						<leftPen lineWidth="0.5" lineColor="#009999"/>
+						<bottomPen lineWidth="0.5" lineColor="#009999"/>
+						<rightPen lineWidth="0.5" lineColor="#009999"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Boarding Status]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-8" mode="Opaque" x="0" y="20" width="20" height="19" forecolor="#FFFFFF" backcolor="#003366" uuid="d196b244-efba-4f6f-ba48-107873ad9a82"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#009999"/>
+						<topPen lineWidth="0.5" lineColor="#009999"/>
+						<leftPen lineWidth="0.5" lineColor="#009999"/>
+						<bottomPen lineWidth="0.5" lineColor="#009999"/>
+						<rightPen lineWidth="0.5" lineColor="#009999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[No]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-11" mode="Opaque" x="385" y="20" width="54" height="19" forecolor="#FFFFFF" backcolor="#003366" uuid="7f4978f0-7258-45b4-8387-af44febdf4c9"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#009999"/>
+						<topPen lineWidth="0.5" lineColor="#009999"/>
+						<leftPen lineWidth="0.5" lineColor="#009999"/>
+						<bottomPen lineWidth="0.5" lineColor="#009999"/>
+						<rightPen lineWidth="0.5" lineColor="#009999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Bills Paid]]></text>
+				</staticText>
+				<staticText>
+					<reportElement key="staticText-11" mode="Opaque" x="440" y="20" width="108" height="19" forecolor="#FFFFFF" backcolor="#003366" uuid="253e68ec-00eb-4c99-9558-49d2dcd2ce3d"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#009999"/>
+						<topPen lineWidth="0.5" lineColor="#009999"/>
+						<leftPen lineWidth="0.5" lineColor="#009999"/>
+						<bottomPen lineWidth="0.5" lineColor="#009999"/>
+						<rightPen lineWidth="0.5" lineColor="#009999"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Outstanding Balance]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="5" y="0" width="160" height="18" uuid="fe1ddb1c-6021-4145-ba85-5f50c9db1e63"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{className}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="23">
+				<textField>
+					<reportElement positionType="Float" x="322" y="0" width="61" height="20" uuid="17003ed7-21bc-4cb5-9265-4cd98c69d11e"/>
+					<textElement textAlignment="Right">
+						<font isBold="true" isStrikeThrough="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totalClassBillpayable}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="365" y="0" width="87" height="20" uuid="8a9c3130-0771-42b0-b21d-42793df20f97"/>
+					<textElement textAlignment="Right">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totalClassBillPaid}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="452" y="0" width="76" height="20" uuid="a0db14b5-e8ef-4037-baca-85f12b1f1eca"/>
+					<textElement textAlignment="Right">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totalClassOutstanding}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="0" y="3" width="116" height="20" uuid="5db35d69-e83a-4c2e-ae44-72bf30c2d207"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{className}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="64" splitType="Stretch">
+			<rectangle>
+				<reportElement key="rectangle-2" x="0" y="0" width="549" height="64" isRemoveLineWhenBlank="true" backcolor="#66CCFF" uuid="e495ef27-29d7-4ec0-9071-5a518bcf6d47"/>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="79" y="1" width="456" height="26" forecolor="#660000" uuid="51faf00e-6648-4cc1-9282-ab6707bc7a1b"/>
+				<textElement>
+					<font size="18" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{schoolName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="81" y="28" width="304" height="28" forecolor="#003366" uuid="66d68a3c-aef9-4ba6-876e-ebcd89bf9e8b"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{schoolAddress}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-2" x="0" y="63" width="549" height="1" uuid="18954fd9-c7f3-4278-a536-ed32754d5c16"/>
+				<graphicElement fill="Solid">
+					<pen lineWidth="0.6"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement key="line-3" x="0" y="61" width="549" height="1" uuid="6b211875-c15b-4973-bdb8-1cc307a1e7a3"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</line>
+			<image>
+				<reportElement key="image-1" x="0" y="1" width="76" height="62" uuid="19d961e5-8fe7-4e09-a407-f0ff199f8e25">
+					<printWhenExpression><![CDATA[$P{schoolBadge} != null]]></printWhenExpression>
+				</reportElement>
+				<imageExpression><![CDATA[$P{schoolBadge}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="51" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement key="textField" mode="Opaque" x="0" y="2" width="549" height="21" forecolor="#000000" backcolor="#CCCCCC" uuid="98858f33-2a36-4925-992f-e4f206a15e3e"/>
+				<box>
+					<bottomPen lineWidth="0.5" lineStyle="Double" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Segoe UI" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{reportTitle}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="5" y="26" width="76" height="15" uuid="02bb8d13-cb94-47e3-b2de-1c53b5ddfb35"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Academic Year]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="263" y="26" width="77" height="15" uuid="d732b289-81fa-49b7-be03-26b6235dc279"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date of Report]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="84" y="26" width="100" height="15" uuid="48fe928f-3aa5-4f46-8951-beab42554658"/>
+				<textFieldExpression><![CDATA[$P{academicYear}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="343" y="26" width="153" height="15" uuid="1bf5e586-be4c-442a-8f5d-4ca3f2e04bb3"/>
+				<textFieldExpression><![CDATA[$P{dateOfReport}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="46" width="549" height="1" forecolor="#CCCCCC" backcolor="#999999" uuid="d05258cf-5491-4d65-a5e4-03b92f346180"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="49" width="549" height="1" forecolor="#CCCCCC" backcolor="#999999" uuid="c1952084-92f8-4171-a4b7-437b6004f507"/>
+				<graphicElement>
+					<pen lineStyle="Double"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="20" y="0" width="123" height="12" uuid="2a59616c-cd86-4d67-a3fc-aab9b3521156"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{studentName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="143" y="0" width="76" height="12" uuid="1d04b8d7-7aae-4b5c-b162-415d4bd78270"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{studentID}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="20" height="12" uuid="2153a715-5706-42da-bfea-0b93484408b3"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{numberOfClassPerLevel}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="385" y="0" width="54" height="12" uuid="2b05cbe7-e777-4741-96a8-441bee5e7268"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalBillsPaid}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
+				<reportElement x="440" y="0" width="108" height="12" uuid="5d041178-a63a-4f95-8220-669cb2b365a2"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{outstandingBalance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="322" y="0" width="61" height="12" uuid="0ef049d7-5c73-4836-84eb-46d3982bd51d"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalBillsPayable}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="219" y="0" width="103" height="12" uuid="66b935ff-84c3-4629-806a-01d5faff3db7"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{boardingStatus}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="14" splitType="Stretch">
+			<rectangle>
+				<reportElement key="rectangle-3" x="0" y="0" width="535" height="14" backcolor="#666666" uuid="f4c73f6d-7402-4a5b-8e65-bd1ad9286ac2"/>
+			</rectangle>
+			<staticText>
+				<reportElement key="staticText-2" x="211" y="0" width="200" height="14" forecolor="#FFFFFF" uuid="3781035f-ffab-4a3a-84f3-b82dd019ddff"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Report Generated From Sabonay Education]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="428" y="0" width="100" height="14" forecolor="#FFFFFF" uuid="a665242d-cba5-475e-8821-936c0a4f3dd9"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{todayDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="87" splitType="Stretch">
+			<textField pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
+				<reportElement x="143" y="41" width="120" height="20" uuid="46e3674f-badc-4359-864f-f728cf432616"/>
+				<box rightPadding="3">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{schoolTotalBillsPayable}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
+				<reportElement x="263" y="41" width="120" height="20" uuid="c28e1cb5-d64f-4a01-aa7f-934b39ca88b9"/>
+				<box rightPadding="3">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{schoolTotalBillsPaid}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
+				<reportElement x="383" y="41" width="152" height="20" uuid="a0ff2272-9e56-4ab4-acad-fb93117328b3"/>
+				<box rightPadding="3">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{schoolTotalOutstandingBalance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-11" mode="Opaque" x="49" y="41" width="94" height="20" forecolor="#FFFFFF" backcolor="#003366" uuid="6ab1b52e-62a7-4c57-87d1-ff33ede27889"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#009999"/>
+					<topPen lineWidth="0.5" lineColor="#009999"/>
+					<leftPen lineWidth="0.5" lineColor="#009999"/>
+					<bottomPen lineWidth="0.5" lineColor="#009999"/>
+					<rightPen lineWidth="0.5" lineColor="#009999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[School Totals]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-11" mode="Opaque" x="263" y="21" width="120" height="20" forecolor="#FFFFFF" backcolor="#003366" uuid="e8614968-758f-4157-8216-b2a4e5690643"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#009999"/>
+					<topPen lineWidth="0.5" lineColor="#009999"/>
+					<leftPen lineWidth="0.5" lineColor="#009999"/>
+					<bottomPen lineWidth="0.5" lineColor="#009999"/>
+					<rightPen lineWidth="0.5" lineColor="#009999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Total Bills Paid]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-11" mode="Opaque" x="143" y="21" width="120" height="20" forecolor="#FFFFFF" backcolor="#003366" uuid="1347d3a0-931e-4fa3-98f4-f77eec9b5a26"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#009999"/>
+					<topPen lineWidth="0.5" lineColor="#009999"/>
+					<leftPen lineWidth="0.5" lineColor="#009999"/>
+					<bottomPen lineWidth="0.5" lineColor="#009999"/>
+					<rightPen lineWidth="0.5" lineColor="#009999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Total Bills Payable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-11" mode="Opaque" x="383" y="21" width="152" height="20" forecolor="#FFFFFF" backcolor="#003366" uuid="b91c35ee-6fa5-4a48-b639-a48d0fb8c70f"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#009999"/>
+					<topPen lineWidth="0.5" lineColor="#009999"/>
+					<leftPen lineWidth="0.5" lineColor="#009999"/>
+					<bottomPen lineWidth="0.5" lineColor="#009999"/>
+					<rightPen lineWidth="0.5" lineColor="#009999"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="11" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Total Outstanding Balance]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

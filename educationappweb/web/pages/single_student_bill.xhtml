@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:body>
+        <h:panelGroup layout="block" style="clear: both;" styleClass="input_form">
+            <h:form>
+                <h:panelGroup binding="#{singleStudentBillController.studentDataPanel.searchPanel.component}"/>
+            </h:form>
+            <h:form id="frm_single_student_datatable" style="height: 220px; overflow: auto;">
+                <h:dataTable binding="#{singleStudentBillController.studentDataPanel.dataTable}"/>
+            </h:form>
+        </h:panelGroup>
+        <h:form>
+            <h:panelGroup layout="block" style="clear: both;" styleClass="input_form">
+                <h:outputLabel value="SELECTED STUDENT"/>
+                <hr style="width: 99%"/>
+                <h:panelGrid columns="8" width="99%">
+                    <h:outputLabel value="Student Id"/>
+                    <h:inputText value="#{singleStudentBillController.student.studentFullId}"/>
+                    <h:outputLabel value="Student Name"/>
+                    <h:inputText value="#{singleStudentBillController.student.studentName}" size="30"/>
+                    <h:outputLabel value="Programme"/>
+                    <h:inputText value="#{singleStudentBillController.student.programmeOffered.programName}"/>
+                    <h:outputLabel value="Class"/>
+                    <h:inputText value="#{singleStudentBillController.student.classAdmittedTo.classCode}"/>
+                    <h:outputLabel value="Boarding Status"/>
+                    <h:inputText value="#{singleStudentBillController.student.boardingStatus.boardingStatusName}"/>
+                    
+                </h:panelGrid>
+                <h:outputLabel value="STUDENT BILLING"/>
+                <hr style="width: 99%"/>
+                <h:panelGrid columns="6">
+                    <h:outputText value ="Student Bill Type"/>
+                    <h:panelGroup>
+                        <h:selectOneMenu id="studentBillType" value="#{singleStudentBillController.studentBill.studentBillType}" required="true" requiredMessage="*" >
+                            <f:selectItems value ="#{commonOptions.paymentTypeOptions}"/>
+                        </h:selectOneMenu>
+                        <h:message for="studentBillType" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="Bill Item"/>
+                    <h:panelGroup>
+                        <h:selectOneMenu id="billItem" value="#{singleStudentBillController.studentBill.billItem}" required="true" requiredMessage="*" >
+                            <f:selectItems value ="#{commonOptions.studentBillItemOptions}" />
+                        </h:selectOneMenu>
+                        <h:message for="billItem" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="Amount"/>
+                    <h:panelGroup>
+                        <h:inputText id="dayStudentAmt" value="#{singleStudentBillController.amount}" required="true" requiredMessage="*"  />
+                        <h:message for="dayStudentAmt" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+                </h:panelGrid>
+                <h:panelGrid columns="2">
+                    <h:commandButton value="Save" action="#{singleStudentBillController.saveStudentBill()}"/>
+                </h:panelGrid>
+        </h:panelGroup>
+        </h:form>
+    </h:body>
+</html>
+
+

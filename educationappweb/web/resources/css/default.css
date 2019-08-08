@@ -1,0 +1,233 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: "Trebuchet MS";
+    font-size: 15px;
+}
+
+.container
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 1110px;
+    border: 1px solid #3366FF;
+
+}
+
+a{
+    text-decoration: none;
+    color: #666;
+    text-decoration: none;
+}
+
+a.comand_link
+{
+    background-color:  maroon;
+    font-size: 15px;
+    border: maroon 1px solid;
+    color: antiquewhite;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.user_action_link
+{
+    display: block;
+}
+
+.user_action_link:hover
+{
+    background: #2694e8;
+}
+
+.rf-ac-itm-cnt {
+    border-bottom-color: #C4C0B9;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    overflow-x: hidden;
+    overflow: auto;
+    padding: 0px !important;
+}
+
+.rf-ac {
+background: transparent !important;
+}
+
+
+.report_link
+{
+    background-color:  maroon;
+    font-size: 15px;
+    border: maroon 1px solid;
+    color: antiquewhite;
+    text-align: center;
+    font-weight: bolder;
+}
+
+
+.load_data
+{
+    color: #FFFFFF;
+	background-color: #2E3654;
+	padding-top: 2px;
+	padding-right: 10px;
+	padding-bottom: 2px;
+	padding-left: 10px;
+        border: solid 1px #2E3654;
+}
+
+
+.banner
+{
+    width: 1110px;
+    height: 50px;
+    background-color: #3366FF;
+}
+
+#toplinks
+{
+width: 1000px;
+background-color: #3366FF;
+text-align: center;
+font-size: medium;
+font-family: "Trebuchet MS";
+}
+
+#toplinks ul
+{
+    list-style: none;
+}
+
+#toplinks ul a
+{
+    color: #FFFFFF;
+    text-decoration: none;
+    line-height: 24px;
+}
+
+#toplinks ul li
+{
+    float: left;
+    width: 160px;
+    border-right: solid 1px black;
+}
+
+#toplinks ul li ul
+{
+    border-top: solid 1px #CCC;
+    display: none;
+    position: absolute;
+    width: 160px;
+}
+
+#toplinks ul li ul li
+{
+    background-color: #3366FF;
+}
+
+#toplinks ul li:hover
+{
+    background-color: #FF0000;
+}
+
+#toplinks ul li:hover ul
+{
+    display: block;
+}
+
+
+.login
+{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    margin-bottom: auto;
+    width: 300px;
+    height: 120px;
+}
+
+.links
+{
+    background-color: #3366FF;
+    margin-top: 0px;
+}
+
+legend
+{
+    font-size: large;
+    font-weight: bold;
+    font-family: "Trebuchet MS";
+}
+
+form
+{
+    font-size: medium;
+    font-family: "Trebuchet MS";
+}
+
+.pagecontent
+{
+    margin-top: 50px;
+}
+
+.pagefooter
+{
+    background: #3366FF;
+    color: white;
+    height: 20px;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #36C;
+    font-family: "Trebuchet MS";
+}
+
+.tablebody
+{
+    border: thin solid black;
+}
+.tableheader
+{
+     text-align: center;
+     color: white;
+     background: #3366CC;
+}
+
+.oddrow
+{
+     height: 25px;
+     text-align: center;
+     background: white;
+}
+
+.evenrow
+{
+     text-align: center;
+     background: #F0F0F0;
+}
+
+.errorStyle{
+    color: #FF0000;
+    background-color: cyan;
+    border-style: solid;
+}
+
+
+input[type="submit"],input[type="button"],select
+{
+    border:solid 1px #CCC;
+    font-size: 15px;
+}
+/*
+input[type="submit"],input[type="button"]
+{
+    min-width:85%;
+}*/
+
+
+input[type="text"],select,input[type="password"],textarea
+{
+    border:solid 1px #CCC;
+    font-size: 12px;
+}

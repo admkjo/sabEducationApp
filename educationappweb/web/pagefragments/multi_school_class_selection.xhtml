@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <rich:panel >
+        <f:facet name="header">
+            <h:outputText value="School Class List" />
+        </f:facet>
+        <h:panelGroup layout="block" style="height: 185px; overflow: auto;">
+            <h:dataTable value="#{schoolClassTableSelection.schoolClassListModel}" var="sch" styleClass="data_table_panel" rowClasses="odd_row,even_row">
+                <h:column>
+                    <f:facet name="header">
+                        Select
+                    </f:facet>
+                    <h:selectBooleanCheckbox value="#{sch.checkBoxSelected}"><f:ajax execute="@all" listener="#{schoolClassTableSelection.showSelection()}" /></h:selectBooleanCheckbox>
+                        
+                        
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Class Name
+                    </f:facet>
+                    <h:outputLabel value="#{sch.className}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Educational Level
+                    </f:facet>
+                    <h:outputLabel value="#{sch.educationalLevel.eduLevelName}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Class Programme
+                    </f:facet>
+                    <h:outputLabel value="#{sch.classSchoolPrograme.programName}"/>
+
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
+        <h:commandButton value="Deselect All"
+                         action="#{schoolClassTableSelection.deSelectAllSelectedClasses}"/>
+    </rich:panel>
+
+</html>
+

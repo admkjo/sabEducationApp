@@ -1,0 +1,119 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <style type="text/css">
+        .input_form td
+        {
+            padding: 3px;
+            margin: 3px;
+        }
+
+    </style>
+
+    <h:messages id="msg"/>
+
+    <h:panelGroup layout="block" styleClass="input_form" rendered="#{userdata.isUserTeachingStaff}" >
+        <h:form>
+
+            <h:panelGrid columns="5" cellpadding="2" cellspacing="3" >
+                <h:commandButton value="Reload My Subject and Classess" action="#{mockExamMarkController.reloadSubjectAndTeachingClassess}" />
+
+
+                <h:outputText value="Teacher Subjects" />
+                <h:selectOneMenu value="#{mockExamMarkController.selectedSubAndClasses}"
+                                 valueChangeListener="#{mockExamMarkController.loadSubjectClasses}"
+                                 onchange="submit();">
+                    <f:selectItems value="#{mockExamMarkController.selectedSubAndClassesOptions}" />
+                </h:selectOneMenu>
+
+                <h:outputText value="Teacher Classes" />
+                <h:selectOneMenu value="#{mockExamMarkController.selectedClass}" >
+                    <f:selectItems value="#{mockExamMarkController.teachingClassesOptions}" />
+                </h:selectOneMenu>
+
+                <h:commandButton value="Load Student Marks" action="#{mockExamMarkController.loadMarks}" />
+            </h:panelGrid>
+        </h:form>
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" styleClass="input_form" rendered="#{!userdata.isUserTeachingStaff}" >
+        <h:form>
+            <h:panelGrid columns="4" >
+                <h:outputText value=" Subjects" />
+                <h:panelGroup>
+                    <h:selectOneMenu value="#{mockExamMarkController.selectedSubject}">
+                        <f:selectItems value="#{commonOptions.schoolSubjectOptions}" />
+                    </h:selectOneMenu>
+                </h:panelGroup>
+
+                <h:outputText value=" Classes" />
+                <h:panelGroup>
+                    <h:selectOneMenu value="#{mockExamMarkController.selectedSchoolClass}" >
+                        <f:selectItems value="#{commonOptions.schoolClassesOptions}" />
+                    </h:selectOneMenu>
+                </h:panelGroup>
+
+                <h:commandButton value="Load Student Marks" action="#{mockExamMarkController.loadStudentMarks}" />
+            </h:panelGrid>
+        </h:form>
+    </h:panelGroup>
+    <h:form>
+        <h:panelGrid columns="2" rendered="#{mockExamMarkController.showexcel}">
+            <h:commandLink value="Generate marks filling sheet" style="color: white; background-color: #036FAB; padding: 5px; border-radius:5px; "
+                           action="#{mockExamMarkController.writeExcel()}"/>
+            <h:commandLink value="Import Marks From Excel" style="color: white; background-color: #036FAB; padding: 5px; border-radius:5px; "
+                           action="#{mockExamMarkController.readExcel()}"/>
+        </h:panelGrid>
+    </h:form>
+    <h:panelGroup layout="block" styleClass="input_form" id="marks_entry">
+
+        <h:form id="mef" >
+
+            <h:commandButton rendered="false" value="Save All"  action="#{mockExamMarkController.updateAllStudentMarks}" />
+            <div style="overflow: scroll;height: 400px;">
+                <h:dataTable id="mks" value="#{mockExamMarkController.subjectStudentMarksList}"
+                             var="marks" styleClass="data_table_panel" style="width: 750px"
+                             rowClasses="odd_row,even_row">
+
+                    <h:column>
+                        <f:facet name="header">Student Id</f:facet>
+                        <h:outputText value="#{marks.student.studentBasicId}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Student Name</f:facet>
+                        <h:outputText value="#{marks.student.studentName}" id="student_name_string"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Mock Mark</f:facet>
+                        <h:inputText id="mock" value="#{marks.mockMark}"
+                                     validatorMessage="*"
+                                     valueChangeListener="#{mockExamMarkController.inputValueChange}" >
+                            <f:ajax event="blur" execute="@form" render="classMarkMsg" />
+                            <f:validateDoubleRange minimum="0.0" maximum="100.0" />
+                        </h:inputText>
+                        <h:message for="mock" id="classMarkMsg" styleClass="noTextErrorStyle" />
+
+                    </h:column>
+
+                    <h:column rendered="false" >
+                        <f:facet name="header"> Action</f:facet>
+                        <h:commandButton value="Update"
+                                         action="#{mockExamMarkController.updateStudentMarks}"
+                                         style="width: 40px;" >
+
+                        </h:commandButton>
+
+                    </h:column>
+
+                </h:dataTable>
+            </div>
+
+
+        </h:form>
+
+    </h:panelGroup>
+</html>
+
+

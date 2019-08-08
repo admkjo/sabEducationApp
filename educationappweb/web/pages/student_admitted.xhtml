@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+  
+    <h:body>
+        <p:panel style="height: 600px">
+             <f:facet name="header">
+                <span style="float: left">Student Admitted</span>
+            </f:facet>
+            <h:form>
+                <h:panelGrid columns="8" width="99%">
+                    <h:outputLabel value="Academic Year"/>
+                    <h:selectOneMenu style="width: 125px" value="#{studentAdmittedController.selectedAcademicYear}">
+                        <f:selectItem itemLabel="--SELECT ONE--"/>
+                        <f:selectItems value="#{studentAdmittedController.allAcademicYear}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Student Type"/>
+                    <h:selectOneMenu style="width: 125px" value="#{studentAdmittedController.selectedStudentType}">
+                        <f:selectItem itemValue="ADMITTED"/>
+                        <f:selectItem itemValue="WITHDRAWN"/>
+                        <f:selectItem itemValue="TRANSFERRED OUT"/>
+                        <f:selectItem itemValue="TRANSFERRED IN"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Programme"/>
+                    <h:selectOneMenu style="width: 125px" value="#{studentAdmittedController.selectedProgramme}">
+                         <f:selectItem itemLabel="--SELECT ONE--"/>
+                         <f:selectItems value="#{studentAdmittedController.allProgramme}"/>
+                    </h:selectOneMenu>
+                    <h:commandButton value="Load Student" action="#{studentAdmittedController.loadStudentAdmitted()}"/>
+                    <h:commandLink value="Print List" action="#{studentAdmittedController.printStudentAdmitted()}" target="_blank"/> 
+                    
+                </h:panelGrid>
+            </h:form>
+            <br/>
+            <h:form>
+                <div style="overflow: scroll;height: 400px;">
+                        <p:dataTable value="#{studentAdmittedController.allStudentAdmitted}" var="stud" >
+                    <p:column>
+                        <f:facet name="header">
+                            Student Id
+                        </f:facet>
+                        <h:outputLabel value="#{stud.studentBasicId}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Student Name
+                        </f:facet>
+                        <h:outputLabel value="#{stud.studentName}"/>
+                    </p:column>
+                   
+                    <p:column>
+                        <f:facet name="header">
+                            Programme
+                        </f:facet>
+                        <h:outputLabel value="#{stud.programmeOffered.programName}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Class Admitted
+                        </f:facet>
+                        <h:outputLabel value="#{stud.classAdmittedTo.className}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                           Date Admitted
+                        </f:facet>
+                        <h:outputLabel value="#{stud.dateOfAdmission}">
+                            <f:convertDateTime dateStyle="medium"/>
+                        </h:outputLabel>
+                        
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            Academic Year
+                        </f:facet>
+                        <h:outputLabel value="#{stud.academicYear}"/>
+                    </p:column>
+                   
+                  
+                </p:dataTable>
+                </div>
+            
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>
+
+

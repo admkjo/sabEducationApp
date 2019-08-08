@@ -1,0 +1,47 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+          <h:panelGroup layout="block">
+              <h:panelGroup layout="block" styleClass="input_form">
+                  <h:form id="frmReportCommentInput">
+                <h:panelGrid columns="4">
+                    <h:outputText value ="Comment"/>
+                    <h:panelGroup>
+                        <h:inputText required="true" requiredMessage="*" id="coment" size="80" value="#{reportCommentController.reportComment.comment}"/>
+                        <h:message for="coment" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                    <h:outputText value ="Type"/>
+                    <h:panelGroup>
+                        <h:selectOneMenu required="true" requiredMessage="*" style="width: 120px" id="commentType" value="#{reportCommentController.reportComment.type}">
+                            <f:selectItem itemLabel="--select--"/>
+                            <f:selectItem itemLabel="Remarks" itemValue="Remarks"/>
+                            <f:selectItem itemLabel="Conduct" itemValue="Conduct"/>
+                            <f:selectItem itemLabel="Attitude" itemValue="Attitude"/>
+                            <f:selectItem itemLabel="Interest" itemValue="Interest"/>
+                            <f:selectItem itemLabel="Academic" itemValue="Academic"/>
+                        </h:selectOneMenu>
+                        <h:message for="commentType" errorClass="noTextErrorStyle"/>
+                    </h:panelGroup>
+
+                </h:panelGrid>
+                      <h:panelGroup binding="#{reportCommentController.reportCommentFormControl.component}"/>
+
+            </h:form>
+                  
+              </h:panelGroup>
+                       <h:panelGroup layout="block" styleClass="input_form">
+            <h:form id="frmreport_comment_search_panel">
+                <h:panelGroup binding="#{reportCommentController.reportCommentDataPanel.searchPanel.component}"/>
+            </h:form>
+            <h:form id="frmreport_comment_datatable" style="height: 250px; overflow: auto;">
+                <h:dataTable binding="#{reportCommentController.reportCommentDataPanel.dataTable}"/>
+            </h:form>
+        </h:panelGroup>
+          </h:panelGroup>
+</html>
+
+
